@@ -1,3 +1,4 @@
+import csv_metadata_quality.check as check
 import csv_metadata_quality.fix as fix
 import pandas as pd
 
@@ -12,6 +13,12 @@ def run():
         print(f'DEBUG: {column}')
 
         df[column] = df[column].apply(fix.whitespace)
+
+        if column == 'dc.identifier.issn':
+            df[column] = df[column].apply(check.issn)
+
+        if column == 'dc.identifier.isbn':
+            df[column] = df[column].apply(check.isbn)
 
     # Write
     df.to_csv('/tmp/omg.fixed.csv', index=False)
