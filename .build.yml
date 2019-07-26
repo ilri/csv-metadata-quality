@@ -5,7 +5,10 @@ sources:
   - https://git.sr.ht/~alanorth/csv-metadata-quality
 tasks:
   - setup: |
-      pipenv install
+      pipenv install --dev
+  - test: |
+      cd csv-metadata-quality
+      pipenv run pytest
 environment:
   PIPENV_NOSPIN: 'True'
   PIPENV_HIDE_EMOJIS: 'True'
