@@ -2,7 +2,7 @@
 
 import pandas as pd
 
-def fix_whitespace(value):
+def fix_whitespace(field):
     """Fix whitespace issues.
 
     Return string with leading, trailing, and consecutive whitespace trimmed.
@@ -10,62 +10,43 @@ def fix_whitespace(value):
 
     import re
 
-    # Skip cells with missing values
-    if pd.isna(value):
+    # Skip fields with missing values
+    if pd.isna(field):
         return
 
-    # Try to split multi-value cells on "||" separator
-    #for value in cell.split('||'):
+    # Initialize an empty list to hold the cleaned values
+    values = list()
 
-    # Check for leading whitespace
-    pattern = re.compile(r'^\s+')
-    match = re.findall(pattern, value)
+    # Try to split multi-value field on "||" separator
+    for value in field.split('||'):
+        # Strip leading and trailing whitespace
+        value = value.strip()
 
-    if len(match) > 0:
-        print('DEBUG: Leading whitespace')
-        value = re.sub(pattern, '', value)
+        # Replace excessive whitespace (>2) with one space
+        pattern = re.compile(r'\s{2,}')
+        match = re.findall(pattern, value)
 
-    # Check for leading whitespace in multi-value cells
-    # SOME VALUE|| ANOTHER VALUE
-    pattern = re.compile(r'\|\|\s+')
-    match = re.findall(pattern, value)
+        if len(match) > 0:
+            print('DEBUG: Excessive whitespace')
+            value = re.sub(pattern, ' ', value)
 
-    if len(match) > 0:
-        print('DEBUG: Leading whitespace in multi-value cell')
-        value = re.sub(pattern, '||', value)
+        # Save cleaned value
+        values.append(value)
 
-    # Check for trailing whitespace
-    pattern = re.compile(r'\s+$')
-    match = re.findall(pattern, value)
+    # Create a new field consisting of all values joined with "||"
+    new_field = '||'.join(values)
 
-    if len(match) > 0:
-        print('DEBUG: Trailing whitespace')
-        value = re.sub(pattern, '', value)
-
-    # Check for trailing whitespace in multi-value cells
-    # SOME VALUE ||ANOTHER VALUE
-    pattern = re.compile(r'\s+\|\|')
-    match = re.findall(pattern, value)
-
-    if len(match) > 0:
-        print('DEBUG: Trailing whitespace in multi-value cell')
-        value = re.sub(pattern, '||', value)
-
-    return value
+    return new_field
 
 
 # Read all fields as strings so dates don't get converted from 1998 to 1998.0
-df = pd.read_csv('/home/aorth/Downloads/2019-07-26-Bioversity-Migration.csv', dtype=str)
-#df = pd.read_csv('/tmp/quality.csv')
-#df = pd.read_csv('/tmp/omg.csv')
+#df = pd.read_csv('/home/aorth/Downloads/2019-07-26-Bioversity-Migration.csv', dtype=str)
+#df = pd.read_csv('/tmp/quality.csv', dtype=str)
+df = pd.read_csv('/tmp/omg.csv', dtype=str)
 
 # Fix whitespace in all columns
 for column in df.columns.values.tolist():
-    print(column)
-
-    # Skip the id column
-    #if column == 'id':
-    #    continue
+    print(f'DEBUG: {column}')
 
     df[column] = df[column].apply(fix_whitespace)
 
