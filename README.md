@@ -1,4 +1,4 @@
-# CSV Metadata Quality
+# CSV Metadata Quality [![builds.sr.ht status](https://builds.sr.ht/~alanorth/csv-metadata-quality.svg)](https://builds.sr.ht/~alanorth/csv-metadata-quality?)
 A simple but opinionated metadata quality checker and fixer designed to work with CSVs in the DSpace ecosystem. Supports multi-value fields using the standard DSpace value separator ("||").
 
 Written and tested using Python 3.7.
