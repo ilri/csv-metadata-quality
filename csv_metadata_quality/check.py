@@ -44,3 +44,25 @@ def isbn(field):
 
         if not isbn.is_valid(value):
             print(f'Invalid ISBN: {value}')
+
+
+def separators(field):
+    """Check for invalid multi-value separators (ie "|" or "|||").
+
+    Prints the field with the invalid multi-value separator.
+    """
+
+    import re
+
+    # Skip fields with missing values
+    if pd.isna(field):
+        return
+
+    # Try to split multi-value field on "||" separator
+    for value in field.split('||'):
+
+        # After splitting, see if there are any remaining "|" characters
+        match = re.findall(r'^.*?\|.*$', value)
+
+        if len(match) > 0:
+            print(f'Invalid multi-value separator: {field}')

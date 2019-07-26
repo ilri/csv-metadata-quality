@@ -14,6 +14,9 @@ def run():
 
         df[column] = df[column].apply(fix.whitespace)
 
+        # Run invalid multi-value separator check on all columns
+        df[column] = df[column].apply(check.separators)
+
         if column == 'dc.identifier.issn':
             df[column] = df[column].apply(check.issn)
 
