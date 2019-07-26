@@ -1,11 +1,14 @@
 # CSV Metadata Quality
-A simple but opinionated metadata quality checker and fixer designed to work with CSVs in the DSpace ecosystem.
+A simple but opinionated metadata quality checker and fixer designed to work with CSVs in the DSpace ecosystem. Supports multi-value fields using the standard DSpace value separator ("||").
+
+Written and tested using Python 3.7.
 
 ## Checks
 Supports checking the validity of the following metadata elements:
 
 - ISSN
 - ISBN
+- Multi-value separators
 
 ## Fixes
 Supports fixing the following metadata issues:
@@ -14,7 +17,8 @@ Supports fixing the following metadata issues:
 
 ## Todo
 
-- Reporting
+- Reporting / summary
+- Real logging
 
 ## License
 This work is licensed under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html).
