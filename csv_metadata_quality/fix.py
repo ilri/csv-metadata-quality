@@ -1,14 +1,16 @@
-#!/usr/bin/env python3
-
 import pandas as pd
+import re
 
-def fix_whitespace(field):
+def alan():
+    print('Alan')
+
+
+def whitespace(field):
     """Fix whitespace issues.
 
     Return string with leading, trailing, and consecutive whitespace trimmed.
     """
 
-    import re
 
     # Skip fields with missing values
     if pd.isna(field):
@@ -38,17 +40,3 @@ def fix_whitespace(field):
 
     return new_field
 
-
-# Read all fields as strings so dates don't get converted from 1998 to 1998.0
-#df = pd.read_csv('/home/aorth/Downloads/2019-07-26-Bioversity-Migration.csv', dtype=str)
-#df = pd.read_csv('/tmp/quality.csv', dtype=str)
-df = pd.read_csv('/tmp/omg.csv', dtype=str)
-
-# Fix whitespace in all columns
-for column in df.columns.values.tolist():
-    print(f'DEBUG: {column}')
-
-    df[column] = df[column].apply(fix_whitespace)
-
-# Write
-df.to_csv('/tmp/omg.fixed.csv', index=False)
