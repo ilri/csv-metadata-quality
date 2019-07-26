@@ -1,10 +1,6 @@
 import pandas as pd
 import re
 
-def alan():
-    print('Alan')
-
-
 def whitespace(field):
     """Fix whitespace issues.
 
