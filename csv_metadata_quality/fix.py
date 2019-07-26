@@ -7,7 +7,6 @@ def whitespace(field):
     Return string with leading, trailing, and consecutive whitespace trimmed.
     """
 
-
     # Skip fields with missing values
     if pd.isna(field):
         return
