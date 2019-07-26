@@ -5,6 +5,7 @@ sources:
   - https://git.sr.ht/~alanorth/csv-metadata-quality
 tasks:
   - setup: |
+      cd csv-metadata-quality
       pipenv install --dev
   - test: |
       cd csv-metadata-quality
