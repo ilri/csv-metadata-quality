@@ -1,5 +1,16 @@
 # CSV Metadata Quality
-A simple metadata quality checker and fixer designed to work with CSVs in the DSpace ecosystem.
+A simple but opinionated metadata quality checker and fixer designed to work with CSVs in the DSpace ecosystem.
+
+## Checks
+Supports checking the validity of the following metadata elements:
+
+- ISSN
+- ISBN
+
+## Fixes
+Supports fixing the following metadata issues:
+
+- Leading, trailing, and excessive whitespace
 
 ## Todo
 
