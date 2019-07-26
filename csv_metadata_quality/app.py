@@ -12,6 +12,7 @@ def run():
     for column in df.columns.values.tolist():
         print(f'DEBUG: {column}')
 
+        # Run whitespace fix on all columns
         df[column] = df[column].apply(fix.whitespace)
 
         # Run invalid multi-value separator check on all columns
