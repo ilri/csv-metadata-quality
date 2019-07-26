@@ -35,6 +35,10 @@ def isbn(field):
 
     from stdnum import isbn
 
+    # Skip fields with missing values
+    if pd.isna(field):
+        return
+
     # Try to split multi-value field on "||" separator
     for value in field.split('||'):
 
