@@ -22,6 +22,8 @@ def issn(field):
         if not issn.is_valid(value):
             print(f'Invalid ISSN: {value}')
 
+    return field
+
 
 def isbn(field):
     """Check if an ISBN is valid.
@@ -45,6 +47,8 @@ def isbn(field):
         if not isbn.is_valid(value):
             print(f'Invalid ISBN: {value}')
 
+    return field
+
 
 def separators(field):
     """Check for invalid multi-value separators (ie "|" or "|||").
@@ -66,3 +70,6 @@ def separators(field):
 
         if len(match) > 0:
             print(f'Invalid multi-value separator: {field}')
+
+
+    return field
