@@ -10,8 +10,6 @@ def run():
 
     # Fix whitespace in all columns
     for column in df.columns.values.tolist():
-        print(f'DEBUG: {column}')
-
         # Run whitespace fix on all columns
         df[column] = df[column].apply(fix.whitespace)
 

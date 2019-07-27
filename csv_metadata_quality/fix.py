@@ -24,7 +24,7 @@ def whitespace(field):
         match = re.findall(pattern, value)
 
         if len(match) > 0:
-            print('DEBUG: Excessive whitespace')
+            print(f'Excessive whitespace: {value}')
             value = re.sub(pattern, ' ', value)
 
         # Save cleaned value
