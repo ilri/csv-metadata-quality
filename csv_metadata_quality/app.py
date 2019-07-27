@@ -2,7 +2,7 @@ import csv_metadata_quality.check as check
 import csv_metadata_quality.fix as fix
 import pandas as pd
 
-def run():
+def main():
     # Read all fields as strings so dates don't get converted from 1998 to 1998.0
     #df = pd.read_csv('/home/aorth/Downloads/2019-07-26-Bioversity-Migration.csv', dtype=str)
     #df = pd.read_csv('/tmp/quality.csv', dtype=str)
