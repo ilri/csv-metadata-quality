@@ -1,5 +1,4 @@
 import csv_metadata_quality.check as check
-import pytest
 
 def test_check_invalid_issn(capsys):
     '''Test checking invalid ISSN.'''

@@ -1,5 +1,4 @@
 import csv_metadata_quality.fix as fix
-import pytest
 
 def test_fix_leading_whitespace():
     '''Test fixing leading whitespace.'''
