@@ -17,10 +17,14 @@ def main():
         # Run invalid multi-value separator check on all columns
         df[column] = df[column].apply(check.separators)
 
-        if column == 'dc.identifier.issn':
+        # check if column is an issn column like dc.identifier.issn
+        match = re.match(r'^.*?issn.*$', column)
+        if match is not None:
             df[column] = df[column].apply(check.issn)
 
-        if column == 'dc.identifier.isbn':
+        # check if column is an isbn column like dc.identifier.isbn
+        match = re.match(r'^.*?isbn.*$', column)
+        if match is not None:
             df[column] = df[column].apply(check.isbn)
 
         # check if column is a date column like dc.date.issued
