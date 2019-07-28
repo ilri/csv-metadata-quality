@@ -20,7 +20,6 @@ Supports fixing the following metadata issues:
 - Reporting / summary
 - Real logging
 - Fix invalid multi-value separators? Check if there are any valid cases of "|" in the database
-- Date validation
 
 ## License
 This work is licensed under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html).
