@@ -23,3 +23,11 @@ def test_fix_excessive_whitespace():
     value = 'Alan  Orth'
 
     assert fix.whitespace(value) == 'Alan Orth'
+
+
+def test_fix_invalid_separators():
+    '''Test fixing invalid multi-value separators.'''
+
+    value = 'Alan|Orth'
+
+    assert fix.separators(value) == 'Alan||Orth'

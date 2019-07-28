@@ -35,3 +35,33 @@ def whitespace(field):
     new_field = '||'.join(values)
 
     return new_field
+
+
+def separators(field):
+    """Fix for invalid multi-value separators (ie "|")."""
+
+    # Skip fields with missing values
+    if pd.isna(field):
+        return
+
+    # Initialize an empty list to hold the cleaned values
+    values = list()
+
+    # Try to split multi-value field on "||" separator
+    for value in field.split('||'):
+        # After splitting, see if there are any remaining "|" characters
+        pattern = re.compile(r'\|')
+        match = re.findall(pattern, value)
+
+        if len(match) > 0:
+            print(f'Fixing invalid multi-value separator: {value}')
+
+            value = re.sub(pattern, '||', value)
+
+        # Save cleaned value
+        values.append(value)
+
+    # Create a new field consisting of all values joined with "||"
+    new_field = '||'.join(values)
+
+    return new_field
