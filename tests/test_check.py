@@ -62,3 +62,46 @@ def test_check_valid_separators():
     result = check.separators(value)
 
     assert result == value
+
+
+def test_check_missing_date(capsys):
+    '''Test checking missing date.'''
+
+    value = None
+
+    check.date(value)
+
+    captured = capsys.readouterr()
+    assert captured.out == f'Missing date.\n'
+
+
+def test_check_multiple_dates(capsys):
+    '''Test checking multiple dates.'''
+
+    value = '1990||1991'
+
+    check.date(value)
+
+    captured = capsys.readouterr()
+    assert captured.out == f'Multiple dates not allowed: {value}\n'
+
+
+def test_check_invalid_date(capsys):
+    '''Test checking invalid ISO8601 date.'''
+
+    value = '1990-0'
+
+    check.date(value)
+
+    captured = capsys.readouterr()
+    assert captured.out == f'Invalid date: {value}\n'
+
+
+def test_check_valid_date():
+    '''Test checking valid ISO8601 date.'''
+
+    value = '1990'
+
+    result = check.date(value)
+
+    assert result == value

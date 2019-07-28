@@ -1,6 +1,7 @@
 import csv_metadata_quality.check as check
 import csv_metadata_quality.fix as fix
 import pandas as pd
+import re
 
 def main():
     # Read all fields as strings so dates don't get converted from 1998 to 1998.0
@@ -21,6 +22,11 @@ def main():
 
         if column == 'dc.identifier.isbn':
             df[column] = df[column].apply(check.isbn)
+
+        # check if column is a date column like dc.date.issued
+        match = re.match(r'^.*?date.*$', column)
+        if match is not None:
+            df[column] = df[column].apply(check.date)
 
     # Write
     df.to_csv('/tmp/test.fixed.csv', index=False)
