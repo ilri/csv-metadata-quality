@@ -1,12 +1,13 @@
 import csv_metadata_quality.check as check
 
+
 def test_check_invalid_issn(capsys):
     '''Test checking invalid ISSN.'''
 
     value = '2321-2302'
 
     check.issn(value)
-    
+
     captured = capsys.readouterr()
     assert captured.out == f'Invalid ISSN: {value}\n'
 

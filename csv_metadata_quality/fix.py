@@ -1,6 +1,7 @@
 import pandas as pd
 import re
 
+
 def whitespace(field):
     """Fix whitespace issues.
 
@@ -34,4 +35,3 @@ def whitespace(field):
     new_field = '||'.join(values)
 
     return new_field
-

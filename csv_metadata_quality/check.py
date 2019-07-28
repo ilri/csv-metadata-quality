@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 def issn(field):
     """Check if an ISSN is valid.
 
@@ -70,7 +71,6 @@ def separators(field):
 
         if len(match) > 0:
             print(f'Invalid multi-value separator: {field}')
-
 
     return field
 
