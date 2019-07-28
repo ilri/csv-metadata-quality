@@ -1,11 +1,24 @@
+import argparse
 import csv_metadata_quality.check as check
 import csv_metadata_quality.fix as fix
 import pandas as pd
 import re
 
-def main():
+
+def parse_args(argv):
+    parser = argparse.ArgumentParser(description='Metadata quality checker and fixer.')
+    parser.add_argument('--input-file', '-i', help='Path to input file. Can be UTF-8 CSV or Excel XLSX.', required=True, type=argparse.FileType('r', encoding='UTF-8'))
+    parser.add_argument('--output-file', '-o', help='Path to output file (always CSV).', required=True, type=argparse.FileType('w', encoding='UTF-8'))
+    args = parser.parse_args()
+
+    return args
+
+
+def main(argv):
+    args = parse_args(argv)
+
     # Read all fields as strings so dates don't get converted from 1998 to 1998.0
-    df = pd.read_csv('data/test.csv', dtype=str)
+    df = pd.read_csv(args.input_file, dtype=str)
 
     # Fix whitespace in all columns
     for column in df.columns.values.tolist():
@@ -31,4 +44,4 @@ def main():
             df[column] = df[column].apply(check.date)
 
     # Write
-    df.to_csv('/tmp/test.fixed.csv', index=False)
+    df.to_csv(args.output_file, index=False)
