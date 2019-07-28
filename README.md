@@ -9,6 +9,7 @@ Supports checking the validity of the following metadata elements:
 - ISSN
 - ISBN
 - Multi-value separators
+- Dates
 
 ## Fixes
 Supports fixing the following metadata issues:
