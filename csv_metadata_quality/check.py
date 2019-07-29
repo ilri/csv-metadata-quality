@@ -69,7 +69,7 @@ def separators(field):
         # After splitting, see if there are any remaining "|" characters
         match = re.findall(r'^.*?\|.*$', value)
 
-        if len(match) > 0:
+        if match:
             print(f'Invalid multi-value separator: {field}')
 
     return field

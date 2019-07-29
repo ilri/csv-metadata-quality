@@ -24,8 +24,8 @@ def whitespace(field):
         pattern = re.compile(r'\s{2,}')
         match = re.findall(pattern, value)
 
-        if len(match) > 0:
             print(f'Excessive whitespace: {value}')
+        if match:
             value = re.sub(pattern, ' ', value)
 
         # Save cleaned value
@@ -53,7 +53,7 @@ def separators(field):
         pattern = re.compile(r'\|')
         match = re.findall(pattern, value)
 
-        if len(match) > 0:
+        if match:
             print(f'Fixing invalid multi-value separator: {value}')
 
             value = re.sub(pattern, '||', value)
