@@ -1,14 +1,14 @@
 # CSV Metadata Quality [![builds.sr.ht status](https://builds.sr.ht/~alanorth/csv-metadata-quality.svg)](https://builds.sr.ht/~alanorth/csv-metadata-quality?)
 A simple but opinionated metadata quality checker and fixer designed to work with CSVs in the DSpace ecosystem. Supports multi-value fields using the standard DSpace value separator ("||"). Despite the name it does support reading Excel files.
 
-Written and tested using Python 3.7.
+Written and tested using Python 3.7. CSV and Excel support comes from the [Pandas](https://pandas.pydata.org/) library.
 
 ## Checks
 Supports checking the validity of the following metadata elements:
 
 - ISSN
 - ISBN
-- Multi-value separators
+- Multi-value separators ("||")
 - Dates
 
 ## Fixes
