@@ -25,6 +25,9 @@ def main(argv):
         # Fix: whitespace
         df[column] = df[column].apply(fix.whitespace)
 
+        # Fix: unnecessary Unicode
+        df[column] = df[column].apply(fix.unnecessary_unicode)
+
         # Check: invalid multi-value separator
         df[column] = df[column].apply(check.separators)
 

@@ -31,3 +31,11 @@ def test_fix_invalid_separators():
     value = 'Alan|Orth'
 
     assert fix.separators(value) == 'Alan||Orth'
+
+
+def test_fix_unnecessary_unicode():
+    '''Test fixing unnecessary Unicode.'''
+
+    value = 'Alan​ Orth'
+
+    assert fix.unnecessary_unicode(value) == 'Alan Orth'

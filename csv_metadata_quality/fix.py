@@ -65,3 +65,45 @@ def separators(field):
     new_field = '||'.join(values)
 
     return new_field
+
+
+def unnecessary_unicode(field):
+    """Remove unnecessary Unicode characters.
+
+    Removes unnecessary Unicode characters like:
+        - Zero-width space (U+200B)
+        - Replacement character (U+FFFD)
+        - No-break space (U+00A0)
+
+    Return string with characters removed.
+    """
+
+    # Skip fields with missing values
+    if pd.isna(field):
+        return
+
+    # Check for zero-width space characters (U+200B)
+    pattern = re.compile(r'\u200B')
+    match = re.findall(pattern, field)
+
+    if match:
+        print(f'Removing unnecessary Unicode (U+200B): {field}')
+        field = re.sub(pattern, '', field)
+
+    # Check for replacement characters (U+FFFD)
+    pattern = re.compile(r'\uFFFD')
+    match = re.findall(pattern, field)
+
+    if match:
+        print(f'Removing unnecessary Unicode (U+FFFD): {field}')
+        field = re.sub(pattern, '', field)
+
+    # Check for no-break spaces (U+00A0)
+    pattern = re.compile(r'\u00A0')
+    match = re.findall(pattern, field)
+
+    if match:
+        print(f'Removing unnecessary Unicode (U+00A0): {field}')
+        field = re.sub(pattern, '', field)
+
+    return field
