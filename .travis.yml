@@ -1,0 +1,15 @@
+dist: xenial
+language: python
+python:
+  - "3.5"
+  - "3.6"
+  - "3.7"
+install:
+  - "pip install pipenv --upgrade-strategy=only-if-needed"
+  - "pipenv install --dev"
+script: pytest
+env:
+  - PIPENV_NOSPIN=True
+  - PIPENV_HIDE_EMOJIS=True
+
+# vim: ts=2 sw=2 et
