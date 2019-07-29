@@ -116,3 +116,56 @@ def test_check_suspicious_characters(capsys):
 
     captured = capsys.readouterr()
     assert captured.out == f'Suspicious character: {value}\n'
+
+
+def test_check_valid_iso639_2_language():
+    '''Test valid ISO 639-2 language.'''
+
+    value = 'ja'
+
+    result = check.language(value)
+
+    assert result == value
+
+
+def test_check_valid_iso639_3_language():
+    '''Test invalid ISO 639-3 language.'''
+
+    value = 'eng'
+
+    result = check.language(value)
+
+    assert result == value
+
+
+def test_check_invalid_iso639_2_language(capsys):
+    '''Test invalid ISO 639-2 language.'''
+
+    value = 'jp'
+
+    check.language(value)
+
+    captured = capsys.readouterr()
+    assert captured.out == f'Invalid ISO 639-2 language: {value}\n'
+
+
+def test_check_invalid_iso639_3_language(capsys):
+    '''Test invalid ISO 639-3 language.'''
+
+    value = 'chi'
+
+    check.language(value)
+
+    captured = capsys.readouterr()
+    assert captured.out == f'Invalid ISO 639-3 language: {value}\n'
+
+
+def test_check_invalid_language(capsys):
+    '''Test invalid language.'''
+
+    value = 'Span'
+
+    check.language(value)
+
+    captured = capsys.readouterr()
+    assert captured.out == f'Invalid language: {value}\n'

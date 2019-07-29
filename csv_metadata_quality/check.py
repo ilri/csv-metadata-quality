@@ -149,3 +149,43 @@ def suspicious_characters(field):
             print(f'Suspicious character: {field}')
 
     return field
+
+
+def language(field):
+    """Check if a language is valid ISO 639-2 or ISO 639-3.
+
+    Prints the value if it is invalid.
+    """
+
+    from iso639 import languages
+
+    # Skip fields with missing values
+    if pd.isna(field):
+        return
+
+    # need to handle "Other" values here...
+
+    # Try to split multi-value field on "||" separator
+    for value in field.split('||'):
+
+        # After splitting, check if language value is 2 or 3 characters so we
+        # can check it against ISO 639-2 or ISO 639-3 accordingly. In iso-639
+        # library ISO 639-2 is "part1" and ISO 639-3 is "part3".
+        if len(value) == 2:
+            try:
+                languages.get(part1=value)
+            except KeyError:
+                print(f'Invalid ISO 639-2 language: {value}')
+
+                pass
+        elif len(value) == 3:
+            try:
+                languages.get(part3=value)
+            except KeyError:
+                print(f'Invalid ISO 639-3 language: {value}')
+
+                pass
+        else:
+            print(f'Invalid language: {value}')
+
+    return field

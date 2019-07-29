@@ -8,6 +8,7 @@ Requires Python 3.6 or greater. CSV and Excel support comes from the [Pandas](ht
 - Read/write CSV files
 - Read Excel files
 - Validate dates, ISSNs, ISBNs, and multi-value separators ("||")
+- Validate languages against ISO 639-2 and ISO 639-3
 - Fix leading, trailing, and excessive whitespace
 - Fix invalid multi-value separators (`|`) using `--unsafe-fixes`
 - Remove unnecessary Unicode like [non-breaking spaces](https://en.wikipedia.org/wiki/Non-breaking_space), [replacement characters](https://en.wikipedia.org/wiki/Specials_(Unicode_block)#Replacement_character), etc
