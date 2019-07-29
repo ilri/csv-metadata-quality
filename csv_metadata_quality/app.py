@@ -43,6 +43,11 @@ def main(argv):
         # Fix: duplicate metadata values
         df[column] = df[column].apply(fix.duplicates)
 
+        # Check: invalid AGROVOC subject
+        match = re.match(r'.*?dc\.subject.*$', column)
+        if match is not None:
+            df[column] = df[column].apply(check.agrovoc)
+
         # Check: invalid language
         match = re.match(r'^.*?language.*$', column)
         if match is not None:

@@ -189,3 +189,57 @@ def language(field):
             print(f'Invalid language: {value}')
 
     return field
+
+
+def agrovoc(field):
+    """Check subject terms against AGROVOC REST API.
+
+    Logic copied from agrovoc-lookup.py.
+
+    See: https://github.com/ilri/DSpace/blob/5_x-prod/agrovoc-lookup.py
+
+    Prints a warning if the value is invalid.
+    """
+
+    from datetime import timedelta
+    import re
+    import requests
+    import requests_cache
+
+    # Skip fields with missing values
+    if pd.isna(field):
+        return
+
+    # Try to split multi-value field on "||" separator
+    for value in field.split('||'):
+        # match lines beginning with words, paying attention to subjects with
+        # special characters like spaces, quotes, dashes, parentheses, etc:
+        # SUBJECT
+        # ANOTHER SUBJECT
+        # XANTHOMONAS CAMPESTRIS PV. MANIHOTIS
+        # WOMEN'S PARTICIPATION
+        # COMMUNITY-BASED FOREST MANAGEMENT
+        # INTERACCIÓN GENOTIPO AMBIENTE
+        # COCOA (PLANT)
+        pattern = re.compile(r'^[\w\-\.\'\(\)]+?[\w\s\-\.\'\(\)]+$')
+
+        if pattern.match(value):
+            request_url = f'http://agrovoc.uniroma2.it/agrovoc/rest/v1/agrovoc/search?query={value}'
+
+            # enable transparent request cache with thirty days expiry
+            expire_after = timedelta(days=30)
+            requests_cache.install_cache('agrovoc-response-cache', expire_after=expire_after)
+
+            request = requests.get(request_url)
+
+            # prune old cache entries
+            requests_cache.core.remove_expired_responses()
+
+            if request.status_code == requests.codes.ok:
+                data = request.json()
+
+                # check if there is 1 result, ie an exact subject term match
+                if len(data['results']) != 1:
+                    print(f'Invalid AGROVOC subject: {value}')
+
+    return field

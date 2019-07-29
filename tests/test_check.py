@@ -169,3 +169,24 @@ def test_check_invalid_language(capsys):
 
     captured = capsys.readouterr()
     assert captured.out == f'Invalid language: {value}\n'
+
+
+def test_check_invalid_agrovoc(capsys):
+    '''Test invalid AGROVOC subject.'''
+
+    value = 'FOREST'
+
+    check.agrovoc(value)
+
+    captured = capsys.readouterr()
+    assert captured.out == f'Invalid AGROVOC subject: {value}\n'
+
+
+def test_check_valid_agrovoc():
+    '''Test valid AGROVOC subject.'''
+
+    value = 'FORESTS'
+
+    result = check.agrovoc(value)
+
+    assert result == value

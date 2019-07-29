@@ -13,6 +13,8 @@ pandas = "*"
 python-stdnum = "*"
 xlrd = "*"
 iso-639 = "*"
+requests = "*"
+requests-cache = "*"
 
 [requires]
 python_version = "3.7"
