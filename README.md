@@ -1,7 +1,7 @@
 # CSV Metadata Quality [![builds.sr.ht status](https://builds.sr.ht/~alanorth/csv-metadata-quality.svg)](https://builds.sr.ht/~alanorth/csv-metadata-quality?)
 A simple but opinionated metadata quality checker and fixer designed to work with CSVs in the DSpace ecosystem. Supports multi-value fields using the standard DSpace value separator ("||"). Despite the name it does support reading Excel files.
 
-Written and tested using Python 3.7. CSV and Excel support comes from the [Pandas](https://pandas.pydata.org/) library.
+Requires Python 3.6 or greater. CSV and Excel support comes from the [Pandas](https://pandas.pydata.org/) library.
 
 ## Functionality
 
@@ -43,6 +43,8 @@ To validate and clean a CSV file you must specify input and output files using t
 ```
 $ python -m csv_metadata_quality -i data/test.csv -o /tmp/test.csv
 ```
+
+You can enable "unsafe fixes" with the `--unsafe-fixes` option. This will attempt
 
 ## Todo
 
