@@ -10,6 +10,7 @@ Requires Python 3.6 or greater. CSV and Excel support comes from the [Pandas](ht
 - Validate dates, ISSNs, ISBNs, and multi-value separators ("||") ✓
 - Fix leading, trailing, and excessive whitespace ✓
 - Fix invalid multi-value separators ("|") using `--unsafe-fixes` ✓
+- Remove unnecessary Unicode like [non-breaking spaces](https://en.wikipedia.org/wiki/Non-breaking_space), [replacement characters](https://en.wikipedia.org/wiki/Specials_(Unicode_block)#Replacement_character), etc ✓
 
 ## Installation
 The easiest way to install CSV Metadata Quality is with [pipenv](https://github.com/pypa/pipenv):
