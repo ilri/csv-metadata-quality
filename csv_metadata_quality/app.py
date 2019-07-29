@@ -22,29 +22,29 @@ def main(argv):
     df = pd.read_csv(args.input_file, dtype=str)
 
     for column in df.columns.values.tolist():
-        # Run whitespace fix on all columns
+        # Fix: whitespace
         df[column] = df[column].apply(fix.whitespace)
 
-        # Run invalid multi-value separator check on all columns
+        # Check: invalid multi-value separator
         df[column] = df[column].apply(check.separators)
 
-        # Run invalid multi-value separator fix on all columns
+        # Fix: invalid multi-value separator
         if args.unsafe_fixes:
             df[column] = df[column].apply(fix.separators)
             # Run whitespace fix again after fixing invalid separators
             df[column] = df[column].apply(fix.whitespace)
 
-        # check if column is an issn column like dc.identifier.issn
+        # Check: invalid ISSN
         match = re.match(r'^.*?issn.*$', column)
         if match is not None:
             df[column] = df[column].apply(check.issn)
 
-        # check if column is an isbn column like dc.identifier.isbn
+        # Check: invalid ISBN
         match = re.match(r'^.*?isbn.*$', column)
         if match is not None:
             df[column] = df[column].apply(check.isbn)
 
-        # check if column is a date column like dc.date.issued
+        # Check: invalid date
         match = re.match(r'^.*?date.*$', column)
         if match is not None:
             df[column] = df[column].apply(check.date)
