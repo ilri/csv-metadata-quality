@@ -39,3 +39,11 @@ def test_fix_unnecessary_unicode():
     value = 'Alan​ Orth'
 
     assert fix.unnecessary_unicode(value) == 'Alan Orth'
+
+
+def test_fix_duplicates():
+    '''Test fixing duplicate metadata values.'''
+
+    value = 'Kenya||Kenya'
+
+    assert fix.duplicates(value) == 'Kenya'

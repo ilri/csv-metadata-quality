@@ -107,3 +107,30 @@ def unnecessary_unicode(field):
         field = re.sub(pattern, '', field)
 
     return field
+
+
+def duplicates(field):
+    """Remove duplicate metadata values."""
+
+    # Skip fields with missing values
+    if pd.isna(field):
+        return
+
+    # Try to split multi-value field on "||" separator
+    values = field.split('||')
+
+    # Initialize an empty list to hold the de-duplicated values
+    new_values = list()
+
+    # Iterate over all values
+    for value in values:
+        # Check if each value exists in our list of values already
+        if value not in new_values:
+            new_values.append(value)
+        else:
+            print(f'Dropping duplicate value: {value}')
+
+    # Create a new field consisting of all values joined with "||"
+    new_field = '||'.join(new_values)
+
+    return new_field

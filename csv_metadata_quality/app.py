@@ -40,6 +40,9 @@ def main(argv):
             # Run whitespace fix again after fixing invalid separators
             df[column] = df[column].apply(fix.whitespace)
 
+        # Fix: duplicate metadata values
+        df[column] = df[column].apply(fix.duplicates)
+
         # Check: invalid ISSN
         match = re.match(r'^.*?issn.*$', column)
         if match is not None:
