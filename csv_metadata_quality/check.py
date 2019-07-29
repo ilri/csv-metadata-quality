@@ -125,6 +125,8 @@ def date(field):
     except ValueError:
         print(f'Invalid date: {field}')
 
+        return field
+
 
 def suspicious_characters(field):
     """Warn about suspicious characters.
