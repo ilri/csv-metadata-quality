@@ -47,7 +47,7 @@ To validate and clean a CSV file you must specify input and output files using t
 $ python -m csv_metadata_quality -i data/test.csv -o /tmp/test.csv
 ```
 
-You can enable "unsafe fixes" with the `--unsafe-fixes` option. This will attempt to fix things like invalid multi-value separators ("|"). It's possible that a metadata value could legitimately use "|" but in my experience this is rather always an error where the user meant to enter multiple values for a field, for example `Kenya||Tanzania`.
+You can enable "unsafe fixes" with the `--unsafe-fixes` option. Currently this will attempt to fix things like invalid multi-value separators (`|`). This is considered "unsafe" because it's theoretically possible for the `|` to be used legitimately in a metadata value, but in my experience it's always a typo where the user was attempting to use multiple metadata values, for example: `Kenya|Tanzania`.
 
 ## Todo
 
