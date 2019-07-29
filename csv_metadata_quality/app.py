@@ -31,6 +31,9 @@ def main(argv):
         # Check: invalid multi-value separator
         df[column] = df[column].apply(check.separators)
 
+        # Check: suspicious characters
+        df[column] = df[column].apply(check.suspicious_characters)
+
         # Fix: invalid multi-value separator
         if args.unsafe_fixes:
             df[column] = df[column].apply(fix.separators)

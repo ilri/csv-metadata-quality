@@ -124,3 +124,26 @@ def date(field):
         return field
     except ValueError:
         print(f'Invalid date: {field}')
+
+
+def suspicious_characters(field):
+    """Warn about suspicious characters.
+
+    Look for standalone characters that could indicate encoding or copy/paste
+    errors for languages with accents. For example: foreˆt should be forêt.
+    """
+
+    # Skip fields with missing values
+    if pd.isna(field):
+        return
+
+    # List of suspicious characters, for example:  ́ˆ~`
+    suspicious_characters = ['\u00B4', '\u02C6', '\u007E', '\u0060']
+
+    for character in suspicious_characters:
+        character_set = set(character)
+
+        if character_set.issubset(field):
+            print(f'Suspicious character: {field}')
+
+    return field

@@ -105,3 +105,14 @@ def test_check_valid_date():
     result = check.date(value)
 
     assert result == value
+
+
+def test_check_suspicious_characters(capsys):
+    '''Test checking for suspicious characters.'''
+
+    value = 'foreˆt'
+
+    check.suspicious_characters(value)
+
+    captured = capsys.readouterr()
+    assert captured.out == f'Suspicious character: {value}\n'
