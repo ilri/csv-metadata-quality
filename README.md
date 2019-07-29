@@ -3,19 +3,33 @@ A simple but opinionated metadata quality checker and fixer designed to work wit
 
 Written and tested using Python 3.7. CSV and Excel support comes from the [Pandas](https://pandas.pydata.org/) library.
 
-## Checks
-Supports checking the validity of the following metadata elements:
+## Functionality
 
-- ISSN
-- ISBN
-- Multi-value separators ("||")
-- Dates
+- Read/write CSV files ✓
+- Read Excel files ✓
+- Validate dates, ISSNs, ISBNs, and multi-value separators ("||") ✓
+- Fix leading, trailing, and excessive whitespace ✓
+- Fix invalid multi-value separators ("|") using `--unsafe-fixes` ✓
 
-## Fixes
-Supports fixing the following metadata issues:
+## Installation
+The easiest way to install CSV Metadata Quality is with [pipenv](https://github.com/pypa/pipenv):
 
-- Leading, trailing, and excessive whitespace
-- Invalid multi-value separators ("|") using `--unsafe-fixes`
+```
+$ git clone https://git.sr.ht/~alanorth/csv-metadata-quality
+$ cd csv-metadata-quality
+$ pipenv install
+$ pipenv shell
+```
+
+Otherwise, if you don't have pipenv, you can use a vanilla Python virtual environment:
+
+```
+$ git clone https://git.sr.ht/~alanorth/csv-metadata-quality
+$ cd csv-metadata-quality
+$ python3 -m venv venv
+$ source venv/bin/activate
+$ pip install -r requirements.txt
+```
 
 ## Todo
 
