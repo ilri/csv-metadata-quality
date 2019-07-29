@@ -31,6 +31,19 @@ $ source venv/bin/activate
 $ pip install -r requirements.txt
 ```
 
+## Usage
+Run CSV Metadata Quality with the `--help` flag to see available options:
+
+```
+$ python -m csv_metadata_quality --help
+```
+
+To validate and clean a CSV file you must specify input and output files using the `-i` and `-o` options. For example, using the included test file:
+
+```
+$ python -m csv_metadata_quality -i data/test.csv -o /tmp/test.csv
+```
+
 ## Todo
 
 - Reporting / summary
