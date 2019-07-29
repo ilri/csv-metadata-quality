@@ -12,6 +12,7 @@ flake8 = "*"
 pandas = "*"
 python-stdnum = "*"
 xlrd = "*"
+iso-639 = "*"
 
 [requires]
 python_version = "3.7"
