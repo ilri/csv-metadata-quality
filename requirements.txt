@@ -2,9 +2,9 @@
 certifi==2019.6.16
 chardet==3.0.4
 idna==2.8
-iso-639==0.4.5
 numpy==1.17.0
 pandas==0.25.0
+pycountry==19.7.15
 python-dateutil==2.8.0
 python-stdnum==1.11
 pytz==2019.1

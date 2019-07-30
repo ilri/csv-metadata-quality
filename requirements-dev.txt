@@ -11,7 +11,7 @@ ipython==7.7.0
 jedi==0.14.1
 mccabe==0.6.1
 more-itertools==7.2.0
-packaging==19.0
+packaging==19.1
 parso==0.5.1
 pexpect==4.7.0 ; sys_platform != 'win32'
 pickleshare==0.7.5
@@ -22,7 +22,7 @@ py==1.8.0
 pycodestyle==2.5.0
 pyflakes==2.1.1
 pygments==2.4.2
-pyparsing==2.4.1.1
+pyparsing==2.4.2
 pytest==5.0.1
 six==1.12.0
 traitlets==4.3.2
