@@ -10,6 +10,7 @@ Requires Python 3.6 or greater. CSV and Excel support comes from the [Pandas](ht
 - Validate subjects against the AGROVOC REST API
 - Fix leading, trailing, and excessive (ie, more than one) whitespace
 - Fix invalid multi-value separators (`|`) using `--unsafe-fixes`
+- Fix problematic newlines (line feeds) using `--unsafe-fixes`
 - Remove unnecessary Unicode like [non-breaking spaces](https://en.wikipedia.org/wiki/Non-breaking_space), [replacement characters](https://en.wikipedia.org/wiki/Specials_(Unicode_block)#Replacement_character), etc
 - Check for "suspicious" characters that indicate encoding or copy/paste issues, for example "foreˆt" should be "forêt"
 - Remove duplicate metadata values

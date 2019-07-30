@@ -47,3 +47,12 @@ def test_fix_duplicates():
     value = 'Kenya||Kenya'
 
     assert fix.duplicates(value) == 'Kenya'
+
+
+def test_fix_newlines():
+    '''Test fixing newlines.'''
+
+    value = '''Ken
+ya'''
+
+    assert fix.newlines(value) == 'Kenya'

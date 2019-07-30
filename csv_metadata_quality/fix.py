@@ -134,3 +134,34 @@ def duplicates(field):
     new_field = '||'.join(new_values)
 
     return new_field
+
+
+def newlines(field):
+    """Fix newlines.
+
+    Single metadata values should not span multiple lines because this is not
+    rendered properly in DSpace's XMLUI and even causes issues during import.
+
+    Implementation note: this currently only detects Unix line feeds (0x0a).
+    This is essentially when a user presses "Enter" to move to the next line.
+    Other newlines like the Windows carriage return are already handled with
+    the string stipping performed in the whitespace fixes.
+
+    Confusingly, in Vim '\n' matches a line feed when searching, but you must
+    use '\r' to *insert* a line feed, ie in a search and replace expression.
+
+    Return string with newlines removed.
+    """
+
+    # Skip fields with missing values
+    if pd.isna(field):
+        return
+
+    # Check for Unix line feed (LF)
+    match = re.findall(r'\n', field)
+
+    if match:
+        print(f'Removing newline: {field}')
+        field = field.replace('\n', '')
+
+    return field

@@ -25,6 +25,10 @@ def main(argv):
         # Fix: whitespace
         df[column] = df[column].apply(fix.whitespace)
 
+        # Fix: newlines
+        if args.unsafe_fixes:
+            df[column] = df[column].apply(fix.newlines)
+
         # Fix: unnecessary Unicode
         df[column] = df[column].apply(fix.unnecessary_unicode)
 
