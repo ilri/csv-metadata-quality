@@ -12,9 +12,9 @@ flake8 = "*"
 pandas = "*"
 python-stdnum = "*"
 xlrd = "*"
-iso-639 = "*"
 requests = "*"
 requests-cache = "*"
+pycountry = "*"
 
 [requires]
 python_version = "3.7"

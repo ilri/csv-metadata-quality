@@ -157,7 +157,7 @@ def language(field):
     Prints the value if it is invalid.
     """
 
-    from iso639 import languages
+    from pycountry import languages
 
     # Skip fields with missing values
     if pd.isna(field):
@@ -169,19 +169,14 @@ def language(field):
     for value in field.split('||'):
 
         # After splitting, check if language value is 2 or 3 characters so we
-        # can check it against ISO 639-2 or ISO 639-3 accordingly. In iso-639
-        # library ISO 639-2 is "part1" and ISO 639-3 is "part3".
+        # can check it against ISO 639-2 or ISO 639-3 accordingly.
         if len(value) == 2:
-            try:
-                languages.get(part1=value)
-            except KeyError:
+            if not languages.get(alpha_2=value):
                 print(f'Invalid ISO 639-2 language: {value}')
 
                 pass
         elif len(value) == 3:
-            try:
-                languages.get(part3=value)
-            except KeyError:
+            if not languages.get(alpha_3=value):
                 print(f'Invalid ISO 639-3 language: {value}')
 
                 pass
