@@ -238,8 +238,8 @@ def agrovoc(field):
             if request.status_code == requests.codes.ok:
                 data = request.json()
 
-                # check if there is 1 result, ie an exact subject term match
-                if len(data['results']) != 1:
+                # check if there are any results
+                if len(data['results']) == 0:
                     print(f'Invalid AGROVOC subject: {value}')
 
     return field
