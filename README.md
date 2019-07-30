@@ -1,16 +1,14 @@
 # CSV Metadata Quality [![Build Status](https://travis-ci.org/alanorth/csv-metadata-quality.svg?branch=master)](https://travis-ci.org/alanorth/csv-metadata-quality) [![builds.sr.ht status](https://builds.sr.ht/~alanorth/csv-metadata-quality.svg)](https://builds.sr.ht/~alanorth/csv-metadata-quality?)
-A simple but opinionated metadata quality checker and fixer designed to work with CSVs in the DSpace ecosystem. Supports multi-value fields using the standard DSpace value separator ("||"). Despite the name it does support reading Excel files.
+A simple, but opinionated metadata quality checker and fixer designed to work with CSVs in the DSpace ecosystem. The implementation is essentially a pipeline of checks and fixes that begins with splitting multi-value fields on the standard DSpace "||" separator, trimming leading/trailing whitespace, and then proceeding to more specialized cases.
 
-Requires Python 3.6 or greater. CSV and Excel support comes from the [Pandas](https://pandas.pydata.org/) library.
+Requires Python 3.6 or greater. CSV and Excel support comes from the [Pandas](https://pandas.pydata.org/) library, though your mileage may vary with Excel because this is much less tested.
 
 ## Functionality
 
-- Read/write CSV files
-- Read Excel files
 - Validate dates, ISSNs, ISBNs, and multi-value separators ("||")
 - Validate languages against ISO 639-2 and ISO 639-3
-- Validate subjects against AGROVOC REST API
-- Fix leading, trailing, and excessive whitespace
+- Validate subjects against the AGROVOC REST API
+- Fix leading, trailing, and excessive (ie, more than one) whitespace
 - Fix invalid multi-value separators (`|`) using `--unsafe-fixes`
 - Remove unnecessary Unicode like [non-breaking spaces](https://en.wikipedia.org/wiki/Non-breaking_space), [replacement characters](https://en.wikipedia.org/wiki/Specials_(Unicode_block)#Replacement_character), etc
 - Check for "suspicious" characters that indicate encoding or copy/paste issues, for example "foreˆt" should be "forêt"
