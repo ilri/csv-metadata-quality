@@ -15,7 +15,7 @@ def parse_args(argv):
     return args
 
 
-def main(argv):
+def run(argv):
     args = parse_args(argv)
 
     # Read all fields as strings so dates don't get converted from 1998 to 1998.0
