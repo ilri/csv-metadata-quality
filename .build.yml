@@ -12,8 +12,8 @@ tasks:
       pipenv run pytest
   - testcli: |
       cd csv-metadata-quality
-      pipenv shell pip install .
-      pipenv shell csv-metadata-quality -i data/test.csv -o /tmp/test.csv -u
+      pipenv run pip install .
+      pipenv run csv-metadata-quality -i data/test.csv -o /tmp/test.csv -u
 environment:
   PIPENV_NOSPIN: 'True'
   PIPENV_HIDE_EMOJIS: 'True'
