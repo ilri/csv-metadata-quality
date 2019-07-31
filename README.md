@@ -60,7 +60,8 @@ This is considered "unsafe" because some systems give special importance to vert
 ## Todo
 
 - Reporting / summary
-- Real logging
+- Better logging, for example with INFO, WARN, and ERR levels
+- Verbose, debug, or quiet options
 
 ## License
 This work is licensed under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html).
