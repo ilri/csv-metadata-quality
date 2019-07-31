@@ -7,9 +7,13 @@ tasks:
   - setup: |
       cd csv-metadata-quality
       pipenv install --dev
-  - test: |
+  - pytest: |
       cd csv-metadata-quality
       pipenv run pytest
+  - test: |
+      cd csv-metadata-quality
+      pipenv shell pip install .
+      pipenv shell csv-metadata-quality -i data/test.csv -o /dev/null -u
 environment:
   PIPENV_NOSPIN: 'True'
   PIPENV_HIDE_EMOJIS: 'True'
