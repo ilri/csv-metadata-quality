@@ -23,6 +23,7 @@ $ git clone https://git.sr.ht/~alanorth/csv-metadata-quality
 $ cd csv-metadata-quality
 $ pipenv install
 $ pipenv shell
+$ pip install .
 ```
 
 Otherwise, if you don't have pipenv, you can use a vanilla Python virtual environment:
@@ -33,19 +34,20 @@ $ cd csv-metadata-quality
 $ python3 -m venv venv
 $ source venv/bin/activate
 $ pip install -r requirements.txt
+$ pip install .
 ```
 
 ## Usage
 Run CSV Metadata Quality with the `--help` flag to see available options:
 
 ```
-$ python -m csv_metadata_quality --help
+$ csv-metadata-quality --help
 ```
 
 To validate and clean a CSV file you must specify input and output files using the `-i` and `-o` options. For example, using the included test file:
 
 ```
-$ python -m csv_metadata_quality -i data/test.csv -o /tmp/test.csv
+$ csv-metadata-quality -i data/test.csv -o /tmp/test.csv
 ```
 
 ## Unsafe Fixes
