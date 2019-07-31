@@ -10,10 +10,10 @@ tasks:
   - pytest: |
       cd csv-metadata-quality
       pipenv run pytest
-  - test: |
+  - testcli: |
       cd csv-metadata-quality
       pipenv shell pip install .
-      pipenv shell csv-metadata-quality -i data/test.csv -o /dev/null -u
+      pipenv shell csv-metadata-quality -i data/test.csv -o /tmp/test.csv -u
 environment:
   PIPENV_NOSPIN: 'True'
   PIPENV_HIDE_EMOJIS: 'True'
