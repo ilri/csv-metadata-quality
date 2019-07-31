@@ -48,7 +48,14 @@ To validate and clean a CSV file you must specify input and output files using t
 $ python -m csv_metadata_quality -i data/test.csv -o /tmp/test.csv
 ```
 
-You can enable "unsafe fixes" with the `--unsafe-fixes` option. Currently this will attempt to fix things like invalid multi-value separators (`|`). This is considered "unsafe" because it's theoretically possible for the `|` to be used legitimately in a metadata value, but in my experience it's always a typo where the user was attempting to use multiple metadata values, for example: `Kenya|Tanzania`.
+## Unsafe Fixes
+You can enable several "unsafe" fixes with the `--unsafe-fixes` option. Currently this will attempt to fix invalid multi-value separators and remove newlines.
+
+### Invalid Multi-Value Separators
+This is considered "unsafe" because it is *theoretically* possible for a single `|` character to be used legitimately in a metadata value, though in my experience it is always a typo. For example, if a user mistakenly writes `Kenya|Tanzania` when attempting to indicate two countries, the result will be one metadata value with the literal text `Kenya|Tanzania`. The `--unsafe-fixes` option will correct the invalid multi-value separator so that there are two metadata values, ie `Kenya||Tanzania`.
+
+### Newlines
+This is considered "unsafe" because some systems give special importance to vertical space and render it properly. DSpace does not support rendering newlines in its XMLUI and has, at times, suffered from parsing errors that cause the import process to fail if an input file had newlines. The `--unsafe-fixes` option strips Unix line feeds (U+000A).
 
 ## Todo
 
