@@ -16,7 +16,7 @@ setuptools.setup(
     version="0.0.1",
     author="Alan Orth",
     author_email="aorth@mjanja.ch",
-    description="A simple, but opinionated CSV quality checking and fixing pipeline.",
+    description="A simple, but opinionated CSV quality checking and fixing pipeline for CSVs in the DSpace ecosystem.",
     license="GPLv3",
     long_description=long_description,
     long_description_content_type="text/markdown",
