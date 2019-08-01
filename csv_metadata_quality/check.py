@@ -186,8 +186,12 @@ def language(field):
     return field
 
 
-def agrovoc(field):
+def agrovoc(field, field_name):
     """Check subject terms against AGROVOC REST API.
+
+    Function constructor expects the field as well as the field name because
+    many fields can now be validated against AGROVOC and we want to be able
+    to inform the user in which field the invalid term is.
 
     Logic copied from agrovoc-lookup.py.
 
@@ -235,6 +239,6 @@ def agrovoc(field):
 
                 # check if there are any results
                 if len(data['results']) == 0:
-                    print(f'Invalid AGROVOC subject: {value}')
+                    print(f'Invalid AGROVOC ({field_name}): {value}')
 
     return field

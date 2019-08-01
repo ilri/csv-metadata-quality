@@ -7,6 +7,7 @@ import re
 
 def parse_args(argv):
     parser = argparse.ArgumentParser(description='Metadata quality checker and fixer.')
+    parser.add_argument('--agrovoc-fields', '-a', help='Comma-separated list of fields to validate against AGROVOC, for example: dc.subject,cg.coverage.country')
     parser.add_argument('--input-file', '-i', help='Path to input file. Can be UTF-8 CSV or Excel XLSX.', required=True, type=argparse.FileType('r', encoding='UTF-8'))
     parser.add_argument('--output-file', '-o', help='Path to output file (always CSV).', required=True, type=argparse.FileType('w', encoding='UTF-8'))
     parser.add_argument('--unsafe-fixes', '-u', help='Perform unsafe fixes.', action='store_true')
@@ -48,9 +49,11 @@ def run(argv):
         df[column] = df[column].apply(fix.duplicates)
 
         # Check: invalid AGROVOC subject
-        match = re.match(r'.*?dc\.subject.*$', column)
-        if match is not None:
-            df[column] = df[column].apply(check.agrovoc)
+        if args.agrovoc_fields:
+            # Identify fields the user wants to validate against AGROVOC
+            for field in args.agrovoc_fields.split(','):
+                if column == field:
+                    df[column] = df[column].apply(check.agrovoc, field_name=column)
 
         # Check: invalid language
         match = re.match(r'^.*?language.*$', column)
