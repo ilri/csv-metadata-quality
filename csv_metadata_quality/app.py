@@ -1,3 +1,4 @@
+from csv_metadata_quality.version import VERSION
 import argparse
 import csv_metadata_quality.check as check
 import csv_metadata_quality.fix as fix
@@ -11,6 +12,7 @@ def parse_args(argv):
     parser.add_argument('--input-file', '-i', help='Path to input file. Can be UTF-8 CSV or Excel XLSX.', required=True, type=argparse.FileType('r', encoding='UTF-8'))
     parser.add_argument('--output-file', '-o', help='Path to output file (always CSV).', required=True, type=argparse.FileType('w', encoding='UTF-8'))
     parser.add_argument('--unsafe-fixes', '-u', help='Perform unsafe fixes.', action='store_true')
+    parser.add_argument('--version', '-V', action='version', version=f'CSV Metadata Quality v{VERSION}')
     args = parser.parse_args()
 
     return args
