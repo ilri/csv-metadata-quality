@@ -175,18 +175,20 @@ def test_check_invalid_agrovoc(capsys):
     '''Test invalid AGROVOC subject.'''
 
     value = 'FOREST'
+    field_name = 'dc.subject'
 
-    check.agrovoc(value)
+    check.agrovoc(value, field_name)
 
     captured = capsys.readouterr()
-    assert captured.out == f'Invalid AGROVOC subject: {value}\n'
+    assert captured.out == f'Invalid AGROVOC ({field_name}): {value}\n'
 
 
 def test_check_valid_agrovoc():
     '''Test valid AGROVOC subject.'''
 
     value = 'FORESTS'
+    field_name = 'dc.subject'
 
-    result = check.agrovoc(value)
+    result = check.agrovoc(value, field_name)
 
     assert result == value
