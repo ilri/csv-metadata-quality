@@ -7,7 +7,7 @@ Requires Python 3.6 or greater. CSV and Excel support comes from the [Pandas](ht
 
 - Validate dates, ISSNs, ISBNs, and multi-value separators ("||")
 - Validate languages against ISO 639-2 and ISO 639-3
-- Validate subjects against the AGROVOC REST API
+- Validate subjects against the AGROVOC REST API (see the `--agrovoc-fields` option)
 - Fix leading, trailing, and excessive (ie, more than one) whitespace
 - Fix invalid multi-value separators (`|`) using `--unsafe-fixes`
 - Fix problematic newlines (line feeds) using `--unsafe-fixes`
@@ -58,6 +58,18 @@ This is considered "unsafe" because it is *theoretically* possible for a single 
 
 ### Newlines
 This is considered "unsafe" because some systems give special importance to vertical space and render it properly. DSpace does not support rendering newlines in its XMLUI and has, at times, suffered from parsing errors that cause the import process to fail if an input file had newlines. The `--unsafe-fixes` option strips Unix line feeds (U+000A).
+
+## AGROVOC Validation
+You can enable validation of metadata values in certain fields against the AGROVOC REST API with the `--agrovoc-fields` option. For example, in addition to agricultural subjects, many countries and regions are also present AGROVOC. Enable this validation by specifying a comma-separated list of fields:
+
+```
+$ csv-metadata-quality -i data/test.csv -o /tmp/test.csv -u --agrovoc-fields dc.subject,cg.coverage.country
+...
+Invalid AGROVOC (dc.subject): FOREST
+Invalid AGROVOC (cg.coverage.country): KENYAA
+```
+
+*Note: Requests to the AGROVOC REST API are cached using [requests_cache](https://pypi.org/project/requests-cache/) to speed up subsequent runs with the same data and to be kind to the system's administrators.*
 
 ## Todo
 
