@@ -23,7 +23,6 @@ $ git clone https://git.sr.ht/~alanorth/csv-metadata-quality
 $ cd csv-metadata-quality
 $ pipenv install
 $ pipenv shell
-$ pip install .
 ```
 
 Otherwise, if you don't have pipenv, you can use a vanilla Python virtual environment:
@@ -34,7 +33,6 @@ $ cd csv-metadata-quality
 $ python3 -m venv venv
 $ source venv/bin/activate
 $ pip install -r requirements.txt
-$ pip install .
 ```
 
 ## Usage
