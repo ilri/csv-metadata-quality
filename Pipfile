@@ -15,6 +15,7 @@ xlrd = "*"
 requests = "*"
 requests-cache = "*"
 pycountry = "*"
+csv-metadata-quality = {editable = true,path = "."}
 
 [requires]
 python_version = "3.7"
