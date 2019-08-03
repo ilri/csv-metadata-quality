@@ -4,6 +4,8 @@ import csv_metadata_quality.check as check
 import csv_metadata_quality.fix as fix
 import pandas as pd
 import re
+import signal
+import sys
 
 
 def parse_args(argv):
@@ -18,8 +20,15 @@ def parse_args(argv):
     return args
 
 
+def signal_handler(signal, frame):
+    sys.exit(1)
+
+
 def run(argv):
     args = parse_args(argv)
+
+    # set the signal handler for SIGINT (^C)
+    signal.signal(signal.SIGINT, signal_handler)
 
     # Read all fields as strings so dates don't get converted from 1998 to 1998.0
     df = pd.read_csv(args.input_file, dtype=str)
