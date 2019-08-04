@@ -92,3 +92,5 @@ def run(argv):
     # Close the input and output files before exiting
     args.input_file.close()
     args.output_file.close()
+
+    sys.exit(0)
