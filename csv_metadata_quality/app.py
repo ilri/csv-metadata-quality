@@ -88,3 +88,7 @@ def run(argv):
 
     # Write
     df.to_csv(args.output_file, index=False)
+
+    # Close the input and output files before exiting
+    args.input_file.close()
+    args.output_file.close()
