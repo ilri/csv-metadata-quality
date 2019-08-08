@@ -112,10 +112,12 @@ def test_check_suspicious_characters(capsys):
 
     value = 'foreˆt'
 
-    check.suspicious_characters(value)
+    field_name = 'dc.contributor.author'
+
+    check.suspicious_characters(value, field_name)
 
     captured = capsys.readouterr()
-    assert captured.out == f'Suspicious character: {value}\n'
+    assert captured.out == f'Suspicious character ({field_name}): ˆt\n'
 
 
 def test_check_valid_iso639_2_language():
