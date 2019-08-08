@@ -7,6 +7,7 @@ verify_ssl = true
 pytest = "*"
 ipython = "*"
 flake8 = "*"
+pytest-clarity = "*"
 
 [packages]
 pandas = "*"
@@ -19,3 +20,6 @@ csv-metadata-quality = {editable = true,path = "."}
 
 [requires]
 python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true
