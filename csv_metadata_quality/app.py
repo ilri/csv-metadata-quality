@@ -48,7 +48,7 @@ def run(argv):
         df[column] = df[column].apply(check.separators)
 
         # Check: suspicious characters
-        df[column] = df[column].apply(check.suspicious_characters)
+        df[column] = df[column].apply(check.suspicious_characters, field_name=column)
 
         # Fix: invalid multi-value separator
         if args.unsafe_fixes:

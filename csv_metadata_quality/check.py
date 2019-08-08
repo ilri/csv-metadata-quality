@@ -128,7 +128,7 @@ def date(field):
         return field
 
 
-def suspicious_characters(field):
+def suspicious_characters(field, field_name):
     """Warn about suspicious characters.
 
     Look for standalone characters that could indicate encoding or copy/paste
@@ -143,10 +143,21 @@ def suspicious_characters(field):
     suspicious_characters = ['\u00B4', '\u02C6', '\u007E', '\u0060']
 
     for character in suspicious_characters:
-        character_set = set(character)
+        # Find the position of the suspicious character in the string
+        suspicious_character_position = field.find(character)
 
-        if character_set.issubset(field):
-            print(f'Suspicious character: {field}')
+        # Python returns -1 if there is no match
+        if suspicious_character_position != -1:
+            # Create a temporary new string starting from the position of the
+            # suspicious character
+            field_subset = field[suspicious_character_position:]
+
+            # Print part of the metadata value starting from the suspicious
+            # character and spanning enough of the rest to give a preview,
+            # but not too much to cause the line to break in terminals with
+            # a default of 80 characters width.
+            suspicious_character_msg = f'Suspicious character ({field_name}): {field_subset}'
+            print(f'{suspicious_character_msg:1.80}')
 
     return field
 
