@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Handle Ctrl-C interrupt gracefully
 - Make output in suspicious character check more user friendly
+- Add pytest-clarity to dev packages for more user friendly pytest output
 
 ## [0.1.0] - 2019-08-01
 ### Changed
