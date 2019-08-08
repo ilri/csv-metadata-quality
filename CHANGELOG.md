@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Handle Ctrl-C interrupt gracefully
+- Make output in suspicious character check more user friendly
 
 ## [0.1.0] - 2019-08-01
 ### Changed
