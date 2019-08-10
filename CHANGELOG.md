@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Check for uncommon filename extensions 
+- Replacement of unneccessary Unicode characters like soft hyphens (U+00AD)
 
 ## [0.2.0] - 2019-08-09
 ### Added
