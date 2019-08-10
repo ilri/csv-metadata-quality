@@ -201,7 +201,7 @@ def test_check_uncommon_filename_extension(capsys):
 
     value = 'file.pdf.lck'
 
-    result = check.filename_extension(value)
+    check.filename_extension(value)
 
     captured = capsys.readouterr()
     assert captured.out == f'Filename with uncommon extension: {value}\n'
