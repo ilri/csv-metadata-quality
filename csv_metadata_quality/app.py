@@ -86,6 +86,10 @@ def run(argv):
         if match is not None:
             df[column] = df[column].apply(check.date)
 
+        # Check: filename extension
+        if column == 'filename':
+            df[column] = df[column].apply(check.filename_extension)
+
     # Write
     df.to_csv(args.output_file, index=False)
 

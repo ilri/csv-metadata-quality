@@ -253,3 +253,48 @@ def agrovoc(field, field_name):
                     print(f'Invalid AGROVOC ({field_name}): {value}')
 
     return field
+
+
+def filename_extension(field):
+    """Check filename extension.
+
+    CSVs with a 'filename' column are likely meant as input for the SAFBuilder
+    tool, which creates a Simple Archive Format bundle for importing metadata
+    with accompanying PDFs or other files into DSpace.
+
+    This check warns if a filename has an uncommon extension (that is, other
+    than .pdf, .xls(x), .doc(x), ppt(x), case insensitive).
+    """
+
+    import re
+
+    # Skip fields with missing values
+    if pd.isna(field):
+        return
+
+    # Try to split multi-value field on "||" separator
+    values = field.split('||')
+
+    # List of common filename extentions
+    common_filename_extensions = ['.pdf', '.doc', '.docx', '.ppt', '.pptx', '.xls', '.xlsx']
+
+    # Iterate over all values
+    for value in values:
+        # Assume filename extension does not match
+        filename_extension_match = False
+
+        for filename_extension in common_filename_extensions:
+            # Check for extension at the end of the filename
+            pattern = re.escape(filename_extension) + r'$'
+            match = re.search(pattern, value, re.IGNORECASE)
+
+            if match is not None:
+                # Register the match and stop checking for this filename
+                filename_extension_match = True
+
+                break
+
+        if filename_extension_match == False:
+            print(f'Filename with uncommon extension: {value}')
+
+    return field
