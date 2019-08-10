@@ -294,7 +294,7 @@ def filename_extension(field):
 
                 break
 
-        if filename_extension_match == False:
+        if filename_extension_match is False:
             print(f'Filename with uncommon extension: {value}')
 
     return field
