@@ -68,14 +68,17 @@ def separators(field):
 
 
 def unnecessary_unicode(field):
-    """Remove unnecessary Unicode characters.
+    """Remove and replace unnecessary Unicode characters.
 
     Removes unnecessary Unicode characters like:
         - Zero-width space (U+200B)
         - Replacement character (U+FFFD)
         - No-break space (U+00A0)
 
-    Return string with characters removed.
+    Replaces unnecessary Unicode characters like:
+        - Soft hyphen (U+00AD) → hyphen
+
+    Return string with characters removed or replaced.
     """
 
     # Skip fields with missing values
@@ -105,6 +108,14 @@ def unnecessary_unicode(field):
     if match:
         print(f'Removing unnecessary Unicode (U+00A0): {field}')
         field = re.sub(pattern, '', field)
+
+    # Check for soft hyphens (U+00AD), sometimes preceeded with a normal hyphen
+    pattern = re.compile(r'\u002D*?\u00AD')
+    match = re.findall(pattern, field)
+
+    if match:
+        print(f'Replacing unnecessary Unicode (U+00AD): {field}')
+        field = re.sub(pattern, '-', field)
 
     return field
 
