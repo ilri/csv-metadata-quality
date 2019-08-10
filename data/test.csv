@@ -22,3 +22,4 @@ NIA",,
 Missing date,,,,,,,
 Invalid country,2019-08-01,,,,,KENYAA,
 Uncommon filename extension,2019-08-10,,,,,,file.pdf.lck
+Unneccesary unicode (U+002D + U+00AD),2019-08-10,,978-­92-­9043-­823-­6,,,,
