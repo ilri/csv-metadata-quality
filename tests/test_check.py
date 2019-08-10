@@ -194,3 +194,24 @@ def test_check_valid_agrovoc():
     result = check.agrovoc(value, field_name)
 
     assert result == value
+
+
+def test_check_uncommon_filename_extension(capsys):
+    '''Test uncommon filename extension.'''
+
+    value = 'file.pdf.lck'
+
+    result = check.filename_extension(value)
+
+    captured = capsys.readouterr()
+    assert captured.out == f'Filename with uncommon extension: {value}\n'
+
+
+def test_check_common_filename_extension():
+    '''Test common filename extension.'''
+
+    value = 'file.pdf'
+
+    result = check.filename_extension(value)
+
+    assert result == value
