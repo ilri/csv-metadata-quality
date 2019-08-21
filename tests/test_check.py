@@ -69,10 +69,12 @@ def test_check_missing_date(capsys):
 
     value = None
 
-    check.date(value)
+    field_name = 'dc.date.issued'
+
+    check.date(value, field_name)
 
     captured = capsys.readouterr()
-    assert captured.out == f'Missing date.\n'
+    assert captured.out == f'Missing date ({field_name}).\n'
 
 
 def test_check_multiple_dates(capsys):
@@ -80,10 +82,12 @@ def test_check_multiple_dates(capsys):
 
     value = '1990||1991'
 
-    check.date(value)
+    field_name = 'dc.date.issued'
+
+    check.date(value, field_name)
 
     captured = capsys.readouterr()
-    assert captured.out == f'Multiple dates not allowed: {value}\n'
+    assert captured.out == f'Multiple dates not allowed ({field_name}): {value}\n'
 
 
 def test_check_invalid_date(capsys):
@@ -91,10 +95,12 @@ def test_check_invalid_date(capsys):
 
     value = '1990-0'
 
-    check.date(value)
+    field_name = 'dc.date.issued'
+
+    check.date(value, field_name)
 
     captured = capsys.readouterr()
-    assert captured.out == f'Invalid date: {value}\n'
+    assert captured.out == f'Invalid date ({field_name}): {value}\n'
 
 
 def test_check_valid_date():
@@ -102,7 +108,9 @@ def test_check_valid_date():
 
     value = '1990'
 
-    result = check.date(value)
+    field_name = 'dc.date.issued'
+
+    result = check.date(value, field_name)
 
     assert result == value
 
