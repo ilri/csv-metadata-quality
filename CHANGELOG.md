@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Output of date checks to include column names (helps debugging in case there are multiple date fields)
 
+### Improved
+- AGROVOC lookup code
+
 ## [0.2.1] - 2019-08-11
 ### Added
 - Check for uncommon filename extensions
