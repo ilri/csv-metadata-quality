@@ -212,7 +212,6 @@ def agrovoc(field, field_name):
     """
 
     from datetime import timedelta
-    import re
     import requests
     import requests_cache
 
@@ -222,35 +221,23 @@ def agrovoc(field, field_name):
 
     # Try to split multi-value field on "||" separator
     for value in field.split('||'):
-        # match lines beginning with words, paying attention to subjects with
-        # special characters like spaces, quotes, dashes, parentheses, etc:
-        # SUBJECT
-        # ANOTHER SUBJECT
-        # XANTHOMONAS CAMPESTRIS PV. MANIHOTIS
-        # WOMEN'S PARTICIPATION
-        # COMMUNITY-BASED FOREST MANAGEMENT
-        # INTERACCIÓN GENOTIPO AMBIENTE
-        # COCOA (PLANT)
-        pattern = re.compile(r'^[\w\-\.\'\(\)]+?[\w\s\-\.\'\(\)]+$')
+        request_url = f'http://agrovoc.uniroma2.it/agrovoc/rest/v1/agrovoc/search?query={value}'
 
-        if pattern.match(value):
-            request_url = f'http://agrovoc.uniroma2.it/agrovoc/rest/v1/agrovoc/search?query={value}'
+        # enable transparent request cache with thirty days expiry
+        expire_after = timedelta(days=30)
+        requests_cache.install_cache('agrovoc-response-cache', expire_after=expire_after)
 
-            # enable transparent request cache with thirty days expiry
-            expire_after = timedelta(days=30)
-            requests_cache.install_cache('agrovoc-response-cache', expire_after=expire_after)
+        request = requests.get(request_url)
 
-            request = requests.get(request_url)
+        # prune old cache entries
+        requests_cache.core.remove_expired_responses()
 
-            # prune old cache entries
-            requests_cache.core.remove_expired_responses()
+        if request.status_code == requests.codes.ok:
+            data = request.json()
 
-            if request.status_code == requests.codes.ok:
-                data = request.json()
-
-                # check if there are any results
-                if len(data['results']) == 0:
-                    print(f'Invalid AGROVOC ({field_name}): {value}')
+            # check if there are any results
+            if len(data['results']) == 0:
+                print(f'Invalid AGROVOC ({field_name}): {value}')
 
     return field
 
