@@ -75,7 +75,7 @@ def separators(field):
     return field
 
 
-def date(field):
+def date(field, field_name):
     """Check if a date is valid.
 
     In DSpace the issue date is usually 1990, 1990-01, or 1990-01-01, but it
@@ -88,7 +88,7 @@ def date(field):
     from datetime import datetime
 
     if pd.isna(field):
-        print(f'Missing date.')
+        print(f'Missing date ({field_name}).')
 
         return
 
@@ -97,7 +97,7 @@ def date(field):
 
     # We don't allow multi-value date fields
     if len(multiple_dates) > 1:
-        print(f'Multiple dates not allowed: {field}')
+        print(f'Multiple dates not allowed ({field_name}): {field}')
 
         return field
 
@@ -123,7 +123,7 @@ def date(field):
 
         return field
     except ValueError:
-        print(f'Invalid date: {field}')
+        print(f'Invalid date ({field_name}): {field}')
 
         return field
 

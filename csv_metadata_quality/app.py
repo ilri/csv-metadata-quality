@@ -84,7 +84,7 @@ def run(argv):
         # Check: invalid date
         match = re.match(r'^.*?date.*$', column)
         if match is not None:
-            df[column] = df[column].apply(check.date)
+            df[column] = df[column].apply(check.date, field_name=column)
 
         # Check: filename extension
         if column == 'filename':
