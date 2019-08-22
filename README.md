@@ -19,7 +19,7 @@ Requires Python 3.6 or greater. CSV and Excel support comes from the [Pandas](ht
 The easiest way to install CSV Metadata Quality is with [pipenv](https://github.com/pypa/pipenv):
 
 ```
-$ git clone https://git.sr.ht/~alanorth/csv-metadata-quality
+$ git clone https://github.com/ilri/csv-metadata-quality.git
 $ cd csv-metadata-quality
 $ pipenv install
 $ pipenv shell
@@ -28,7 +28,7 @@ $ pipenv shell
 Otherwise, if you don't have pipenv, you can use a vanilla Python virtual environment:
 
 ```
-$ git clone https://git.sr.ht/~alanorth/csv-metadata-quality
+$ git clone https://github.com/ilri/csv-metadata-quality.git
 $ cd csv-metadata-quality
 $ python3 -m venv venv
 $ source venv/bin/activate
