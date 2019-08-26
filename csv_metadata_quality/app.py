@@ -15,6 +15,7 @@ def parse_args(argv):
     parser.add_argument('--output-file', '-o', help='Path to output file (always CSV).', required=True, type=argparse.FileType('w', encoding='UTF-8'))
     parser.add_argument('--unsafe-fixes', '-u', help='Perform unsafe fixes.', action='store_true')
     parser.add_argument('--version', '-V', action='version', version=f'CSV Metadata Quality v{VERSION}')
+    parser.add_argument('--exclude-fields', '-x', help='Comma-separated list of fields to skip, for example: dc.contributor.author,dc.identifier.citation')
     args = parser.parse_args()
 
     return args
@@ -34,6 +35,19 @@ def run(argv):
     df = pd.read_csv(args.input_file, dtype=str)
 
     for column in df.columns.values.tolist():
+        # Check if the user requested to skip any fields
+        if args.exclude_fields:
+            skip = False
+            # Split the list of excludes on ',' so we can test exact matches
+            # rather than fuzzy matches with regexes or "if word in string"
+            for exclude in args.exclude_fields.split(','):
+                if column == exclude and skip is False:
+                    skip = True
+            if skip:
+                print(f'Skipping {column}')
+
+                continue
+
         # Fix: whitespace
         df[column] = df[column].apply(fix.whitespace)
 
