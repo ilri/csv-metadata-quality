@@ -55,6 +55,13 @@ def run(argv):
         if args.unsafe_fixes:
             df[column] = df[column].apply(fix.newlines)
 
+        # Fix: missing space after comma. Only run on author and citation
+        # fields for now, as this problem is mostly an issue in names.
+        if args.unsafe_fixes:
+            match = re.match(r'^.*?(author|citation).*$', column)
+            if match is not None:
+                df[column] = df[column].apply(fix.comma_space, field_name=column)
+
         # Fix: unnecessary Unicode
         df[column] = df[column].apply(fix.unnecessary_unicode)
 

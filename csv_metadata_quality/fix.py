@@ -176,3 +176,27 @@ def newlines(field):
         field = field.replace('\n', '')
 
     return field
+
+
+def comma_space(field, field_name):
+    """Fix occurrences of commas missing a trailing space, for example:
+
+    Orth,Alan S.
+
+    This is a very common mistake in author and citation fields.
+
+    Return string with a space added.
+    """
+
+    # Skip fields with missing values
+    if pd.isna(field):
+        return
+
+    # Check for comma followed by a word character
+    match = re.findall(r',\w', field)
+
+    if match:
+        print(f'Adding space after comma ({field_name}): {field}')
+        field = re.sub(r',(\w)', r', \1', field)
+
+    return field
