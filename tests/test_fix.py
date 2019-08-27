@@ -56,3 +56,13 @@ def test_fix_newlines():
 ya'''
 
     assert fix.newlines(value) == 'Kenya'
+
+
+def test_fix_comma_space():
+    '''Test adding space after comma.'''
+
+    value = 'Orth,Alan S.'
+
+    field_name = 'dc.contributor.author'
+
+    assert fix.comma_space(value, field_name) == 'Orth, Alan S.'
