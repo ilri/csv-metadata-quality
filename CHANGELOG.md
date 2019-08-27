@@ -4,12 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## [0.2.2] - 2019-08-27
 ### Changed
 - Output of date checks to include column names (helps debugging in case there are multiple date fields)
 
 ### Added
 - Ability to exclude certain fields using `--exclude-fields`
+- Fix for missing space after a comma, ie "Orth,Alan S."
 
 ### Improved
 - AGROVOC lookup code
