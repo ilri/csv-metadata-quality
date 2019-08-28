@@ -8,6 +8,8 @@ pytest = "*"
 ipython = "*"
 flake8 = "*"
 pytest-clarity = "*"
+black = "*"
+isort = "*"
 
 [packages]
 pandas = "*"
