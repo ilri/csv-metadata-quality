@@ -18,10 +18,10 @@ def issn(field):
         return
 
     # Try to split multi-value field on "||" separator
-    for value in field.split('||'):
+    for value in field.split("||"):
 
         if not issn.is_valid(value):
-            print(f'Invalid ISSN: {value}')
+            print(f"Invalid ISSN: {value}")
 
     return field
 
@@ -43,10 +43,10 @@ def isbn(field):
         return
 
     # Try to split multi-value field on "||" separator
-    for value in field.split('||'):
+    for value in field.split("||"):
 
         if not isbn.is_valid(value):
-            print(f'Invalid ISBN: {value}')
+            print(f"Invalid ISBN: {value}")
 
     return field
 
@@ -64,13 +64,13 @@ def separators(field):
         return
 
     # Try to split multi-value field on "||" separator
-    for value in field.split('||'):
+    for value in field.split("||"):
 
         # After splitting, see if there are any remaining "|" characters
-        match = re.findall(r'^.*?\|.*$', value)
+        match = re.findall(r"^.*?\|.*$", value)
 
         if match:
-            print(f'Invalid multi-value separator: {field}')
+            print(f"Invalid multi-value separator: {field}")
 
     return field
 
@@ -88,22 +88,22 @@ def date(field, field_name):
     from datetime import datetime
 
     if pd.isna(field):
-        print(f'Missing date ({field_name}).')
+        print(f"Missing date ({field_name}).")
 
         return
 
     # Try to split multi-value field on "||" separator
-    multiple_dates = field.split('||')
+    multiple_dates = field.split("||")
 
     # We don't allow multi-value date fields
     if len(multiple_dates) > 1:
-        print(f'Multiple dates not allowed ({field_name}): {field}')
+        print(f"Multiple dates not allowed ({field_name}): {field}")
 
         return field
 
     try:
         # Check if date is valid YYYY format
-        datetime.strptime(field, '%Y')
+        datetime.strptime(field, "%Y")
 
         return field
     except ValueError:
@@ -111,7 +111,7 @@ def date(field, field_name):
 
     try:
         # Check if date is valid YYYY-MM format
-        datetime.strptime(field, '%Y-%m')
+        datetime.strptime(field, "%Y-%m")
 
         return field
     except ValueError:
@@ -119,11 +119,11 @@ def date(field, field_name):
 
     try:
         # Check if date is valid YYYY-MM-DD format
-        datetime.strptime(field, '%Y-%m-%d')
+        datetime.strptime(field, "%Y-%m-%d")
 
         return field
     except ValueError:
-        print(f'Invalid date ({field_name}): {field}')
+        print(f"Invalid date ({field_name}): {field}")
 
         return field
 
@@ -140,7 +140,7 @@ def suspicious_characters(field, field_name):
         return
 
     # List of suspicious characters, for example:  ́ˆ~`
-    suspicious_characters = ['\u00B4', '\u02C6', '\u007E', '\u0060']
+    suspicious_characters = ["\u00B4", "\u02C6", "\u007E", "\u0060"]
 
     for character in suspicious_characters:
         # Find the position of the suspicious character in the string
@@ -156,8 +156,10 @@ def suspicious_characters(field, field_name):
             # character and spanning enough of the rest to give a preview,
             # but not too much to cause the line to break in terminals with
             # a default of 80 characters width.
-            suspicious_character_msg = f'Suspicious character ({field_name}): {field_subset}'
-            print(f'{suspicious_character_msg:1.80}')
+            suspicious_character_msg = (
+                f"Suspicious character ({field_name}): {field_subset}"
+            )
+            print(f"{suspicious_character_msg:1.80}")
 
     return field
 
@@ -177,22 +179,22 @@ def language(field):
     # need to handle "Other" values here...
 
     # Try to split multi-value field on "||" separator
-    for value in field.split('||'):
+    for value in field.split("||"):
 
         # After splitting, check if language value is 2 or 3 characters so we
         # can check it against ISO 639-2 or ISO 639-3 accordingly.
         if len(value) == 2:
             if not languages.get(alpha_2=value):
-                print(f'Invalid ISO 639-2 language: {value}')
+                print(f"Invalid ISO 639-2 language: {value}")
 
                 pass
         elif len(value) == 3:
             if not languages.get(alpha_3=value):
-                print(f'Invalid ISO 639-3 language: {value}')
+                print(f"Invalid ISO 639-3 language: {value}")
 
                 pass
         else:
-            print(f'Invalid language: {value}')
+            print(f"Invalid language: {value}")
 
     return field
 
@@ -220,12 +222,16 @@ def agrovoc(field, field_name):
         return
 
     # Try to split multi-value field on "||" separator
-    for value in field.split('||'):
-        request_url = f'http://agrovoc.uniroma2.it/agrovoc/rest/v1/agrovoc/search?query={value}'
+    for value in field.split("||"):
+        request_url = (
+            f"http://agrovoc.uniroma2.it/agrovoc/rest/v1/agrovoc/search?query={value}"
+        )
 
         # enable transparent request cache with thirty days expiry
         expire_after = timedelta(days=30)
-        requests_cache.install_cache('agrovoc-response-cache', expire_after=expire_after)
+        requests_cache.install_cache(
+            "agrovoc-response-cache", expire_after=expire_after
+        )
 
         request = requests.get(request_url)
 
@@ -236,8 +242,8 @@ def agrovoc(field, field_name):
             data = request.json()
 
             # check if there are any results
-            if len(data['results']) == 0:
-                print(f'Invalid AGROVOC ({field_name}): {value}')
+            if len(data["results"]) == 0:
+                print(f"Invalid AGROVOC ({field_name}): {value}")
 
     return field
 
@@ -260,10 +266,18 @@ def filename_extension(field):
         return
 
     # Try to split multi-value field on "||" separator
-    values = field.split('||')
+    values = field.split("||")
 
     # List of common filename extentions
-    common_filename_extensions = ['.pdf', '.doc', '.docx', '.ppt', '.pptx', '.xls', '.xlsx']
+    common_filename_extensions = [
+        ".pdf",
+        ".doc",
+        ".docx",
+        ".ppt",
+        ".pptx",
+        ".xls",
+        ".xlsx",
+    ]
 
     # Iterate over all values
     for value in values:
@@ -272,7 +286,7 @@ def filename_extension(field):
 
         for filename_extension in common_filename_extensions:
             # Check for extension at the end of the filename
-            pattern = re.escape(filename_extension) + r'$'
+            pattern = re.escape(filename_extension) + r"$"
             match = re.search(pattern, value, re.IGNORECASE)
 
             if match is not None:
@@ -282,6 +296,6 @@ def filename_extension(field):
                 break
 
         if filename_extension_match is False:
-            print(f'Filename with uncommon extension: {value}')
+            print(f"Filename with uncommon extension: {value}")
 
     return field

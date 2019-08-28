@@ -9,13 +9,37 @@ import sys
 
 
 def parse_args(argv):
-    parser = argparse.ArgumentParser(description='Metadata quality checker and fixer.')
-    parser.add_argument('--agrovoc-fields', '-a', help='Comma-separated list of fields to validate against AGROVOC, for example: dc.subject,cg.coverage.country')
-    parser.add_argument('--input-file', '-i', help='Path to input file. Can be UTF-8 CSV or Excel XLSX.', required=True, type=argparse.FileType('r', encoding='UTF-8'))
-    parser.add_argument('--output-file', '-o', help='Path to output file (always CSV).', required=True, type=argparse.FileType('w', encoding='UTF-8'))
-    parser.add_argument('--unsafe-fixes', '-u', help='Perform unsafe fixes.', action='store_true')
-    parser.add_argument('--version', '-V', action='version', version=f'CSV Metadata Quality v{VERSION}')
-    parser.add_argument('--exclude-fields', '-x', help='Comma-separated list of fields to skip, for example: dc.contributor.author,dc.identifier.citation')
+    parser = argparse.ArgumentParser(description="Metadata quality checker and fixer.")
+    parser.add_argument(
+        "--agrovoc-fields",
+        "-a",
+        help="Comma-separated list of fields to validate against AGROVOC, for example: dc.subject,cg.coverage.country",
+    )
+    parser.add_argument(
+        "--input-file",
+        "-i",
+        help="Path to input file. Can be UTF-8 CSV or Excel XLSX.",
+        required=True,
+        type=argparse.FileType("r", encoding="UTF-8"),
+    )
+    parser.add_argument(
+        "--output-file",
+        "-o",
+        help="Path to output file (always CSV).",
+        required=True,
+        type=argparse.FileType("w", encoding="UTF-8"),
+    )
+    parser.add_argument(
+        "--unsafe-fixes", "-u", help="Perform unsafe fixes.", action="store_true"
+    )
+    parser.add_argument(
+        "--version", "-V", action="version", version=f"CSV Metadata Quality v{VERSION}"
+    )
+    parser.add_argument(
+        "--exclude-fields",
+        "-x",
+        help="Comma-separated list of fields to skip, for example: dc.contributor.author,dc.identifier.citation",
+    )
     args = parser.parse_args()
 
     return args
@@ -40,11 +64,11 @@ def run(argv):
             skip = False
             # Split the list of excludes on ',' so we can test exact matches
             # rather than fuzzy matches with regexes or "if word in string"
-            for exclude in args.exclude_fields.split(','):
+            for exclude in args.exclude_fields.split(","):
                 if column == exclude and skip is False:
                     skip = True
             if skip:
-                print(f'Skipping {column}')
+                print(f"Skipping {column}")
 
                 continue
 
@@ -58,7 +82,7 @@ def run(argv):
         # Fix: missing space after comma. Only run on author and citation
         # fields for now, as this problem is mostly an issue in names.
         if args.unsafe_fixes:
-            match = re.match(r'^.*?(author|citation).*$', column)
+            match = re.match(r"^.*?(author|citation).*$", column)
             if match is not None:
                 df[column] = df[column].apply(fix.comma_space, field_name=column)
 
@@ -83,32 +107,32 @@ def run(argv):
         # Check: invalid AGROVOC subject
         if args.agrovoc_fields:
             # Identify fields the user wants to validate against AGROVOC
-            for field in args.agrovoc_fields.split(','):
+            for field in args.agrovoc_fields.split(","):
                 if column == field:
                     df[column] = df[column].apply(check.agrovoc, field_name=column)
 
         # Check: invalid language
-        match = re.match(r'^.*?language.*$', column)
+        match = re.match(r"^.*?language.*$", column)
         if match is not None:
             df[column] = df[column].apply(check.language)
 
         # Check: invalid ISSN
-        match = re.match(r'^.*?issn.*$', column)
+        match = re.match(r"^.*?issn.*$", column)
         if match is not None:
             df[column] = df[column].apply(check.issn)
 
         # Check: invalid ISBN
-        match = re.match(r'^.*?isbn.*$', column)
+        match = re.match(r"^.*?isbn.*$", column)
         if match is not None:
             df[column] = df[column].apply(check.isbn)
 
         # Check: invalid date
-        match = re.match(r'^.*?date.*$', column)
+        match = re.match(r"^.*?date.*$", column)
         if match is not None:
             df[column] = df[column].apply(check.date, field_name=column)
 
         # Check: filename extension
-        if column == 'filename':
+        if column == "filename":
             df[column] = df[column].apply(check.filename_extension)
 
     # Write

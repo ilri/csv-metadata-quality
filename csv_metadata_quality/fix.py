@@ -16,23 +16,23 @@ def whitespace(field):
     values = list()
 
     # Try to split multi-value field on "||" separator
-    for value in field.split('||'):
+    for value in field.split("||"):
         # Strip leading and trailing whitespace
         value = value.strip()
 
         # Replace excessive whitespace (>2) with one space
-        pattern = re.compile(r'\s{2,}')
+        pattern = re.compile(r"\s{2,}")
         match = re.findall(pattern, value)
 
         if match:
-            print(f'Excessive whitespace: {value}')
-            value = re.sub(pattern, ' ', value)
+            print(f"Excessive whitespace: {value}")
+            value = re.sub(pattern, " ", value)
 
         # Save cleaned value
         values.append(value)
 
     # Create a new field consisting of all values joined with "||"
-    new_field = '||'.join(values)
+    new_field = "||".join(values)
 
     return new_field
 
@@ -48,21 +48,21 @@ def separators(field):
     values = list()
 
     # Try to split multi-value field on "||" separator
-    for value in field.split('||'):
+    for value in field.split("||"):
         # After splitting, see if there are any remaining "|" characters
-        pattern = re.compile(r'\|')
+        pattern = re.compile(r"\|")
         match = re.findall(pattern, value)
 
         if match:
-            print(f'Fixing invalid multi-value separator: {value}')
+            print(f"Fixing invalid multi-value separator: {value}")
 
-            value = re.sub(pattern, '||', value)
+            value = re.sub(pattern, "||", value)
 
         # Save cleaned value
         values.append(value)
 
     # Create a new field consisting of all values joined with "||"
-    new_field = '||'.join(values)
+    new_field = "||".join(values)
 
     return new_field
 
@@ -86,36 +86,36 @@ def unnecessary_unicode(field):
         return
 
     # Check for zero-width space characters (U+200B)
-    pattern = re.compile(r'\u200B')
+    pattern = re.compile(r"\u200B")
     match = re.findall(pattern, field)
 
     if match:
-        print(f'Removing unnecessary Unicode (U+200B): {field}')
-        field = re.sub(pattern, '', field)
+        print(f"Removing unnecessary Unicode (U+200B): {field}")
+        field = re.sub(pattern, "", field)
 
     # Check for replacement characters (U+FFFD)
-    pattern = re.compile(r'\uFFFD')
+    pattern = re.compile(r"\uFFFD")
     match = re.findall(pattern, field)
 
     if match:
-        print(f'Removing unnecessary Unicode (U+FFFD): {field}')
-        field = re.sub(pattern, '', field)
+        print(f"Removing unnecessary Unicode (U+FFFD): {field}")
+        field = re.sub(pattern, "", field)
 
     # Check for no-break spaces (U+00A0)
-    pattern = re.compile(r'\u00A0')
+    pattern = re.compile(r"\u00A0")
     match = re.findall(pattern, field)
 
     if match:
-        print(f'Removing unnecessary Unicode (U+00A0): {field}')
-        field = re.sub(pattern, '', field)
+        print(f"Removing unnecessary Unicode (U+00A0): {field}")
+        field = re.sub(pattern, "", field)
 
     # Check for soft hyphens (U+00AD), sometimes preceeded with a normal hyphen
-    pattern = re.compile(r'\u002D*?\u00AD')
+    pattern = re.compile(r"\u002D*?\u00AD")
     match = re.findall(pattern, field)
 
     if match:
-        print(f'Replacing unnecessary Unicode (U+00AD): {field}')
-        field = re.sub(pattern, '-', field)
+        print(f"Replacing unnecessary Unicode (U+00AD): {field}")
+        field = re.sub(pattern, "-", field)
 
     return field
 
@@ -128,7 +128,7 @@ def duplicates(field):
         return
 
     # Try to split multi-value field on "||" separator
-    values = field.split('||')
+    values = field.split("||")
 
     # Initialize an empty list to hold the de-duplicated values
     new_values = list()
@@ -139,10 +139,10 @@ def duplicates(field):
         if value not in new_values:
             new_values.append(value)
         else:
-            print(f'Dropping duplicate value: {value}')
+            print(f"Dropping duplicate value: {value}")
 
     # Create a new field consisting of all values joined with "||"
-    new_field = '||'.join(new_values)
+    new_field = "||".join(new_values)
 
     return new_field
 
@@ -169,11 +169,11 @@ def newlines(field):
         return
 
     # Check for Unix line feed (LF)
-    match = re.findall(r'\n', field)
+    match = re.findall(r"\n", field)
 
     if match:
-        print(f'Removing newline: {field}')
-        field = field.replace('\n', '')
+        print(f"Removing newline: {field}")
+        field = field.replace("\n", "")
 
     return field
 
@@ -193,10 +193,10 @@ def comma_space(field, field_name):
         return
 
     # Check for comma followed by a word character
-    match = re.findall(r',\w', field)
+    match = re.findall(r",\w", field)
 
     if match:
-        print(f'Adding space after comma ({field_name}): {field}')
-        field = re.sub(r',(\w)', r', \1', field)
+        print(f"Adding space after comma ({field_name}): {field}")
+        field = re.sub(r",(\w)", r", \1", field)
 
     return field
