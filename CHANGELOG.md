@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update python dependencies to latest versions, including numpy 1.17.1, pandas
 0.25.1, and requests-cache 0.5.2
 
+### Changed
+- Re-formatted code with black and isort
+
 ## [0.2.2] - 2019-08-27
 ### Changed
 - Output of date checks to include column names (helps debugging in case there are multiple date fields)
