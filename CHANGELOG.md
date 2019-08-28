@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+### Updated
+- Update python dependencies to latest versions, including numpy 1.17.1, pandas
+0.25.1, and requests-cache 0.5.2
+
 ## [0.2.2] - 2019-08-27
 ### Changed
 - Output of date checks to include column names (helps debugging in case there are multiple date fields)
