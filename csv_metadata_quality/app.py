@@ -1,11 +1,13 @@
-from csv_metadata_quality.version import VERSION
 import argparse
-import csv_metadata_quality.check as check
-import csv_metadata_quality.fix as fix
-import pandas as pd
 import re
 import signal
 import sys
+
+import pandas as pd
+
+import csv_metadata_quality.check as check
+import csv_metadata_quality.fix as fix
+from csv_metadata_quality.version import VERSION
 
 
 def parse_args(argv):
