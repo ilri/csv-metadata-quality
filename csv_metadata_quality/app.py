@@ -60,7 +60,7 @@ def run(argv):
     # Read all fields as strings so dates don't get converted from 1998 to 1998.0
     df = pd.read_csv(args.input_file, dtype=str)
 
-    for column in df.columns.values.tolist():
+    for column in df.columns:
         # Check if the user requested to skip any fields
         if args.exclude_fields:
             skip = False
