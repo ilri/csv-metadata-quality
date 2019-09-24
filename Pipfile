@@ -10,6 +10,7 @@ flake8 = "*"
 pytest-clarity = "*"
 black = "*"
 isort = "*"
+csvkit = "*"
 
 [packages]
 pandas = "*"
