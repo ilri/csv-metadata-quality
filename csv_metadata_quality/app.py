@@ -6,6 +6,7 @@ import sys
 import pandas as pd
 
 import csv_metadata_quality.check as check
+import csv_metadata_quality.experimental as experimental
 import csv_metadata_quality.fix as fix
 from csv_metadata_quality.version import VERSION
 
@@ -16,6 +17,11 @@ def parse_args(argv):
         "--agrovoc-fields",
         "-a",
         help="Comma-separated list of fields to validate against AGROVOC, for example: dc.subject,cg.coverage.country",
+    )
+    parser.add_argument(
+        "--experimental-checks",
+        "-e",
+        help="Enable experimental checks like language detection", action="store_true"
     )
     parser.add_argument(
         "--input-file",
@@ -136,6 +142,24 @@ def run(argv):
         # Check: filename extension
         if column == "filename":
             df[column] = df[column].apply(check.filename_extension)
+
+    ##
+    # Perform some checks on rows so we can consider items as a whole rather
+    # than simple on a field-by-field basis. This allows us to check whether
+    # the language used in the title and abstract matches the language indi-
+    # cated in the language field, for example.
+    #
+    # This is slower and apparently frowned upon in the Pandas community be-
+    # cause it requires iterating over rows rather than using apply over a
+    # column. For now it will have to do.
+    ##
+
+    if args.experimental_checks:
+        # Transpose the DataFrame so we can consider each row as a column
+        df_transposed = df.T
+
+        for column in df_transposed.columns:
+            experimental.correct_language(df_transposed[column])
 
     # Write
     df.to_csv(args.output_file, index=False)

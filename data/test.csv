@@ -24,3 +24,5 @@ Invalid country,2019-08-01,,,,,KENYAA,
 Uncommon filename extension,2019-08-10,,,,,,file.pdf.lck
 Unneccesary unicode (U+002D + U+00AD),2019-08-10,,978-­92-­9043-­823-­6,,,,
 "Missing space,after comma",2019-08-27,,,,,,
+Incorrect ISO 639-1 language,2019-09-26,,,es,,,
+Incorrect ISO 639-3 language,2019-09-26,,,spa,,,

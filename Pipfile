@@ -20,6 +20,7 @@ requests = "*"
 requests-cache = "*"
 pycountry = "*"
 csv-metadata-quality = {editable = true,path = "."}
+langid = "*"
 
 [requires]
 python_version = "3.7"

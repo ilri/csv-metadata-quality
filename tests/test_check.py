@@ -1,4 +1,6 @@
 import csv_metadata_quality.check as check
+import csv_metadata_quality.experimental as experimental
+import pandas as pd
 
 
 def test_check_invalid_issn(capsys):
@@ -223,3 +225,65 @@ def test_check_common_filename_extension():
     result = check.filename_extension(value)
 
     assert result == value
+
+
+def test_check_incorrect_iso_639_1_language(capsys):
+    '''Test incorrect ISO 639-1 language, as determined by comparing the item's language field with the actual language predicted in the item's title.'''
+
+    title = 'A randomised vaccine field trial in Kenya demonstrates protection against wildebeest-associated malignant catarrhal fever in cattle'
+    language = 'es'
+
+    # Create a dictionary to mimic Pandas series
+    row = {'dc.title': title, 'dc.language.iso': language}
+    series = pd.Series(row)
+
+    experimental.correct_language(series)
+
+    captured = capsys.readouterr()
+    assert captured.out == f'Possibly incorrect language {language} (detected en): {title}\n'
+
+
+def test_check_incorrect_iso_639_3_language(capsys):
+    '''Test incorrect ISO 639-3 language, as determined by comparing the item's language field with the actual language predicted in the item's title.'''
+
+    title = 'A randomised vaccine field trial in Kenya demonstrates protection against wildebeest-associated malignant catarrhal fever in cattle'
+    language = 'spa'
+
+    # Create a dictionary to mimic Pandas series
+    row = {'dc.title': title, 'dc.language.iso': language}
+    series = pd.Series(row)
+
+    experimental.correct_language(series)
+
+    captured = capsys.readouterr()
+    assert captured.out == f'Possibly incorrect language {language} (detected eng): {title}\n'
+
+
+def test_check_correct_iso_639_1_language():
+    '''Test correct ISO 639-1 language, as determined by comparing the item's language field with the actual language predicted in the item's title.'''
+
+    title = 'A randomised vaccine field trial in Kenya demonstrates protection against wildebeest-associated malignant catarrhal fever in cattle'
+    language = 'en'
+
+    # Create a dictionary to mimic Pandas series
+    row = {'dc.title': title, 'dc.language.iso': language}
+    series = pd.Series(row)
+
+    result = experimental.correct_language(series)
+
+    assert result == language
+
+
+def test_check_correct_iso_639_3_language():
+    '''Test correct ISO 639-3 language, as determined by comparing the item's language field with the actual language predicted in the item's title.'''
+
+    title = 'A randomised vaccine field trial in Kenya demonstrates protection against wildebeest-associated malignant catarrhal fever in cattle'
+    language = 'eng'
+
+    # Create a dictionary to mimic Pandas series
+    row = {'dc.title': title, 'dc.language.iso': language}
+    series = pd.Series(row)
+
+    result = experimental.correct_language(series)
+
+    assert result == language
