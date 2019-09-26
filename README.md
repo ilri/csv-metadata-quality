@@ -7,6 +7,7 @@ Requires Python 3.6 or greater. CSV and Excel support comes from the [Pandas](ht
 
 - Validate dates, ISSNs, ISBNs, and multi-value separators ("||")
 - Validate languages against ISO 639-1 (alpha2) and ISO 639-3 (alpha3)
+- Experimental validation of titles and abstracts against item's Dublin Core language field
 - Validate subjects against the AGROVOC REST API (see the `--agrovoc-fields` option)
 - Fix leading, trailing, and excessive (ie, more than one) whitespace
 - Fix invalid multi-value separators (`|`) using `--unsafe-fixes`
@@ -68,6 +69,18 @@ Invalid AGROVOC (cg.coverage.country): KENYAA
 ```
 
 *Note: Requests to the AGROVOC REST API are cached using [requests_cache](https://pypi.org/project/requests-cache/) to speed up subsequent runs with the same data and to be kind to the system's administrators.*
+
+## Experimental Checks
+You can enable experimental support for validating whether the value of an item's `dc.language.iso` or `dcterms.language` field matches the actual language used in its title, abstract, and citation.
+
+```
+$ csv-metadata-quality -i data/test.csv -o /tmp/test.csv -e
+...
+Possibly incorrect language es (detected en): Incorrect ISO 639-1 language
+Possibly incorrect language spa (detected eng): Incorrect ISO 639-3 language
+```
+
+This currently uses the [Python langid](https://github.com/saffsd/langid.py) library. In the future I would like to move to the fastText library, but there is currently an [issue with their Python bindings](https://github.com/facebookresearch/fastText/issues/909) that makes this unfeasible.
 
 ## Todo
 
