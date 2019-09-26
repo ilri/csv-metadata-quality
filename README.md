@@ -92,7 +92,6 @@ This currently uses the [Python langid](https://github.com/saffsd/langid.py) lib
 - Validate DOIs? Normalize to https://doi.org format? Or use just the DOI part: 10.1016/j.worlddev.2010.06.006
 - Warn if two items use the same file in `filename` column
 - Add an option to drop invalid AGROVOC subjects?
-- Add check for author names with incorrect spacing after commas, ie "Orth,Alan S."
 - Add tests for application invocation, ie `tests/test_app.py`?
 
 ## License
