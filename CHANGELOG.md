@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## [0.3.0] - 2019-09-26
 ### Updated
 - Update python dependencies to latest versions, including numpy 1.17.2, pandas
 0.25.1, pytest 5.1.3, and requests-cache 0.5.2
