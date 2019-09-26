@@ -1,9 +1,10 @@
 -i https://pypi.org/simple
 -e .
-certifi==2019.6.16
+certifi==2019.9.11
 chardet==3.0.4
 idna==2.8
-numpy==1.17.1
+langid==1.1.6
+numpy==1.17.2
 pandas==0.25.1
 pycountry==19.8.18
 python-dateutil==2.8.0
@@ -12,5 +13,5 @@ pytz==2019.2
 requests-cache==0.5.2
 requests==2.22.0
 six==1.12.0
-urllib3==1.25.3
+urllib3==1.25.6
 xlrd==1.2.0
