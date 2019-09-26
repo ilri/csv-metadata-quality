@@ -6,7 +6,7 @@ Requires Python 3.6 or greater. CSV and Excel support comes from the [Pandas](ht
 ## Functionality
 
 - Validate dates, ISSNs, ISBNs, and multi-value separators ("||")
-- Validate languages against ISO 639-1 (alpha2) and ISO 639-2 (alpha3)
+- Validate languages against ISO 639-1 (alpha2) and ISO 639-3 (alpha3)
 - Validate subjects against the AGROVOC REST API (see the `--agrovoc-fields` option)
 - Fix leading, trailing, and excessive (ie, more than one) whitespace
 - Fix invalid multi-value separators (`|`) using `--unsafe-fixes`
