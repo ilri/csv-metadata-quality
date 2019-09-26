@@ -129,7 +129,7 @@ def test_check_suspicious_characters(capsys):
 
 
 def test_check_valid_iso639_1_language():
-    '''Test valid ISO 639-1 language.'''
+    '''Test valid ISO 639-1 (alpha 2) language.'''
 
     value = 'ja'
 
@@ -138,8 +138,8 @@ def test_check_valid_iso639_1_language():
     assert result == value
 
 
-def test_check_valid_iso639_2_language():
-    '''Test invalid ISO 639-2 language.'''
+def test_check_valid_iso639_3_language():
+    '''Test valid ISO 639-3 (alpha 3) language.'''
 
     value = 'eng'
 
@@ -149,7 +149,7 @@ def test_check_valid_iso639_2_language():
 
 
 def test_check_invalid_iso639_1_language(capsys):
-    '''Test invalid ISO 639-1 language.'''
+    '''Test invalid ISO 639-1 (alpha 2) language.'''
 
     value = 'jp'
 
@@ -159,15 +159,15 @@ def test_check_invalid_iso639_1_language(capsys):
     assert captured.out == f'Invalid ISO 639-1 language: {value}\n'
 
 
-def test_check_invalid_iso639_2_language(capsys):
-    '''Test invalid ISO 639-2 language.'''
+def test_check_invalid_iso639_3_language(capsys):
+    '''Test invalid ISO 639-3 (alpha 3) language.'''
 
     value = 'chi'
 
     check.language(value)
 
     captured = capsys.readouterr()
-    assert captured.out == f'Invalid ISO 639-2 language: {value}\n'
+    assert captured.out == f'Invalid ISO 639-3 language: {value}\n'
 
 
 def test_check_invalid_language(capsys):

@@ -165,7 +165,7 @@ def suspicious_characters(field, field_name):
 
 
 def language(field):
-    """Check if a language is valid ISO 639-1 or ISO 639-2.
+    """Check if a language is valid ISO 639-1 (alpha 2) or ISO 639-3 (alpha 3).
 
     Prints the value if it is invalid.
     """
@@ -182,7 +182,7 @@ def language(field):
     for value in field.split("||"):
 
         # After splitting, check if language value is 2 or 3 characters so we
-        # can check it against ISO 639-1 or ISO 639-2 accordingly.
+        # can check it against ISO 639-1 or ISO 639-3 accordingly.
         if len(value) == 2:
             if not languages.get(alpha_2=value):
                 print(f"Invalid ISO 639-1 language: {value}")
@@ -190,7 +190,7 @@ def language(field):
                 pass
         elif len(value) == 3:
             if not languages.get(alpha_3=value):
-                print(f"Invalid ISO 639-2 language: {value}")
+                print(f"Invalid ISO 639-3 language: {value}")
 
                 pass
         else:
