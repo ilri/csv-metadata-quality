@@ -8,7 +8,8 @@ install_requires = [
     'python-stdnum',
     'requests',
     'requests-cache',
-    'pycountry'
+    'pycountry',
+    'langid'
 ]
 
 setuptools.setup(
