@@ -13,7 +13,7 @@ tasks:
   - testcli: |
       cd csv-metadata-quality
       pipenv run pip install .
-      pipenv run csv-metadata-quality -i data/test.csv -o /tmp/test.csv -u --agrovoc-fields dc.subject,cg.coverage.country
+      pipenv run csv-metadata-quality -i data/test.csv -o /tmp/test.csv -e -u --agrovoc-fields dc.subject,cg.coverage.country
 environment:
   PIPENV_NOSPIN: 'True'
   PIPENV_HIDE_EMOJIS: 'True'
