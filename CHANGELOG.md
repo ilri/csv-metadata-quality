@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update python dependencies to latest versions, including numpy 1.17.2, pandas
 0.25.1, pytest 5.1.3, and requests-cache 0.5.2
 
-## Added
+### Added
 - csvkit to dev requirements (csvcut etc are useful during development)
 - Experimental language validation using `-e` (see README.md)
 
