@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Added
 - csvkit to dev requirements (csvcut etc are useful during development)
+- Experimental language validation using `-e` (see README.md)
 
 ### Changed
 - Re-formatted code with black and isort
