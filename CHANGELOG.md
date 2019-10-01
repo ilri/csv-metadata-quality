@@ -5,8 +5,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## Unreleased Changes
-## Changes
+## Changed
 - Replace non-breaking spaces (U+00A0) with space instead of removing them
+- Harmonize language of script output when fixing various issues
 
 ## [0.3.0] - 2019-09-26
 ### Updated
