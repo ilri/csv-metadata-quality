@@ -26,7 +26,7 @@ def whitespace(field):
         match = re.findall(pattern, value)
 
         if match:
-            print(f"Excessive whitespace: {value}")
+            print(f"Removing excessive whitespace: {value}")
             value = re.sub(pattern, " ", value)
 
         # Save cleaned value
@@ -140,7 +140,7 @@ def duplicates(field):
         if value not in new_values:
             new_values.append(value)
         else:
-            print(f"Dropping duplicate value: {value}")
+            print(f"Removing duplicate value: {value}")
 
     # Create a new field consisting of all values joined with "||"
     new_field = "||".join(new_values)
