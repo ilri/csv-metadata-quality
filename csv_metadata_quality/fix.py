@@ -74,10 +74,10 @@ def unnecessary_unicode(field):
     Removes unnecessary Unicode characters like:
         - Zero-width space (U+200B)
         - Replacement character (U+FFFD)
-        - No-break space (U+00A0)
 
     Replaces unnecessary Unicode characters like:
         - Soft hyphen (U+00AD) → hyphen
+        - No-break space (U+00A0) → space
 
     Return string with characters removed or replaced.
     """
@@ -107,8 +107,8 @@ def unnecessary_unicode(field):
     match = re.findall(pattern, field)
 
     if match:
-        print(f"Removing unnecessary Unicode (U+00A0): {field}")
-        field = re.sub(pattern, "", field)
+        print(f"Replacing unnecessary Unicode (U+00A0): {field}")
+        field = re.sub(pattern, " ", field)
 
     # Check for soft hyphens (U+00AD), sometimes preceeded with a normal hyphen
     pattern = re.compile(r"\u002D*?\u00AD")
