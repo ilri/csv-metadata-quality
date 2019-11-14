@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Use Python 3.8.0 for pipenv
+- Use Ubuntu 18.04 "Bionic" for TravisCI builds
+- Test Python 3.8 in TravisCI builds
 
 ## [0.3.1] - 2019-10-01
 ## Changed
