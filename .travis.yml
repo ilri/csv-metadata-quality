@@ -5,8 +5,7 @@ python:
   - "3.7"
   - "3.8"
 install:
-  - "pip install pipenv --upgrade-strategy=only-if-needed"
-  - "pipenv install --dev"
+  - "pip install -r requirements-dev.txt"
 script: pytest
 
 # vim: ts=2 sw=2 et
