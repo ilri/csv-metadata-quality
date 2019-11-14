@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Updated
 - Update python dependencies to latest versions, including numpy 1.17.4, pandas
 0.25.3, flake8 3.7.9, pytest 5.2.2, and black 19.10b0
+- Regenerate requirements.txt and requirements-dev.txt
 
 ### Changed
 - Use Python 3.8.0 for pipenv
