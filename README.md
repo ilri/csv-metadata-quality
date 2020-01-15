@@ -59,7 +59,7 @@ This is considered "unsafe" because it is *theoretically* possible for a single 
 ### Newlines
 This is considered "unsafe" because some systems give special importance to vertical space and render it properly. DSpace does not support rendering newlines in its XMLUI and has, at times, suffered from parsing errors that cause the import process to fail if an input file had newlines. The `--unsafe-fixes` option strips Unix line feeds (U+000A).
 
-## Unicode Normalization
+### Unicode Normalization
 [Unicode](https://en.wikipedia.org/wiki/Unicode) is a standard for encoding text. As the standard aims to support most of the world's languages, characters can often be represented in different ways and still be valid Unicode. This leads to interesting problems that can be confusing unless you know what's going on behind the scenes. For example, the characters `é` and `é` *look* the same, but are not — technically they refer to different code points in the Unicode standard:
 
 - `é` is the Unicode code point `U+00E9`
