@@ -23,6 +23,8 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/alanorth/csv-metadata-quality",
     classifiers=[
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Operating System :: OS Independent",
