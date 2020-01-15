@@ -1,11 +1,11 @@
 -i https://pypi.org/simple
 -e .
-certifi==2019.9.11
+certifi==2019.11.28
 chardet==3.0.4
 idna==2.8
 langid==1.1.6
-numpy==1.17.4
-pandas==0.25.3
+numpy==1.18.1
+pandas==1.0.0rc0
 pycountry==19.8.18
 python-dateutil==2.8.1
 python-stdnum==1.12
