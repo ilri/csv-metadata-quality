@@ -212,7 +212,7 @@ def normalize_unicode(field, field_name):
     Return normalized string.
     """
 
-    from unicodedata import is_normalized
+    from csv_metadata_quality.util import is_nfc
     from unicodedata import normalize
 
     # Skip fields with missing values
@@ -220,7 +220,7 @@ def normalize_unicode(field, field_name):
         return
 
     # Check if the current string is using normalized Unicode (NFC)
-    if not is_normalized("NFC", field):
+    if not is_nfc(field):
         print(f"Normalizing Unicode ({field_name}): {field}")
         field = normalize("NFC", field)
 
