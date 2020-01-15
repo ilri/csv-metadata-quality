@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## Unreleased
+### Added
+- Unicode normalization (enable with `--unsafe-fixes`, see README.md)
+
 ### Updated
 - Update python dependencies to latest versions, including numpy 1.18.1, pandas
 1.0.0rc0, flake8 3.7.9, pytest 5.3.2, and black 19.10b0
