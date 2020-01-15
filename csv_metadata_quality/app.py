@@ -21,7 +21,8 @@ def parse_args(argv):
     parser.add_argument(
         "--experimental-checks",
         "-e",
-        help="Enable experimental checks like language detection", action="store_true"
+        help="Enable experimental checks like language detection",
+        action="store_true",
     )
     parser.add_argument(
         "--input-file",

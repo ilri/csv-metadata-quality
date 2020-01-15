@@ -1,6 +1,7 @@
+import pandas as pd
+
 import csv_metadata_quality.check as check
 import csv_metadata_quality.experimental as experimental
-import pandas as pd
 
 
 def test_check_invalid_issn(capsys):
