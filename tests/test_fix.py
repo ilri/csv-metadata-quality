@@ -66,3 +66,25 @@ def test_fix_comma_space():
     field_name = "dc.contributor.author"
 
     assert fix.comma_space(value, field_name) == "Orth, Alan S."
+
+
+def test_fix_normalized_unicode():
+    """Test fixing a string that is already in its normalized (NFC) Unicode form."""
+
+    # string using the normalized canonical form of é
+    value = "Ouédraogo, Mathieu"
+
+    field_name = "dc.contributor.author"
+
+    assert fix.normalize_unicode(value, field_name) == "Ouédraogo, Mathieu"
+
+
+def test_fix_decomposed_unicode():
+    """Test fixing a string that contains Unicode string."""
+
+    # string using the decomposed form of é
+    value = "Ouédraogo, Mathieu"
+
+    field_name = "dc.contributor.author"
+
+    assert fix.normalize_unicode(value, field_name) == "Ouédraogo, Mathieu"

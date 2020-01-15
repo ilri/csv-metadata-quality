@@ -1,7 +1,7 @@
 # CSV Metadata Quality [![Build Status](https://travis-ci.org/ilri/csv-metadata-quality.svg?branch=master)](https://travis-ci.org/ilri/csv-metadata-quality) [![builds.sr.ht status](https://builds.sr.ht/~alanorth/csv-metadata-quality.svg)](https://builds.sr.ht/~alanorth/csv-metadata-quality?)
 A simple, but opinionated metadata quality checker and fixer designed to work with CSVs in the DSpace ecosystem (though it could theoretically work on any CSV that uses Dublin Core fields as columns). The implementation is essentially a pipeline of checks and fixes that begins with splitting multi-value fields on the standard DSpace "||" separator, trimming leading/trailing whitespace, and then proceeding to more specialized cases like ISSNs, ISBNs, languages, etc.
 
-Requires Python 3.6 or greater. CSV and Excel support comes from the [Pandas](https://pandas.pydata.org/) library, though your mileage may vary with Excel because this is much less tested.
+Requires Python 3.8 or greater. CSV and Excel support comes from the [Pandas](https://pandas.pydata.org/) library, though your mileage may vary with Excel because this is much less tested.
 
 ## Functionality
 
@@ -15,6 +15,7 @@ Requires Python 3.6 or greater. CSV and Excel support comes from the [Pandas](ht
 - Remove unnecessary Unicode like [non-breaking spaces](https://en.wikipedia.org/wiki/Non-breaking_space), [replacement characters](https://en.wikipedia.org/wiki/Specials_(Unicode_block)#Replacement_character), etc
 - Check for "suspicious" characters that indicate encoding or copy/paste issues, for example "foreˆt" should be "forêt"
 - Remove duplicate metadata values
+- Perform [Unicode normalization](https://withblue.ink/2019/03/11/why-you-need-to-normalize-unicode-strings.html) on strings using `--unsafe-fixes`
 
 ## Installation
 The easiest way to install CSV Metadata Quality is with [pipenv](https://github.com/pypa/pipenv):
@@ -57,6 +58,14 @@ This is considered "unsafe" because it is *theoretically* possible for a single 
 
 ### Newlines
 This is considered "unsafe" because some systems give special importance to vertical space and render it properly. DSpace does not support rendering newlines in its XMLUI and has, at times, suffered from parsing errors that cause the import process to fail if an input file had newlines. The `--unsafe-fixes` option strips Unix line feeds (U+000A).
+
+## Unicode Normalization
+[Unicode](https://en.wikipedia.org/wiki/Unicode) is a standard for encoding text. As the standard aims to support most of the world's languages, characters can often be represented in different ways and still be valid Unicode. This leads to interesting problems that can be confusing unless you know what's going on behind the scenes. For example, the characters `é` and `é` *look* the same, but are not — technically they refer to different code points in the Unicode standard:
+
+- `é` is the Unicode code point `U+00E9`
+- `é` is the Unicode code points `U+0065` + `U+0301`
+
+Read more about [Unicode normalization](https://withblue.ink/2019/03/11/why-you-need-to-normalize-unicode-strings.html).
 
 ## AGROVOC Validation
 You can enable validation of metadata values in certain fields against the AGROVOC REST API with the `--agrovoc-fields` option. For example, in addition to agricultural subjects, many countries and regions are also present AGROVOC. Enable this validation by specifying a comma-separated list of fields:

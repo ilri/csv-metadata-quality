@@ -94,6 +94,11 @@ def run(argv):
             if match is not None:
                 df[column] = df[column].apply(fix.comma_space, field_name=column)
 
+        # Fix: perform Unicode normalization (NFC) to convert decomposed
+        # characters into their canonical forms.
+        if args.unsafe_fixes:
+            df[column] = df[column].apply(fix.normalize_unicode, field_name=column)
+
         # Fix: unnecessary Unicode
         df[column] = df[column].apply(fix.unnecessary_unicode)
 

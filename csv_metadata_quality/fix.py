@@ -201,3 +201,27 @@ def comma_space(field, field_name):
         field = re.sub(r",(\w)", r", \1", field)
 
     return field
+
+
+def normalize_unicode(field, field_name):
+    """Fix occurrences of decomposed Unicode characters by normalizing them
+    with NFC to their canonical forms, for example:
+
+    Ouédraogo, Mathieu → Ouédraogo, Mathieu
+
+    Return normalized string.
+    """
+
+    from unicodedata import is_normalized
+    from unicodedata import normalize
+
+    # Skip fields with missing values
+    if pd.isna(field):
+        return
+
+    # Check if the current string is using normalized Unicode (NFC)
+    if not is_normalized("NFC", field):
+        print(f"Normalizing Unicode ({field_name}): {field}")
+        field = normalize("NFC", field)
+
+    return field
