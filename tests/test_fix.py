@@ -6,7 +6,9 @@ def test_fix_leading_whitespace():
 
     value = " Alan"
 
-    assert fix.whitespace(value) == "Alan"
+    field_name = "dc.contributor.author"
+
+    assert fix.whitespace(value, field_name) == "Alan"
 
 
 def test_fix_trailing_whitespace():
@@ -14,7 +16,9 @@ def test_fix_trailing_whitespace():
 
     value = "Alan "
 
-    assert fix.whitespace(value) == "Alan"
+    field_name = "dc.contributor.author"
+
+    assert fix.whitespace(value, field_name) == "Alan"
 
 
 def test_fix_excessive_whitespace():
@@ -22,7 +26,9 @@ def test_fix_excessive_whitespace():
 
     value = "Alan  Orth"
 
-    assert fix.whitespace(value) == "Alan Orth"
+    field_name = "dc.contributor.author"
+
+    assert fix.whitespace(value, field_name) == "Alan Orth"
 
 
 def test_fix_invalid_separators():
@@ -30,7 +36,9 @@ def test_fix_invalid_separators():
 
     value = "Alan|Orth"
 
-    assert fix.separators(value) == "Alan||Orth"
+    field_name = "dc.contributor.author"
+
+    assert fix.separators(value, field_name) == "Alan||Orth"
 
 
 def test_fix_unnecessary_unicode():
@@ -46,7 +54,9 @@ def test_fix_duplicates():
 
     value = "Kenya||Kenya"
 
-    assert fix.duplicates(value) == "Kenya"
+    field_name = "dc.contributor.author"
+
+    assert fix.duplicates(value, field_name) == "Kenya"
 
 
 def test_fix_newlines():

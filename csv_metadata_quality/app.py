@@ -82,7 +82,7 @@ def run(argv):
                 continue
 
         # Fix: whitespace
-        df[column] = df[column].apply(fix.whitespace)
+        df[column] = df[column].apply(fix.whitespace, field_name=column)
 
         # Fix: newlines
         if args.unsafe_fixes:
@@ -104,19 +104,19 @@ def run(argv):
         df[column] = df[column].apply(fix.unnecessary_unicode)
 
         # Check: invalid multi-value separator
-        df[column] = df[column].apply(check.separators)
+        df[column] = df[column].apply(check.separators, field_name=column)
 
         # Check: suspicious characters
         df[column] = df[column].apply(check.suspicious_characters, field_name=column)
 
         # Fix: invalid multi-value separator
         if args.unsafe_fixes:
-            df[column] = df[column].apply(fix.separators)
+            df[column] = df[column].apply(fix.separators, field_name=column)
             # Run whitespace fix again after fixing invalid separators
-            df[column] = df[column].apply(fix.whitespace)
+            df[column] = df[column].apply(fix.whitespace, field_name=column)
 
         # Fix: duplicate metadata values
-        df[column] = df[column].apply(fix.duplicates)
+        df[column] = df[column].apply(fix.duplicates, field_name=column)
 
         # Check: invalid AGROVOC subject
         if args.agrovoc_fields:

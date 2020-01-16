@@ -3,7 +3,7 @@ import re
 import pandas as pd
 
 
-def whitespace(field):
+def whitespace(field, field_name):
     """Fix whitespace issues.
 
     Return string with leading, trailing, and consecutive whitespace trimmed.
@@ -26,7 +26,7 @@ def whitespace(field):
         match = re.findall(pattern, value)
 
         if match:
-            print(f"Removing excessive whitespace: {value}")
+            print(f"Removing excessive whitespace ({field_name}): {value}")
             value = re.sub(pattern, " ", value)
 
         # Save cleaned value
@@ -38,7 +38,7 @@ def whitespace(field):
     return new_field
 
 
-def separators(field):
+def separators(field, field_name):
     """Fix for invalid multi-value separators (ie "|")."""
 
     # Skip fields with missing values
@@ -55,7 +55,7 @@ def separators(field):
         match = re.findall(pattern, value)
 
         if match:
-            print(f"Fixing invalid multi-value separator: {value}")
+            print(f"Fixing invalid multi-value separator ({field_name}): {value}")
 
             value = re.sub(pattern, "||", value)
 
@@ -121,7 +121,7 @@ def unnecessary_unicode(field):
     return field
 
 
-def duplicates(field):
+def duplicates(field, field_name):
     """Remove duplicate metadata values."""
 
     # Skip fields with missing values
@@ -140,7 +140,7 @@ def duplicates(field):
         if value not in new_values:
             new_values.append(value)
         else:
-            print(f"Removing duplicate value: {value}")
+            print(f"Removing duplicate value ({field_name}): {value}")
 
     # Create a new field consisting of all values joined with "||"
     new_field = "||".join(new_values)

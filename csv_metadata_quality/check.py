@@ -51,7 +51,7 @@ def isbn(field):
     return field
 
 
-def separators(field):
+def separators(field, field_name):
     """Check for invalid multi-value separators (ie "|" or "|||").
 
     Prints the field with the invalid multi-value separator.
@@ -70,7 +70,7 @@ def separators(field):
         match = re.findall(r"^.*?\|.*$", value)
 
         if match:
-            print(f"Invalid multi-value separator: {field}")
+            print(f"Invalid multi-value separator ({field_name}): {field}")
 
     return field
 
