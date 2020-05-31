@@ -6,7 +6,7 @@ sources:
 tasks:
   - setup: |
       cd csv-metadata-quality
-      poetry install --dev
+      poetry install
   - pytest: |
       cd csv-metadata-quality
       poetry run pytest
