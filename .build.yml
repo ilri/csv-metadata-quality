@@ -12,5 +12,4 @@ tasks:
       poetry run pytest
   - testcli: |
       cd csv-metadata-quality
-      poetry run pip install .
       poetry run csv-metadata-quality -i data/test.csv -o /tmp/test.csv -e -u --agrovoc-fields dc.subject,cg.coverage.country
