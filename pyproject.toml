@@ -3,7 +3,7 @@ name = "csv-metadata-quality"
 version = "0.4.1"
 description="A simple, but opinionated CSV quality checking and fixing pipeline for CSVs in the DSpace ecosystem."
 authors = ["Alan Orth <alan.orth@gmail.com>"]
-license="GPLv3"
+license="GPL-3.0-only"
 repository = "https://github.com/ilri/csv-metadata-quality"
 homepage = "https://github.com/ilri/csv-metadata-quality"
 
