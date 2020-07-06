@@ -18,16 +18,16 @@ Requires Python 3.8 or greater. CSV and Excel support comes from the [Pandas](ht
 - Perform [Unicode normalization](https://withblue.ink/2019/03/11/why-you-need-to-normalize-unicode-strings.html) on strings using `--unsafe-fixes`
 
 ## Installation
-The easiest way to install CSV Metadata Quality is with [pipenv](https://github.com/pypa/pipenv):
+The easiest way to install CSV Metadata Quality is with [poetry](https://python-poetry.org):
 
 ```
 $ git clone https://github.com/ilri/csv-metadata-quality.git
 $ cd csv-metadata-quality
-$ pipenv install
-$ pipenv shell
+$ poetry install
+$ poetry shell
 ```
 
-Otherwise, if you don't have pipenv, you can use a vanilla Python virtual environment:
+Otherwise, if you don't have poetry, you can use a vanilla Python virtual environment:
 
 ```
 $ git clone https://github.com/ilri/csv-metadata-quality.git
