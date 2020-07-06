@@ -223,9 +223,7 @@ def agrovoc(field, field_name):
 
     # enable transparent request cache with thirty days expiry
     expire_after = timedelta(days=30)
-    requests_cache.install_cache(
-        "agrovoc-response-cache", expire_after=expire_after
-    )
+    requests_cache.install_cache("agrovoc-response-cache", expire_after=expire_after)
 
     # prune old cache entries
     requests_cache.core.remove_expired_responses()
