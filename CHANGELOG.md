@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Add field name to the output for more fixes and checks to help identify where
 the error is
+- Minor optimizations to AGROVOC subject lookup
+- Use Poetry instead of Pipenv
 
 ### Updated
 - Update python dependencies to latest versions
