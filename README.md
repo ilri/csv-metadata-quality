@@ -1,4 +1,4 @@
-# CSV Metadata Quality [![Build Status](https://travis-ci.org/ilri/csv-metadata-quality.svg?branch=master)](https://travis-ci.org/ilri/csv-metadata-quality) [![builds.sr.ht status](https://builds.sr.ht/~alanorth/csv-metadata-quality.svg)](https://builds.sr.ht/~alanorth/csv-metadata-quality?)
+# CSV Metadata Quality [![Build Status](https://travis-ci.com/ilri/csv-metadata-quality.svg?branch=master)](https://travis-ci.com/ilri/csv-metadata-quality) [![builds.sr.ht status](https://builds.sr.ht/~alanorth/csv-metadata-quality.svg)](https://builds.sr.ht/~alanorth/csv-metadata-quality?)
 A simple, but opinionated metadata quality checker and fixer designed to work with CSVs in the DSpace ecosystem (though it could theoretically work on any CSV that uses Dublin Core fields as columns). The implementation is essentially a pipeline of checks and fixes that begins with splitting multi-value fields on the standard DSpace "||" separator, trimming leading/trailing whitespace, and then proceeding to more specialized cases like ISSNs, ISBNs, languages, etc.
 
 Requires Python 3.8 or greater. CSV and Excel support comes from the [Pandas](https://pandas.pydata.org/) library, though your mileage may vary with Excel because this is much less tested.
@@ -102,6 +102,7 @@ This currently uses the [Python langid](https://github.com/saffsd/langid.py) lib
 - Warn if two items use the same file in `filename` column
 - Add an option to drop invalid AGROVOC subjects?
 - Add tests for application invocation, ie `tests/test_app.py`?
+- Validate ISSNs or journal titles against CrossRef API?
 
 ## License
 This work is licensed under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html).
