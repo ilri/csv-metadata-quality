@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Reformat with black
 
+### Updated
+- Run `poetry update`
+
 ## [0.4.2] - 2020-07-06
 ### Changed
 - Add field name to the output for more fixes and checks to help identify where
