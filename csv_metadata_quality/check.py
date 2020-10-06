@@ -1,4 +1,9 @@
+from datetime import datetime, timedelta
+
 import pandas as pd
+import requests
+import requests_cache
+from pycountry import languages
 
 
 def issn(field):
@@ -85,7 +90,6 @@ def date(field, field_name):
 
     Prints the date if invalid.
     """
-    from datetime import datetime
 
     if pd.isna(field):
         print(f"Missing date ({field_name}).")
@@ -170,8 +174,6 @@ def language(field):
     Prints the value if it is invalid.
     """
 
-    from pycountry import languages
-
     # Skip fields with missing values
     if pd.isna(field):
         return
@@ -212,10 +214,6 @@ def agrovoc(field, field_name):
 
     Prints a warning if the value is invalid.
     """
-
-    from datetime import timedelta
-    import requests
-    import requests_cache
 
     # Skip fields with missing values
     if pd.isna(field):

@@ -1,6 +1,9 @@
 import re
+from unicodedata import normalize
 
 import pandas as pd
+
+from csv_metadata_quality.util import is_nfc
 
 
 def whitespace(field, field_name):
@@ -211,9 +214,6 @@ def normalize_unicode(field, field_name):
 
     Return normalized string.
     """
-
-    from csv_metadata_quality.util import is_nfc
-    from unicodedata import normalize
 
     # Skip fields with missing values
     if pd.isna(field):
