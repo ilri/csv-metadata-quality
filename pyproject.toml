@@ -19,7 +19,7 @@ langid = "^1.1.6"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.1.1"
-ipython = "^7.18.1"
+ipython = { version = "^7.18.1", python = "^3.7" }
 flake8 = "^3.8.4"
 pytest-clarity = "^0.3.0-alpha.0"
 black = "20.8b1"
