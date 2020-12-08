@@ -1,4 +1,4 @@
-# CSV Metadata Quality [![Build Status](https://travis-ci.com/ilri/csv-metadata-quality.svg?branch=master)](https://travis-ci.com/ilri/csv-metadata-quality) [![builds.sr.ht status](https://builds.sr.ht/~alanorth/csv-metadata-quality.svg)](https://builds.sr.ht/~alanorth/csv-metadata-quality?)
+# CSV Metadata Quality ![GitHub Actions](https://github.com/ilri/csv-metadata-quality/workflows/Build%20and%20Test/badge.svg) [![builds.sr.ht status](https://builds.sr.ht/~alanorth/csv-metadata-quality.svg)](https://builds.sr.ht/~alanorth/csv-metadata-quality?)
 A simple, but opinionated metadata quality checker and fixer designed to work with CSVs in the DSpace ecosystem (though it could theoretically work on any CSV that uses Dublin Core fields as columns). The implementation is essentially a pipeline of checks and fixes that begins with splitting multi-value fields on the standard DSpace "||" separator, trimming leading/trailing whitespace, and then proceeding to more specialized cases like ISSNs, ISBNs, languages, etc.
 
 Requires Python 3.8 or greater. CSV and Excel support comes from the [Pandas](https://pandas.pydata.org/) library, though your mileage may vary with Excel because this is much less tested.
@@ -103,6 +103,8 @@ This currently uses the [Python langid](https://github.com/saffsd/langid.py) lib
 - Add an option to drop invalid AGROVOC subjects?
 - Add tests for application invocation, ie `tests/test_app.py`?
 - Validate ISSNs or journal titles against CrossRef API?
+- Better ISO 8601 date parsing (currently only supports simple dates, perhaps we need to use dateutil.parser.parseiso())
+- Fix lazy date check (assumes field name has "date" but could be dcterms.issued etc!)
 
 ## License
 This work is licensed under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html).
