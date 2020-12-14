@@ -35,3 +35,7 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
+    - name: Test CLI
+      run: |
+        python setup.py install
+        csv-metadata-quality -i data/test.csv -o /tmp/test.csv -e -u --agrovoc-fields dc.subject,cg.coverage.country
