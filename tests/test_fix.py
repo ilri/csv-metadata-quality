@@ -41,6 +41,16 @@ def test_fix_invalid_separators():
     assert fix.separators(value, field_name) == "Alan||Orth"
 
 
+def test_fix_unnecessary_separators():
+    """Test fixing unnecessary multi-value separators."""
+
+    field = "Alan||Orth||"
+
+    field_name = "dc.contributor.author"
+
+    assert fix.separators(field, field_name) == "Alan||Orth"
+
+
 def test_fix_unnecessary_unicode():
     """Test fixing unnecessary Unicode."""
 

@@ -59,6 +59,19 @@ def test_check_invalid_separators(capsys):
     assert captured.out == f"Invalid multi-value separator ({field_name}): {value}\n"
 
 
+def test_check_unnecessary_separators(capsys):
+    """Test checking unnecessary multi-value separators."""
+
+    field = "Alan||Orth||"
+
+    field_name = "dc.contributor.author"
+
+    check.separators(field, field_name)
+
+    captured = capsys.readouterr()
+    assert captured.out == f"Unnecessary multi-value separator ({field_name}): {field}\n"
+
+
 def test_check_valid_separators():
     """Test checking valid multi-value separators."""
 
