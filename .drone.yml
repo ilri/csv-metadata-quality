@@ -46,20 +46,4 @@ steps:
   - python setup.py install
   - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -e -u --agrovoc-fields dc.subject,cg.coverage.country
 
----
-kind: pipeline
-type: docker
-name: python36
-
-steps:
-- name: test
-  image: python:3.6-slim
-  commands:
-  - id
-  - python -V
-  - pip install -r requirements-dev.txt
-  - pytest
-  - python setup.py install
-  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -e -u --agrovoc-fields dc.subject,cg.coverage.country
-
 # vim: ts=2 sw=2 et

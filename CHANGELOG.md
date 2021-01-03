@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 ### Changed
 - Reformat with black
+- Requires Python 3.7+ for pandas 1.2.0
 
 ### Updated
 - Run `poetry update`
