@@ -69,7 +69,9 @@ def test_check_unnecessary_separators(capsys):
     check.separators(field, field_name)
 
     captured = capsys.readouterr()
-    assert captured.out == f"Unnecessary multi-value separator ({field_name}): {field}\n"
+    assert (
+        captured.out == f"Unnecessary multi-value separator ({field_name}): {field}\n"
+    )
 
 
 def test_check_valid_separators():
