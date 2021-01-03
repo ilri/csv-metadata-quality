@@ -42,7 +42,14 @@ def whitespace(field, field_name):
 
 
 def separators(field, field_name):
-    """Fix for invalid multi-value separators (ie "|")."""
+    """Fix for invalid and unnecessary multi-value separators, for example:
+
+        value|value
+        value|||value
+        value||value||
+
+    Prints the field with the invalid multi-value separator.
+    """
 
     # Skip fields with missing values
     if pd.isna(field):
@@ -53,6 +60,12 @@ def separators(field, field_name):
 
     # Try to split multi-value field on "||" separator
     for value in field.split("||"):
+        # Check if the value is blank and skip it
+        if value == "":
+            print(f"Fixing unnecessary multi-value separator ({field_name}): {field}")
+
+            continue
+
         # After splitting, see if there are any remaining "|" characters
         pattern = re.compile(r"\|")
         match = re.findall(pattern, value)

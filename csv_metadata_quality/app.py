@@ -103,13 +103,13 @@ def run(argv):
         # Fix: unnecessary Unicode
         df[column] = df[column].apply(fix.unnecessary_unicode)
 
-        # Check: invalid multi-value separator
+        # Check: invalid and unnecessary multi-value separators
         df[column] = df[column].apply(check.separators, field_name=column)
 
         # Check: suspicious characters
         df[column] = df[column].apply(check.suspicious_characters, field_name=column)
 
-        # Fix: invalid multi-value separator
+        # Fix: invalid and unnecessary multi-value separators
         if args.unsafe_fixes:
             df[column] = df[column].apply(fix.separators, field_name=column)
             # Run whitespace fix again after fixing invalid separators

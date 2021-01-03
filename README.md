@@ -10,7 +10,7 @@ Requires Python 3.6 or greater (3.8 recommended). CSV and Excel support comes fr
 - Experimental validation of titles and abstracts against item's Dublin Core language field
 - Validate subjects against the AGROVOC REST API (see the `--agrovoc-fields` option)
 - Fix leading, trailing, and excessive (ie, more than one) whitespace
-- Fix invalid multi-value separators (`|`) using `--unsafe-fixes`
+- Fix invalid and unnecessary multi-value separators (`|`) using `--unsafe-fixes`
 - Fix problematic newlines (line feeds) using `--unsafe-fixes`
 - Remove unnecessary Unicode like [non-breaking spaces](https://en.wikipedia.org/wiki/Non-breaking_space), [replacement characters](https://en.wikipedia.org/wiki/Specials_(Unicode_block)#Replacement_character), etc
 - Check for "suspicious" characters that indicate encoding or copy/paste issues, for example "foreˆt" should be "forêt"
@@ -55,6 +55,8 @@ You can enable several "unsafe" fixes with the `--unsafe-fixes` option. Currentl
 
 ### Invalid Multi-Value Separators
 This is considered "unsafe" because it is *theoretically* possible for a single `|` character to be used legitimately in a metadata value, though in my experience it is always a typo. For example, if a user mistakenly writes `Kenya|Tanzania` when attempting to indicate two countries, the result will be one metadata value with the literal text `Kenya|Tanzania`. The `--unsafe-fixes` option will correct the invalid multi-value separator so that there are two metadata values, ie `Kenya||Tanzania`.
+
+This will also remove unnecessary trailing multi-value separators, for example `Kenya||Tanzania||`.
 
 ### Newlines
 This is considered "unsafe" because some systems give special importance to vertical space and render it properly. DSpace does not support rendering newlines in its XMLUI and has, at times, suffered from parsing errors that cause the import process to fail if an input file had newlines. The `--unsafe-fixes` option strips Unix line feeds (U+000A).

@@ -57,7 +57,11 @@ def isbn(field):
 
 
 def separators(field, field_name):
-    """Check for invalid multi-value separators (ie "|" or "|||").
+    """Check for invalid and unnecessary multi-value separators, for example:
+
+        value|value
+        value|||value
+        value||value||
 
     Prints the field with the invalid multi-value separator.
     """
@@ -70,10 +74,16 @@ def separators(field, field_name):
 
     # Try to split multi-value field on "||" separator
     for value in field.split("||"):
+        # Check if the current value is blank
+        if value == "":
+            print(f"Unnecessary multi-value separator ({field_name}): {field}")
+
+            continue
 
         # After splitting, see if there are any remaining "|" characters
         match = re.findall(r"^.*?\|.*$", value)
 
+        # Check if there was a match
         if match:
             print(f"Invalid multi-value separator ({field_name}): {field}")
 
