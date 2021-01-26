@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Updated
 - Run `poetry update`
+- Expand check/fix for multi-value separators to include metadata with invalid
+separators at the end, for example "Kenya||Tanzania||"
 
 ## [0.4.2] - 2020-07-06
 ### Changed
