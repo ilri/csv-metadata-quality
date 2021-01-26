@@ -2,11 +2,11 @@ certifi==2020.12.5
 chardet==4.0.0
 idna==2.10
 langid==1.1.6
-numpy==1.19.4
-pandas==1.2.0
+numpy==1.19.5
+pandas==1.2.1
 pycountry==19.8.18
 python-dateutil==2.8.1
-python-stdnum==1.14
+python-stdnum==1.15
 pytz==2020.5
 requests==2.25.1
 requests-cache==0.5.2
