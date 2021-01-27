@@ -5,7 +5,7 @@ Requires Python 3.7 or greater (3.8 recommended). CSV and Excel support comes fr
 
 If you use the DSpace CSV metadata quality checker please cite:
 
-*Orth, A. 2019. DSpace CSV metadata quality checker. Nairobi, Kenya: ILRI.*
+*Orth, A. 2019. DSpace CSV metadata quality checker. Nairobi, Kenya: ILRI. https://hdl.handle.net/10568/110997.*
 
 ## Functionality
 
