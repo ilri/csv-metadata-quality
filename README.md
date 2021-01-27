@@ -3,6 +3,10 @@ A simple, but opinionated metadata quality checker and fixer designed to work wi
 
 Requires Python 3.7 or greater (3.8 recommended). CSV and Excel support comes from the [Pandas](https://pandas.pydata.org/) library, though your mileage may vary with Excel because this is much less tested.
 
+If you use the DSpace CSV metadata quality checker please cite:
+
+*Orth, A. 2019. DSpace CSV metadata quality checker. Nairobi, Kenya: ILRI.*
+
 ## Functionality
 
 - Validate dates, ISSNs, ISBNs, and multi-value separators ("||")
