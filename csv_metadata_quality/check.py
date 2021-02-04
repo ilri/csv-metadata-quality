@@ -137,6 +137,14 @@ def date(field, field_name):
 
         return field
     except ValueError:
+        pass
+
+    try:
+        # Check if date is valid YYYY-MM-DDTHH:MM:SSZ format
+        datetime.strptime(field, "%Y-%m-%dT%H:%M:%SZ")
+
+        return field
+    except ValueError:
         print(f"Invalid date ({field_name}): {field}")
 
         return field
