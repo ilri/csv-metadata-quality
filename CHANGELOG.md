@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Accept dates formatted in ISO 8601 extended with combined date and time, for
 example: 2020-08-31T11:04:56Z
 
+### Updated
+- Run `poetry update` to update project dependencies
+
 ## [0.4.3] - 2021-01-26
 ### Changed
 - Reformat with black
