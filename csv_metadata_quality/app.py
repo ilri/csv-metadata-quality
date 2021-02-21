@@ -4,6 +4,7 @@ import signal
 import sys
 
 import pandas as pd
+from colorama import Fore
 
 import csv_metadata_quality.check as check
 import csv_metadata_quality.experimental as experimental
@@ -77,7 +78,7 @@ def run(argv):
                 if column == exclude and skip is False:
                     skip = True
             if skip:
-                print(f"Skipping {column}")
+                print(f"{Fore.YELLOW}Skipping {Fore.RESET}{column}")
 
                 continue
 

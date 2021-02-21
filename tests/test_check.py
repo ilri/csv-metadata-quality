@@ -1,4 +1,5 @@
 import pandas as pd
+from colorama import Fore
 
 import csv_metadata_quality.check as check
 import csv_metadata_quality.experimental as experimental
@@ -12,7 +13,7 @@ def test_check_invalid_issn(capsys):
     check.issn(value)
 
     captured = capsys.readouterr()
-    assert captured.out == f"Invalid ISSN: {value}\n"
+    assert captured.out == f"{Fore.RED}Invalid ISSN: {Fore.RESET}{value}\n"
 
 
 def test_check_valid_issn():
@@ -33,7 +34,7 @@ def test_check_invalid_isbn(capsys):
     check.isbn(value)
 
     captured = capsys.readouterr()
-    assert captured.out == f"Invalid ISBN: {value}\n"
+    assert captured.out == f"{Fore.RED}Invalid ISBN: {Fore.RESET}{value}\n"
 
 
 def test_check_valid_isbn():
@@ -56,7 +57,10 @@ def test_check_invalid_separators(capsys):
     check.separators(value, field_name)
 
     captured = capsys.readouterr()
-    assert captured.out == f"Invalid multi-value separator ({field_name}): {value}\n"
+    assert (
+        captured.out
+        == f"{Fore.RED}Invalid multi-value separator ({field_name}): {Fore.RESET}{value}\n"
+    )
 
 
 def test_check_unnecessary_separators(capsys):
@@ -70,7 +74,8 @@ def test_check_unnecessary_separators(capsys):
 
     captured = capsys.readouterr()
     assert (
-        captured.out == f"Unnecessary multi-value separator ({field_name}): {field}\n"
+        captured.out
+        == f"{Fore.RED}Unnecessary multi-value separator ({field_name}): {Fore.RESET}{field}\n"
     )
 
 
@@ -96,7 +101,7 @@ def test_check_missing_date(capsys):
     check.date(value, field_name)
 
     captured = capsys.readouterr()
-    assert captured.out == f"Missing date ({field_name}).\n"
+    assert captured.out == f"{Fore.RED}Missing date ({field_name}).{Fore.RESET}\n"
 
 
 def test_check_multiple_dates(capsys):
@@ -109,7 +114,10 @@ def test_check_multiple_dates(capsys):
     check.date(value, field_name)
 
     captured = capsys.readouterr()
-    assert captured.out == f"Multiple dates not allowed ({field_name}): {value}\n"
+    assert (
+        captured.out
+        == f"{Fore.RED}Multiple dates not allowed ({field_name}): {Fore.RESET}{value}\n"
+    )
 
 
 def test_check_invalid_date(capsys):
@@ -122,7 +130,9 @@ def test_check_invalid_date(capsys):
     check.date(value, field_name)
 
     captured = capsys.readouterr()
-    assert captured.out == f"Invalid date ({field_name}): {value}\n"
+    assert (
+        captured.out == f"{Fore.RED}Invalid date ({field_name}): {Fore.RESET}{value}\n"
+    )
 
 
 def test_check_valid_date():
@@ -147,7 +157,10 @@ def test_check_suspicious_characters(capsys):
     check.suspicious_characters(value, field_name)
 
     captured = capsys.readouterr()
-    assert captured.out == f"Suspicious character ({field_name}): ˆt\n"
+    assert (
+        captured.out
+        == f"{Fore.YELLOW}Suspicious character ({field_name}): {Fore.RESET}ˆt\n"
+    )
 
 
 def test_check_valid_iso639_1_language():
@@ -178,7 +191,9 @@ def test_check_invalid_iso639_1_language(capsys):
     check.language(value)
 
     captured = capsys.readouterr()
-    assert captured.out == f"Invalid ISO 639-1 language: {value}\n"
+    assert (
+        captured.out == f"{Fore.RED}Invalid ISO 639-1 language: {Fore.RESET}{value}\n"
+    )
 
 
 def test_check_invalid_iso639_3_language(capsys):
@@ -189,7 +204,9 @@ def test_check_invalid_iso639_3_language(capsys):
     check.language(value)
 
     captured = capsys.readouterr()
-    assert captured.out == f"Invalid ISO 639-3 language: {value}\n"
+    assert (
+        captured.out == f"{Fore.RED}Invalid ISO 639-3 language: {Fore.RESET}{value}\n"
+    )
 
 
 def test_check_invalid_language(capsys):
@@ -200,7 +217,7 @@ def test_check_invalid_language(capsys):
     check.language(value)
 
     captured = capsys.readouterr()
-    assert captured.out == f"Invalid language: {value}\n"
+    assert captured.out == f"{Fore.RED}Invalid language: {Fore.RESET}{value}\n"
 
 
 def test_check_invalid_agrovoc(capsys):
@@ -212,7 +229,10 @@ def test_check_invalid_agrovoc(capsys):
     check.agrovoc(value, field_name)
 
     captured = capsys.readouterr()
-    assert captured.out == f"Invalid AGROVOC ({field_name}): {value}\n"
+    assert (
+        captured.out
+        == f"{Fore.RED}Invalid AGROVOC ({field_name}): {Fore.RESET}{value}\n"
+    )
 
 
 def test_check_valid_agrovoc():
@@ -234,7 +254,10 @@ def test_check_uncommon_filename_extension(capsys):
     check.filename_extension(value)
 
     captured = capsys.readouterr()
-    assert captured.out == f"Filename with uncommon extension: {value}\n"
+    assert (
+        captured.out
+        == f"{Fore.YELLOW}Filename with uncommon extension: {Fore.RESET}{value}\n"
+    )
 
 
 def test_check_common_filename_extension():
@@ -262,7 +285,7 @@ def test_check_incorrect_iso_639_1_language(capsys):
     captured = capsys.readouterr()
     assert (
         captured.out
-        == f"Possibly incorrect language {language} (detected en): {title}\n"
+        == f"{Fore.YELLOW}Possibly incorrect language {language} (detected en): {Fore.RESET}{title}\n"
     )
 
 
@@ -281,7 +304,7 @@ def test_check_incorrect_iso_639_3_language(capsys):
     captured = capsys.readouterr()
     assert (
         captured.out
-        == f"Possibly incorrect language {language} (detected eng): {title}\n"
+        == f"{Fore.YELLOW}Possibly incorrect language {language} (detected eng): {Fore.RESET}{title}\n"
     )
 
 

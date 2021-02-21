@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 import pandas as pd
 import requests
 import requests_cache
+from colorama import Fore
 from pycountry import languages
 
 
@@ -26,7 +27,7 @@ def issn(field):
     for value in field.split("||"):
 
         if not issn.is_valid(value):
-            print(f"Invalid ISSN: {value}")
+            print(f"{Fore.RED}Invalid ISSN: {Fore.RESET}{value}")
 
     return field
 
@@ -51,7 +52,7 @@ def isbn(field):
     for value in field.split("||"):
 
         if not isbn.is_valid(value):
-            print(f"Invalid ISBN: {value}")
+            print(f"{Fore.RED}Invalid ISBN: {Fore.RESET}{value}")
 
     return field
 
@@ -76,7 +77,9 @@ def separators(field, field_name):
     for value in field.split("||"):
         # Check if the current value is blank
         if value == "":
-            print(f"Unnecessary multi-value separator ({field_name}): {field}")
+            print(
+                f"{Fore.RED}Unnecessary multi-value separator ({field_name}): {Fore.RESET}{field}"
+            )
 
             continue
 
@@ -85,7 +88,9 @@ def separators(field, field_name):
 
         # Check if there was a match
         if match:
-            print(f"Invalid multi-value separator ({field_name}): {field}")
+            print(
+                f"{Fore.RED}Invalid multi-value separator ({field_name}): {Fore.RESET}{field}"
+            )
 
     return field
 
@@ -102,7 +107,7 @@ def date(field, field_name):
     """
 
     if pd.isna(field):
-        print(f"Missing date ({field_name}).")
+        print(f"{Fore.RED}Missing date ({field_name}).{Fore.RESET}")
 
         return
 
@@ -111,7 +116,9 @@ def date(field, field_name):
 
     # We don't allow multi-value date fields
     if len(multiple_dates) > 1:
-        print(f"Multiple dates not allowed ({field_name}): {field}")
+        print(
+            f"{Fore.RED}Multiple dates not allowed ({field_name}): {Fore.RESET}{field}"
+        )
 
         return field
 
@@ -145,7 +152,7 @@ def date(field, field_name):
 
         return field
     except ValueError:
-        print(f"Invalid date ({field_name}): {field}")
+        print(f"{Fore.RED}Invalid date ({field_name}): {Fore.RESET}{field}")
 
         return field
 
@@ -178,9 +185,7 @@ def suspicious_characters(field, field_name):
             # character and spanning enough of the rest to give a preview,
             # but not too much to cause the line to break in terminals with
             # a default of 80 characters width.
-            suspicious_character_msg = (
-                f"Suspicious character ({field_name}): {field_subset}"
-            )
+            suspicious_character_msg = f"{Fore.YELLOW}Suspicious character ({field_name}): {Fore.RESET}{field_subset}"
             print(f"{suspicious_character_msg:1.80}")
 
     return field
@@ -205,16 +210,16 @@ def language(field):
         # can check it against ISO 639-1 or ISO 639-3 accordingly.
         if len(value) == 2:
             if not languages.get(alpha_2=value):
-                print(f"Invalid ISO 639-1 language: {value}")
+                print(f"{Fore.RED}Invalid ISO 639-1 language: {Fore.RESET}{value}")
 
                 pass
         elif len(value) == 3:
             if not languages.get(alpha_3=value):
-                print(f"Invalid ISO 639-3 language: {value}")
+                print(f"{Fore.RED}Invalid ISO 639-3 language: {Fore.RESET}{value}")
 
                 pass
         else:
-            print(f"Invalid language: {value}")
+            print(f"{Fore.RED}Invalid language: {Fore.RESET}{value}")
 
     return field
 
@@ -256,7 +261,7 @@ def agrovoc(field, field_name):
 
             # check if there are any results
             if len(data["results"]) == 0:
-                print(f"Invalid AGROVOC ({field_name}): {value}")
+                print(f"{Fore.RED}Invalid AGROVOC ({field_name}): {Fore.RESET}{value}")
 
     return field
 
@@ -309,6 +314,6 @@ def filename_extension(field):
                 break
 
         if filename_extension_match is False:
-            print(f"Filename with uncommon extension: {value}")
+            print(f"{Fore.YELLOW}Filename with uncommon extension: {Fore.RESET}{value}")
 
     return field

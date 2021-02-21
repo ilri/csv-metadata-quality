@@ -1,4 +1,5 @@
 import pandas as pd
+from colorama import Fore
 
 
 def correct_language(row):
@@ -10,9 +11,10 @@ def correct_language(row):
     language and returns the value in the language field if it does match.
     """
 
-    from pycountry import languages
-    import langid
     import re
+
+    import langid
+    from pycountry import languages
 
     # Initialize some variables at global scope so that we can set them in the
     # loop scope below and still be able to access them afterwards.
@@ -83,12 +85,12 @@ def correct_language(row):
     detected_language = languages.get(alpha_2=langid_classification[0])
     if len(language) == 2 and language != detected_language.alpha_2:
         print(
-            f"Possibly incorrect language {language} (detected {detected_language.alpha_2}): {title}"
+            f"{Fore.YELLOW}Possibly incorrect language {language} (detected {detected_language.alpha_2}): {Fore.RESET}{title}"
         )
 
     elif len(language) == 3 and language != detected_language.alpha_3:
         print(
-            f"Possibly incorrect language {language} (detected {detected_language.alpha_3}): {title}"
+            f"{Fore.YELLOW}Possibly incorrect language {language} (detected {detected_language.alpha_3}): {Fore.RESET}{title}"
         )
 
     else:

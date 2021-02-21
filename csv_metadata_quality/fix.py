@@ -2,6 +2,7 @@ import re
 from unicodedata import normalize
 
 import pandas as pd
+from colorama import Fore
 
 from csv_metadata_quality.util import is_nfc
 
@@ -29,7 +30,9 @@ def whitespace(field, field_name):
         match = re.findall(pattern, value)
 
         if match:
-            print(f"Removing excessive whitespace ({field_name}): {value}")
+            print(
+                f"{Fore.GREEN}Removing excessive whitespace ({field_name}): {Fore.RESET}{value}"
+            )
             value = re.sub(pattern, " ", value)
 
         # Save cleaned value
@@ -62,7 +65,9 @@ def separators(field, field_name):
     for value in field.split("||"):
         # Check if the value is blank and skip it
         if value == "":
-            print(f"Fixing unnecessary multi-value separator ({field_name}): {field}")
+            print(
+                f"{Fore.GREEN}Fixing unnecessary multi-value separator ({field_name}): {Fore.RESET}{field}"
+            )
 
             continue
 
@@ -71,7 +76,9 @@ def separators(field, field_name):
         match = re.findall(pattern, value)
 
         if match:
-            print(f"Fixing invalid multi-value separator ({field_name}): {value}")
+            print(
+                f"{Fore.RED}Fixing invalid multi-value separator ({field_name}): {Fore.RESET}{value}"
+            )
 
             value = re.sub(pattern, "||", value)
 
@@ -107,7 +114,7 @@ def unnecessary_unicode(field):
     match = re.findall(pattern, field)
 
     if match:
-        print(f"Removing unnecessary Unicode (U+200B): {field}")
+        print(f"{Fore.GREEN}Removing unnecessary Unicode (U+200B): {Fore.RESET}{field}")
         field = re.sub(pattern, "", field)
 
     # Check for replacement characters (U+FFFD)
@@ -115,7 +122,7 @@ def unnecessary_unicode(field):
     match = re.findall(pattern, field)
 
     if match:
-        print(f"Removing unnecessary Unicode (U+FFFD): {field}")
+        print(f"{Fore.GREEN}Removing unnecessary Unicode (U+FFFD): {Fore.RESET}{field}")
         field = re.sub(pattern, "", field)
 
     # Check for no-break spaces (U+00A0)
@@ -123,7 +130,9 @@ def unnecessary_unicode(field):
     match = re.findall(pattern, field)
 
     if match:
-        print(f"Replacing unnecessary Unicode (U+00A0): {field}")
+        print(
+            f"{Fore.GREEN}Replacing unnecessary Unicode (U+00A0): {Fore.RESET}{field}"
+        )
         field = re.sub(pattern, " ", field)
 
     # Check for soft hyphens (U+00AD), sometimes preceeded with a normal hyphen
@@ -131,7 +140,9 @@ def unnecessary_unicode(field):
     match = re.findall(pattern, field)
 
     if match:
-        print(f"Replacing unnecessary Unicode (U+00AD): {field}")
+        print(
+            f"{Fore.GREEN}Replacing unnecessary Unicode (U+00AD): {Fore.RESET}{field}"
+        )
         field = re.sub(pattern, "-", field)
 
     return field
@@ -156,7 +167,9 @@ def duplicates(field, field_name):
         if value not in new_values:
             new_values.append(value)
         else:
-            print(f"Removing duplicate value ({field_name}): {value}")
+            print(
+                f"{Fore.GREEN}Removing duplicate value ({field_name}): {Fore.RESET}{value}"
+            )
 
     # Create a new field consisting of all values joined with "||"
     new_field = "||".join(new_values)
@@ -189,7 +202,7 @@ def newlines(field):
     match = re.findall(r"\n", field)
 
     if match:
-        print(f"Removing newline: {field}")
+        print(f"{Fore.GREEN}Removing newline: {Fore.RESET}{field}")
         field = field.replace("\n", "")
 
     return field
@@ -213,7 +226,9 @@ def comma_space(field, field_name):
     match = re.findall(r",\w", field)
 
     if match:
-        print(f"Adding space after comma ({field_name}): {field}")
+        print(
+            f"{Fore.GREEN}Adding space after comma ({field_name}): {Fore.RESET}{field}"
+        )
         field = re.sub(r",(\w)", r", \1", field)
 
     return field
@@ -234,7 +249,7 @@ def normalize_unicode(field, field_name):
 
     # Check if the current string is using normalized Unicode (NFC)
     if not is_nfc(field):
-        print(f"Normalizing Unicode ({field_name}): {field}")
+        print(f"{Fore.GREEN}Normalizing Unicode ({field_name}): {Fore.RESET}{field}")
         field = normalize("NFC", field)
 
     return field
