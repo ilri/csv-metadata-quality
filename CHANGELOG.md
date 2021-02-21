@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Accept dates formatted in ISO 8601 extended with combined date and time, for
 example: 2020-08-31T11:04:56Z
+- Colorized output: red for errors, yellow for warnings and information, green
+for changes
 
 ### Updated
 - Run `poetry update` to update project dependencies
