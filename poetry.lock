@@ -159,7 +159,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 name = "colorama"
 version = "0.4.4"
 description = "Cross-platform colored terminal text."
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
@@ -765,7 +765,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "63f2c6ef09652c4f8407660ff7b4690c8a07e5501eb8fc8c477f485de5888fcf"
+content-hash = "8c4ba410bbdc930d2d74f7864470a18827029a5697869833959708d7425460ae"
 
 [metadata.files]
 agate = [
