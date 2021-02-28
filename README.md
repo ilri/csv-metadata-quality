@@ -109,8 +109,6 @@ This currently uses the [Python langid](https://github.com/saffsd/langid.py) lib
 - Add an option to drop invalid AGROVOC subjects?
 - Add tests for application invocation, ie `tests/test_app.py`?
 - Validate ISSNs or journal titles against CrossRef API?
-- Better ISO 8601 date parsing (currently only supports simple dates, perhaps we need to use dateutil.parser.parseiso())
-- Fix lazy date check (assumes field name has "date" but could be dcterms.issued etc!)
 
 ## License
 This work is licensed under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html).
