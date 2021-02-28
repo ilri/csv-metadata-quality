@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased changes
+### Added
+- Check dates in dcterms.issued field as well, not just fields that have the
+word "date" in them
+
 ## [0.4.4] - 2021-02-21
 ### Added
 - Accept dates formatted in ISO 8601 extended with combined date and time, for
