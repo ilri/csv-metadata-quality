@@ -142,7 +142,7 @@ def run(argv):
             df[column] = df[column].apply(check.isbn)
 
         # Check: invalid date
-        match = re.match(r"^.*?date.*$", column)
+        match = re.match(r"^.*?(date|dcterms\.issued).*$", column)
         if match is not None:
             df[column] = df[column].apply(check.date, field_name=column)
 
