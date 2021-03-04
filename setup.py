@@ -14,7 +14,7 @@ install_requires = [
 
 setuptools.setup(
     name="csv-metadata-quality",
-    version="0.4.3",
+    version="0.4.4",
     author="Alan Orth",
     author_email="aorth@mjanja.ch",
     description="A simple, but opinionated CSV quality checking and fixing pipeline for CSVs in the DSpace ecosystem.",
