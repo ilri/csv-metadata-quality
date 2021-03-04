@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Check dates in dcterms.issued field as well, not just fields that have the
 word "date" in them
 
+### Updated
+- Run `poetry update` to update project dependencies
+
 ## [0.4.4] - 2021-02-21
 ### Added
 - Accept dates formatted in ISO 8601 extended with combined date and time, for
