@@ -7,6 +7,9 @@ license="GPL-3.0-only"
 repository = "https://github.com/ilri/csv-metadata-quality"
 homepage = "https://github.com/ilri/csv-metadata-quality"
 
+[tool.poetry.scripts]
+csv-metadata-quality = 'csv_metadata_quality.__main__:main'
+
 [tool.poetry.dependencies]
 python = "^3.8"
 pandas = "^1.0.4"
