@@ -13,6 +13,7 @@ If you use the DSpace CSV metadata quality checker please cite:
 - Validate languages against ISO 639-1 (alpha2) and ISO 639-3 (alpha3)
 - Experimental validation of titles and abstracts against item's Dublin Core language field
 - Validate subjects against the AGROVOC REST API (see the `--agrovoc-fields` option)
+- Validation of licenses against the list of [SPDX license identifiers](https://spdx.org/licenses)
 - Fix leading, trailing, and excessive (ie, more than one) whitespace
 - Fix invalid and unnecessary multi-value separators (`|`) using `--unsafe-fixes`
 - Fix problematic newlines (line feeds) using `--unsafe-fixes`
