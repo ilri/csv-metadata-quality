@@ -224,7 +224,7 @@ def test_check_invalid_agrovoc(capsys):
     """Test invalid AGROVOC subject."""
 
     value = "FOREST"
-    field_name = "dc.subject"
+    field_name = "dcterms.subject"
 
     check.agrovoc(value, field_name)
 
@@ -239,7 +239,7 @@ def test_check_valid_agrovoc():
     """Test valid AGROVOC subject."""
 
     value = "FORESTS"
-    field_name = "dc.subject"
+    field_name = "dcterms.subject"
 
     result = check.agrovoc(value, field_name)
 
