@@ -77,7 +77,7 @@ def separators(field, field_name):
 
         if match:
             print(
-                f"{Fore.RED}Fixing invalid multi-value separator ({field_name}): {Fore.RESET}{value}"
+                f"{Fore.GREEN}Fixing invalid multi-value separator ({field_name}): {Fore.RESET}{value}"
             )
 
             value = re.sub(pattern, "||", value)
