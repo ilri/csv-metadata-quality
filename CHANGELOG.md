@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Changed
 - Use DCTERMS fields where possible in `data/test.csv`
 
+### Updated
+- Run `poetry update` to update project dependencies
+
 ## [0.4.5] - 2021-03-04
 ### Added
 - Check dates in dcterms.issued field as well, not just fields that have the
