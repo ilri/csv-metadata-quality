@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 import pandas as pd
 import requests
 import requests_cache
+import spdx_license_list
 from colorama import Fore
 from pycountry import languages
 
@@ -315,5 +316,25 @@ def filename_extension(field):
 
         if filename_extension_match is False:
             print(f"{Fore.YELLOW}Filename with uncommon extension: {Fore.RESET}{value}")
+
+    return field
+
+
+def spdx_license_identifier(field):
+    """Check if a license is a valid SPDX identifier.
+
+    Prints the value if it is invalid.
+    """
+
+    # Skip fields with missing values
+    if pd.isna(field):
+        return
+
+    # Try to split multi-value field on "||" separator
+    for value in field.split("||"):
+        if value not in spdx_license_list.LICENSES:
+            print(f"{Fore.YELLOW}Non-SPDX license identifier: {Fore.RESET}{value}")
+
+            pass
 
     return field

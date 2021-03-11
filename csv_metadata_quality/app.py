@@ -150,6 +150,11 @@ def run(argv):
         if column == "filename":
             df[column] = df[column].apply(check.filename_extension)
 
+        # Check: SPDX license identifier
+        match = re.match(r"dcterms\.license.*$", column)
+        if match is not None:
+            df[column] = df[column].apply(check.spdx_license_identifier)
+
     ##
     # Perform some checks on rows so we can consider items as a whole rather
     # than simple on a field-by-field basis. This allows us to check whether
