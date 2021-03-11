@@ -1,4 +1,4 @@
-dc.title,dc.date.issued,dc.identifier.issn,dc.identifier.isbn,dc.language.iso,dc.subject,cg.coverage.country,filename,dcterms.license
+dc.title,dcterms.issued,dc.identifier.issn,dc.identifier.isbn,dcterms.language,dcterms.subject,cg.coverage.country,filename,dcterms.license
  Leading space,2019-07-29,,,,,,,
 Trailing space ,2019-07-29,,,,,,,
 Excessive  space,2019-07-29,,,,,,,
