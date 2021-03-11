@@ -336,3 +336,27 @@ def test_check_correct_iso_639_3_language():
     result = experimental.correct_language(series)
 
     assert result == language
+
+
+def test_check_valid_spdx_license_identifier():
+    """Test valid SPDX license identifier."""
+
+    license = "CC-BY-SA-4.0"
+
+    result = check.spdx_license_identifier(license)
+
+    assert result == license
+
+
+def test_check_invalid_spdx_license_identifier(capsys):
+    """Test invalid SPDX license identifier."""
+
+    license = "CC-BY-SA"
+
+    result = check.spdx_license_identifier(license)
+
+    captured = capsys.readouterr()
+    assert (
+        captured.out
+        == f"{Fore.YELLOW}Non-SPDX license identifier: {Fore.RESET}{license}\n"
+    )
