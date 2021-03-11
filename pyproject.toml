@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "csv-metadata-quality"
-version = "0.4.6"
+version = "0.4.6-dev"
 description="A simple, but opinionated CSV quality checking and fixing pipeline for CSVs in the DSpace ecosystem."
 authors = ["Alan Orth <alan.orth@gmail.com>"]
 license="GPL-3.0-only"
