@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## [0.4.6] - 2021-03-11
 ### Added
 - Validation of dcterms.license field against SPDX license identifiers 
 
@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Updated
 - Run `poetry update` to update project dependencies
+
+### Fixed
+- Output for all fixes should be green, because it is good
 
 ## [0.4.5] - 2021-03-04
 ### Added
