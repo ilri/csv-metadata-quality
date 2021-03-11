@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Added
 - Validation of dcterms.license field against SPDX license identifiers 
 
+## Changed
+- Use DCTERMS fields where possible in `data/test.csv`
+
 ## [0.4.5] - 2021-03-04
 ### Added
 - Check dates in dcterms.issued field as well, not just fields that have the
