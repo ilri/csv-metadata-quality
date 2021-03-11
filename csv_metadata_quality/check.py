@@ -1,3 +1,4 @@
+import re
 from datetime import datetime, timedelta
 
 import pandas as pd
@@ -6,6 +7,8 @@ import requests_cache
 import spdx_license_list
 from colorama import Fore
 from pycountry import languages
+from stdnum import isbn as stdnum_isbn
+from stdnum import issn as stdnum_issn
 
 
 def issn(field):
@@ -18,8 +21,6 @@ def issn(field):
     See: https://arthurdejong.org/python-stdnum/doc/1.11/index.html#stdnum.module.is_valid
     """
 
-    from stdnum import issn
-
     # Skip fields with missing values
     if pd.isna(field):
         return
@@ -27,7 +28,7 @@ def issn(field):
     # Try to split multi-value field on "||" separator
     for value in field.split("||"):
 
-        if not issn.is_valid(value):
+        if not stdnum_issn.is_valid(value):
             print(f"{Fore.RED}Invalid ISSN: {Fore.RESET}{value}")
 
     return field
@@ -43,8 +44,6 @@ def isbn(field):
     See: https://arthurdejong.org/python-stdnum/doc/1.11/index.html#stdnum.module.is_valid
     """
 
-    from stdnum import isbn
-
     # Skip fields with missing values
     if pd.isna(field):
         return
@@ -52,7 +51,7 @@ def isbn(field):
     # Try to split multi-value field on "||" separator
     for value in field.split("||"):
 
-        if not isbn.is_valid(value):
+        if not stdnum_isbn.is_valid(value):
             print(f"{Fore.RED}Invalid ISBN: {Fore.RESET}{value}")
 
     return field
@@ -67,8 +66,6 @@ def separators(field, field_name):
 
     Prints the field with the invalid multi-value separator.
     """
-
-    import re
 
     # Skip fields with missing values
     if pd.isna(field):
@@ -277,8 +274,6 @@ def filename_extension(field):
     This check warns if a filename has an uncommon extension (that is, other
     than .pdf, .xls(x), .doc(x), ppt(x), case insensitive).
     """
-
-    import re
 
     # Skip fields with missing values
     if pd.isna(field):
