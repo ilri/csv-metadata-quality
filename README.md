@@ -17,10 +17,10 @@ If you use the DSpace CSV metadata quality checker please cite:
 - Fix leading, trailing, and excessive (ie, more than one) whitespace
 - Fix invalid and unnecessary multi-value separators (`|`) using `--unsafe-fixes`
 - Fix problematic newlines (line feeds) using `--unsafe-fixes`
+- Perform [Unicode normalization](https://withblue.ink/2019/03/11/why-you-need-to-normalize-unicode-strings.html) on strings using `--unsafe-fixes`
 - Remove unnecessary Unicode like [non-breaking spaces](https://en.wikipedia.org/wiki/Non-breaking_space), [replacement characters](https://en.wikipedia.org/wiki/Specials_(Unicode_block)#Replacement_character), etc
 - Check for "suspicious" characters that indicate encoding or copy/paste issues, for example "foreˆt" should be "forêt"
 - Remove duplicate metadata values
-- Perform [Unicode normalization](https://withblue.ink/2019/03/11/why-you-need-to-normalize-unicode-strings.html) on strings using `--unsafe-fixes`
 
 ## Installation
 The easiest way to install CSV Metadata Quality is with [poetry](https://python-poetry.org):
@@ -56,7 +56,7 @@ $ csv-metadata-quality -i data/test.csv -o /tmp/test.csv
 ```
 
 ## Unsafe Fixes
-You can enable several "unsafe" fixes with the `--unsafe-fixes` option. Currently this will attempt to fix invalid multi-value separators and remove newlines.
+You can enable several "unsafe" fixes with the `--unsafe-fixes` option. Currently this will attempt to fix invalid multi-value separators, remove newlines, and perform Unicode normalization.
 
 ### Invalid Multi-Value Separators
 This is considered "unsafe" because it is *theoretically* possible for a single `|` character to be used legitimately in a metadata value, though in my experience it is always a typo. For example, if a user mistakenly writes `Kenya|Tanzania` when attempting to indicate two countries, the result will be one metadata value with the literal text `Kenya|Tanzania`. The `--unsafe-fixes` option will correct the invalid multi-value separator so that there are two metadata values, ie `Kenya||Tanzania`.
