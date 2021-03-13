@@ -15,7 +15,7 @@ If you use the DSpace CSV metadata quality checker please cite:
 - Validate subjects against the AGROVOC REST API (see the `--agrovoc-fields` option)
 - Validation of licenses against the list of [SPDX license identifiers](https://spdx.org/licenses)
 - Fix leading, trailing, and excessive (ie, more than one) whitespace
-- Fix invalid and unnecessary multi-value separators (`|`) using `--unsafe-fixes`
+- Fix invalid and unnecessary multi-value separators (`|`)
 - Fix problematic newlines (line feeds) using `--unsafe-fixes`
 - Perform [Unicode normalization](https://withblue.ink/2019/03/11/why-you-need-to-normalize-unicode-strings.html) on strings using `--unsafe-fixes`
 - Remove unnecessary Unicode like [non-breaking spaces](https://en.wikipedia.org/wiki/Non-breaking_space), [replacement characters](https://en.wikipedia.org/wiki/Specials_(Unicode_block)#Replacement_character), etc
@@ -55,13 +55,13 @@ To validate and clean a CSV file you must specify input and output files using t
 $ csv-metadata-quality -i data/test.csv -o /tmp/test.csv
 ```
 
-## Unsafe Fixes
-You can enable several "unsafe" fixes with the `--unsafe-fixes` option. Currently this will attempt to fix invalid multi-value separators, remove newlines, and perform Unicode normalization.
-
-### Invalid Multi-Value Separators
-This is considered "unsafe" because it is *theoretically* possible for a single `|` character to be used legitimately in a metadata value, though in my experience it is always a typo. For example, if a user mistakenly writes `Kenya|Tanzania` when attempting to indicate two countries, the result will be one metadata value with the literal text `Kenya|Tanzania`. The `--unsafe-fixes` option will correct the invalid multi-value separator so that there are two metadata values, ie `Kenya||Tanzania`.
+## Invalid Multi-Value Separators
+While it is *theoretically* possible for a single `|` character to be used legitimately in a metadata value, in my experience it is always a typo. For example, if a user mistakenly writes `Kenya|Tanzania` when attempting to indicate two countries, the result will be one metadata value with the literal text `Kenya|Tanzania`. This utility will correct the invalid multi-value separator so that there are two metadata values, ie `Kenya||Tanzania`.
 
 This will also remove unnecessary trailing multi-value separators, for example `Kenya||Tanzania||`.
+
+## Unsafe Fixes
+You can enable several "unsafe" fixes with the `--unsafe-fixes` option. Currently this will remove newlines and perform Unicode normalization.
 
 ### Newlines
 This is considered "unsafe" because some systems give special importance to vertical space and render it properly. DSpace does not support rendering newlines in its XMLUI and has, at times, suffered from parsing errors that cause the import process to fail if an input file had newlines. The `--unsafe-fixes` option strips Unix line feeds (U+000A).

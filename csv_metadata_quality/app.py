@@ -111,10 +111,9 @@ def run(argv):
         df[column] = df[column].apply(check.suspicious_characters, field_name=column)
 
         # Fix: invalid and unnecessary multi-value separators
-        if args.unsafe_fixes:
-            df[column] = df[column].apply(fix.separators, field_name=column)
-            # Run whitespace fix again after fixing invalid separators
-            df[column] = df[column].apply(fix.whitespace, field_name=column)
+        df[column] = df[column].apply(fix.separators, field_name=column)
+        # Run whitespace fix again after fixing invalid separators
+        df[column] = df[column].apply(fix.whitespace, field_name=column)
 
         # Fix: duplicate metadata values
         df[column] = df[column].apply(fix.duplicates, field_name=column)
