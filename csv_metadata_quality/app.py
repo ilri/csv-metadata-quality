@@ -17,7 +17,7 @@ def parse_args(argv):
     parser.add_argument(
         "--agrovoc-fields",
         "-a",
-        help="Comma-separated list of fields to validate against AGROVOC, for example: dc.subject,cg.coverage.country",
+        help="Comma-separated list of fields to validate against AGROVOC, for example: dcterms.subject,cg.coverage.country",
     )
     parser.add_argument(
         "--experimental-checks",
@@ -48,7 +48,7 @@ def parse_args(argv):
     parser.add_argument(
         "--exclude-fields",
         "-x",
-        help="Comma-separated list of fields to skip, for example: dc.contributor.author,dc.identifier.citation",
+        help="Comma-separated list of fields to skip, for example: dc.contributor.author,dcterms.bibliographicCitation",
     )
     args = parser.parse_args()
 
