@@ -13,6 +13,10 @@ ified as "unsafe" as I have yet to see a case where this was intentional
 - Configurable directory for AGROVOC requests cache (to allow running the web
 version from Google App Engine where we can only write to /tmp)
 
+### Removed
+- Checks for invalid and unnecessary multi-value separators because now I fix
+them whenever I see them, so there is no need to have checks for them
+
 ## [0.4.6] - 2021-03-11
 ### Added
 - Validation of dcterms.license field against SPDX license identifiers 
