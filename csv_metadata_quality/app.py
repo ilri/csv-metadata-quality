@@ -104,9 +104,6 @@ def run(argv):
         # Fix: unnecessary Unicode
         df[column] = df[column].apply(fix.unnecessary_unicode)
 
-        # Check: invalid and unnecessary multi-value separators
-        df[column] = df[column].apply(check.separators, field_name=column)
-
         # Check: suspicious characters
         df[column] = df[column].apply(check.suspicious_characters, field_name=column)
 

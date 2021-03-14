@@ -47,50 +47,6 @@ def test_check_valid_isbn():
     assert result == value
 
 
-def test_check_invalid_separators(capsys):
-    """Test checking invalid multi-value separators."""
-
-    value = "Alan|Orth"
-
-    field_name = "dc.contributor.author"
-
-    check.separators(value, field_name)
-
-    captured = capsys.readouterr()
-    assert (
-        captured.out
-        == f"{Fore.RED}Invalid multi-value separator ({field_name}): {Fore.RESET}{value}\n"
-    )
-
-
-def test_check_unnecessary_separators(capsys):
-    """Test checking unnecessary multi-value separators."""
-
-    field = "Alan||Orth||"
-
-    field_name = "dc.contributor.author"
-
-    check.separators(field, field_name)
-
-    captured = capsys.readouterr()
-    assert (
-        captured.out
-        == f"{Fore.RED}Unnecessary multi-value separator ({field_name}): {Fore.RESET}{field}\n"
-    )
-
-
-def test_check_valid_separators():
-    """Test checking valid multi-value separators."""
-
-    value = "Alan||Orth"
-
-    field_name = "dc.contributor.author"
-
-    result = check.separators(value, field_name)
-
-    assert result == value
-
-
 def test_check_missing_date(capsys):
     """Test checking missing date."""
 
