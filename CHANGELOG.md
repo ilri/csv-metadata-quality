@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixing invalid multi-value separators like `|` and `|||` is no longer class-
 ified as "unsafe" as I have yet to see a case where this was intentional
 
+### Added
+- Configurable directory for AGROVOC requests cache (to allow running the web
+version from Google App Engine where we can only write to /tmp)
+
 ## [0.4.6] - 2021-03-11
 ### Added
 - Validation of dcterms.license field against SPDX license identifiers 
