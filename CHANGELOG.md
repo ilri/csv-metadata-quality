@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Fixing invalid multi-value separators like `|` and `|||` is no longer class-
 ified as "unsafe" as I have yet to see a case where this was intentional
+- Not user visible, but now checks only print a warning to the screen instead
+of returning a value and re-writing the DataFrame, which should be faster and
+use less memory
 
 ### Added
 - Configurable directory for AGROVOC requests cache (to allow running the web
