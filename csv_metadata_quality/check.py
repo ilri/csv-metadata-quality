@@ -211,7 +211,9 @@ def agrovoc(field, field_name):
     # running in an environment where we can't write to the current working di-
     # rectory (for example from csv-metadata-quality-web).
     REQUESTS_CACHE_DIR = os.environ.get("REQUESTS_CACHE_DIR", ".")
-    requests_cache.install_cache(f"{REQUESTS_CACHE_DIR}/agrovoc-response-cache", expire_after=expire_after)
+    requests_cache.install_cache(
+        f"{REQUESTS_CACHE_DIR}/agrovoc-response-cache", expire_after=expire_after
+    )
 
     # prune old cache entries
     requests_cache.core.remove_expired_responses()
