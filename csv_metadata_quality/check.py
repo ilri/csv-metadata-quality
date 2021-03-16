@@ -32,7 +32,7 @@ def issn(field):
         if not stdnum_issn.is_valid(value):
             print(f"{Fore.RED}Invalid ISSN: {Fore.RESET}{value}")
 
-    return field
+    return
 
 
 def isbn(field):
@@ -55,7 +55,7 @@ def isbn(field):
         if not stdnum_isbn.is_valid(value):
             print(f"{Fore.RED}Invalid ISBN: {Fore.RESET}{value}")
 
-    return field
+    return
 
 
 def date(field, field_name):
@@ -83,13 +83,13 @@ def date(field, field_name):
             f"{Fore.RED}Multiple dates not allowed ({field_name}): {Fore.RESET}{field}"
         )
 
-        return field
+        return
 
     try:
         # Check if date is valid YYYY format
         datetime.strptime(field, "%Y")
 
-        return field
+        return
     except ValueError:
         pass
 
@@ -97,7 +97,7 @@ def date(field, field_name):
         # Check if date is valid YYYY-MM format
         datetime.strptime(field, "%Y-%m")
 
-        return field
+        return
     except ValueError:
         pass
 
@@ -105,7 +105,7 @@ def date(field, field_name):
         # Check if date is valid YYYY-MM-DD format
         datetime.strptime(field, "%Y-%m-%d")
 
-        return field
+        return
     except ValueError:
         pass
 
@@ -113,11 +113,11 @@ def date(field, field_name):
         # Check if date is valid YYYY-MM-DDTHH:MM:SSZ format
         datetime.strptime(field, "%Y-%m-%dT%H:%M:%SZ")
 
-        return field
+        return
     except ValueError:
         print(f"{Fore.RED}Invalid date ({field_name}): {Fore.RESET}{field}")
 
-        return field
+        return
 
 
 def suspicious_characters(field, field_name):
@@ -151,7 +151,7 @@ def suspicious_characters(field, field_name):
             suspicious_character_msg = f"{Fore.YELLOW}Suspicious character ({field_name}): {Fore.RESET}{field_subset}"
             print(f"{suspicious_character_msg:1.80}")
 
-    return field
+    return
 
 
 def language(field):
@@ -184,7 +184,7 @@ def language(field):
         else:
             print(f"{Fore.RED}Invalid language: {Fore.RESET}{value}")
 
-    return field
+    return
 
 
 def agrovoc(field, field_name):
@@ -230,7 +230,7 @@ def agrovoc(field, field_name):
             if len(data["results"]) == 0:
                 print(f"{Fore.RED}Invalid AGROVOC ({field_name}): {Fore.RESET}{value}")
 
-    return field
+    return
 
 
 def filename_extension(field):
@@ -281,7 +281,7 @@ def filename_extension(field):
         if filename_extension_match is False:
             print(f"{Fore.YELLOW}Filename with uncommon extension: {Fore.RESET}{value}")
 
-    return field
+    return
 
 
 def spdx_license_identifier(field):
@@ -301,4 +301,4 @@ def spdx_license_identifier(field):
 
             pass
 
-    return field
+    return

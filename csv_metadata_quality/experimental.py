@@ -94,4 +94,4 @@ def correct_language(row):
         )
 
     else:
-        return language
+        return

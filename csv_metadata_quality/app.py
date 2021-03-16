@@ -105,7 +105,7 @@ def run(argv):
         df[column] = df[column].apply(fix.unnecessary_unicode)
 
         # Check: suspicious characters
-        df[column] = df[column].apply(check.suspicious_characters, field_name=column)
+        df[column].apply(check.suspicious_characters, field_name=column)
 
         # Fix: invalid and unnecessary multi-value separators
         df[column] = df[column].apply(fix.separators, field_name=column)
@@ -120,36 +120,36 @@ def run(argv):
             # Identify fields the user wants to validate against AGROVOC
             for field in args.agrovoc_fields.split(","):
                 if column == field:
-                    df[column] = df[column].apply(check.agrovoc, field_name=column)
+                    df[column].apply(check.agrovoc, field_name=column)
 
         # Check: invalid language
         match = re.match(r"^.*?language.*$", column)
         if match is not None:
-            df[column] = df[column].apply(check.language)
+            df[column].apply(check.language)
 
         # Check: invalid ISSN
         match = re.match(r"^.*?issn.*$", column)
         if match is not None:
-            df[column] = df[column].apply(check.issn)
+            df[column].apply(check.issn)
 
         # Check: invalid ISBN
         match = re.match(r"^.*?isbn.*$", column)
         if match is not None:
-            df[column] = df[column].apply(check.isbn)
+            df[column].apply(check.isbn)
 
         # Check: invalid date
         match = re.match(r"^.*?(date|dcterms\.issued).*$", column)
         if match is not None:
-            df[column] = df[column].apply(check.date, field_name=column)
+            df[column].apply(check.date, field_name=column)
 
         # Check: filename extension
         if column == "filename":
-            df[column] = df[column].apply(check.filename_extension)
+            df[column].apply(check.filename_extension)
 
         # Check: SPDX license identifier
         match = re.match(r"dcterms\.license.*$", column)
         if match is not None:
-            df[column] = df[column].apply(check.spdx_license_identifier)
+            df[column].apply(check.spdx_license_identifier)
 
     ##
     # Perform some checks on rows so we can consider items as a whole rather

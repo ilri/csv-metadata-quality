@@ -23,7 +23,7 @@ def test_check_valid_issn():
 
     result = check.issn(value)
 
-    assert result == value
+    assert result == None
 
 
 def test_check_invalid_isbn(capsys):
@@ -44,7 +44,7 @@ def test_check_valid_isbn():
 
     result = check.isbn(value)
 
-    assert result == value
+    assert result == None
 
 
 def test_check_missing_date(capsys):
@@ -100,7 +100,7 @@ def test_check_valid_date():
 
     result = check.date(value, field_name)
 
-    assert result == value
+    assert result == None
 
 
 def test_check_suspicious_characters(capsys):
@@ -126,7 +126,7 @@ def test_check_valid_iso639_1_language():
 
     result = check.language(value)
 
-    assert result == value
+    assert result == None
 
 
 def test_check_valid_iso639_3_language():
@@ -136,7 +136,7 @@ def test_check_valid_iso639_3_language():
 
     result = check.language(value)
 
-    assert result == value
+    assert result == None
 
 
 def test_check_invalid_iso639_1_language(capsys):
@@ -199,7 +199,7 @@ def test_check_valid_agrovoc():
 
     result = check.agrovoc(value, field_name)
 
-    assert result == value
+    assert result == None
 
 
 def test_check_uncommon_filename_extension(capsys):
@@ -223,7 +223,7 @@ def test_check_common_filename_extension():
 
     result = check.filename_extension(value)
 
-    assert result == value
+    assert result == None
 
 
 def test_check_incorrect_iso_639_1_language(capsys):
@@ -276,7 +276,7 @@ def test_check_correct_iso_639_1_language():
 
     result = experimental.correct_language(series)
 
-    assert result == language
+    assert result == None
 
 
 def test_check_correct_iso_639_3_language():
@@ -291,7 +291,7 @@ def test_check_correct_iso_639_3_language():
 
     result = experimental.correct_language(series)
 
-    assert result == language
+    assert result == None
 
 
 def test_check_valid_spdx_license_identifier():
@@ -301,7 +301,7 @@ def test_check_valid_spdx_license_identifier():
 
     result = check.spdx_license_identifier(license)
 
-    assert result == license
+    assert result == None
 
 
 def test_check_invalid_spdx_license_identifier(capsys):
