@@ -1,5 +1,9 @@
+import re
+
+import langid
 import pandas as pd
 from colorama import Fore
+from pycountry import languages
 
 
 def correct_language(row):
@@ -10,11 +14,6 @@ def correct_language(row):
     Function prints an error if the language field does not match the detected
     language and returns the value in the language field if it does match.
     """
-
-    import re
-
-    import langid
-    from pycountry import languages
 
     # Initialize some variables at global scope so that we can set them in the
     # loop scope below and still be able to access them afterwards.
