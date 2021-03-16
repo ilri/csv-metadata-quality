@@ -112,10 +112,14 @@ This currently uses the [Python langid](https://github.com/saffsd/langid.py) lib
 - Add configurable field validation, like specify a field name and a validation file?
   - Perhaps like --validate=field.name,filename
 - Add some row-based item sanity checks and fixes:
-    - Warn if item is Open Access, but missing a filename or URL
-    - Warn if item is Open Access, but missing a license
-    - Warn if item has an ISSN but no journal title
-    - Update journal titles from ISSN
+  - Warn if item is Open Access, but missing a filename or URL
+  - Warn if item is Open Access, but missing a license
+  - Warn if item has an ISSN but no journal title
+  - Update journal titles from ISSN
+- Check for duplicates
+  - If I check titles only, then I might miss if one is a Report and another is a Presentation
+  - I could just check each item against each other item, but that sounds slow...
+  - Perhaps I could check for the number of unique values in a few rows, like title and doi, and see if it is the same as the total number of items
 
 ## License
 This work is licensed under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html).
