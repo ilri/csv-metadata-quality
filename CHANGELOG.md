@@ -15,6 +15,8 @@ use less memory
 ### Added
 - Configurable directory for AGROVOC requests cache (to allow running the web
 version from Google App Engine where we can only write to /tmp)
+- Ability to check for duplicate items in the data set (uses a combination of
+the title, type, and date issued to determine uniqueness)
 
 ### Removed
 - Checks for invalid and unnecessary multi-value separators because now I fix
