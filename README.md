@@ -21,6 +21,7 @@ If you use the DSpace CSV metadata quality checker please cite:
 - Remove unnecessary Unicode like [non-breaking spaces](https://en.wikipedia.org/wiki/Non-breaking_space), [replacement characters](https://en.wikipedia.org/wiki/Specials_(Unicode_block)#Replacement_character), etc
 - Check for "suspicious" characters that indicate encoding or copy/paste issues, for example "foreˆt" should be "forêt"
 - Remove duplicate metadata values
+- Check for duplicate items, using the title, type, and date issued as an indicator
 
 ## Installation
 The easiest way to install CSV Metadata Quality is with [poetry](https://python-poetry.org):
@@ -116,10 +117,6 @@ This currently uses the [Python langid](https://github.com/saffsd/langid.py) lib
   - Warn if item is Open Access, but missing a license
   - Warn if item has an ISSN but no journal title
   - Update journal titles from ISSN
-- Check for duplicates
-  - If I check titles only, then I might miss if one is a Report and another is a Presentation
-  - I could just check each item against each other item, but that sounds slow...
-  - Perhaps I could check for the number of unique values in a few rows, like title and doi, and see if it is the same as the total number of items
 
 ## License
 This work is licensed under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html).
