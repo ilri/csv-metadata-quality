@@ -22,6 +22,9 @@ the title, type, and date issued to determine uniqueness)
 - Checks for invalid and unnecessary multi-value separators because now I fix
 them whenever I see them, so there is no need to have checks for them
 
+### Updated
+- Run `poetry update` to update project dependencies
+
 ## [0.4.6] - 2021-03-11
 ### Added
 - Validation of dcterms.license field against SPDX license identifiers 
