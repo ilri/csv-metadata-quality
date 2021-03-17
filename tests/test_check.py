@@ -316,3 +316,26 @@ def test_check_invalid_spdx_license_identifier(capsys):
         captured.out
         == f"{Fore.YELLOW}Non-SPDX license identifier: {Fore.RESET}{license}\n"
     )
+
+
+def test_check_duplicate_item(capsys):
+    """Test item with duplicate title, type, and date."""
+
+    item_title = "Title"
+    item_type = "Report"
+    item_date = "2021-03-17"
+
+    d = {
+        "dc.title": [item_title, item_title],
+        "dcterms.type": [item_type, item_type],
+        "dcterms.issued": [item_date, item_date],
+    }
+    df = pd.DataFrame(data=d)
+
+    result = check.duplicate_items(df)
+
+    captured = capsys.readouterr()
+    assert (
+        captured.out
+        == f"{Fore.YELLOW}Possible duplicate (dc.title): {Fore.RESET}{item_title}\n"
+    )
