@@ -151,6 +151,18 @@ def run(argv):
         if match is not None:
             df[column].apply(check.spdx_license_identifier)
 
+    ### End individual column checks ###
+
+    # Check: duplicate items
+    # We extract just the title, type, and date issued columns to analyze
+    duplicates_df = df.filter(
+        regex=r"dcterms\.title|dc\.title|dcterms\.type|dc\.type|dcterms\.issued|dc\.date\.issued"
+    )
+    check.duplicate_items(duplicates_df)
+
+    # Delete the temporary duplicates DataFrame
+    del duplicates_df
+
     ##
     # Perform some checks on rows so we can consider items as a whole rather
     # than simple on a field-by-field basis. This allows us to check whether

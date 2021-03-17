@@ -304,3 +304,44 @@ def spdx_license_identifier(field):
             pass
 
     return
+
+
+def duplicate_items(df):
+    """Attempt to identify duplicate items.
+
+    First we check the total number of titles and compare it with the number of
+    unique titles. If there are less unique titles than total titles we expand
+    the search by creating a key (of sorts) for each item that includes their
+    title, type, and date issued, and compare it with all the others. If there
+    are multiple occurrences of the same title, type, date string then it's a
+    very good indicator that the items are duplicates.
+    """
+
+    # Extract the names of the title, type, and date issued columns so we can
+    # reference them later. First we filter columns by likely patterns, then
+    # we extract the name from the first item of the resulting object, ie:
+    #
+    #   Index(['dcterms.title[en_US]'], dtype='object')
+    #
+    title_column_name = df.filter(regex=r"dcterms\.title|dc\.title").columns[0]
+    type_column_name = df.filter(regex=r"dcterms\.title|dc\.title").columns[0]
+    date_column_name = df.filter(
+        regex=r"dcterms\.issued|dc\.date\.accessioned"
+    ).columns[0]
+
+    items_count_total = df[title_column_name].count()
+    items_count_unique = df[title_column_name].nunique()
+
+    if items_count_unique < items_count_total:
+        # Create a list to hold our items while we check for duplicates
+        items = list()
+
+        for index, row in df.iterrows():
+            item_title_type_date = f"{row[title_column_name]}{row[type_column_name]}{row[date_column_name]}"
+
+            if item_title_type_date in items:
+                print(
+                    f"{Fore.YELLOW}Possible duplicate ({title_column_name}): {Fore.RESET}{row[title_column_name]}"
+                )
+            else:
+                items.append(item_title_type_date)
