@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: GPL-3.0-only
+
 from sys import argv
 
 from csv_metadata_quality import app

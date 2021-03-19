@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: GPL-3.0-only
+
 from ftfy.badness import sequence_weirdness
 
 

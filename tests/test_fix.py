@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: GPL-3.0-only
+
 import csv_metadata_quality.fix as fix
 
 
