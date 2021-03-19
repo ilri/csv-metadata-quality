@@ -20,6 +20,7 @@ If you use the DSpace CSV metadata quality checker please cite:
 - Perform [Unicode normalization](https://withblue.ink/2019/03/11/why-you-need-to-normalize-unicode-strings.html) on strings using `--unsafe-fixes`
 - Remove unnecessary Unicode like [non-breaking spaces](https://en.wikipedia.org/wiki/Non-breaking_space), [replacement characters](https://en.wikipedia.org/wiki/Specials_(Unicode_block)#Replacement_character), etc
 - Check for "suspicious" characters that indicate encoding or copy/paste issues, for example "foreˆt" should be "forêt"
+- Check for "mojibake" characters (and attempt to fix with `--unsafe-fixes`)
 - Remove duplicate metadata values
 - Check for duplicate items, using the title, type, and date issued as an indicator
 
@@ -74,6 +75,14 @@ This is considered "unsafe" because some systems give special importance to vert
 - `é` is the Unicode code points `U+0065` + `U+0301`
 
 Read more about [Unicode normalization](https://withblue.ink/2019/03/11/why-you-need-to-normalize-unicode-strings.html).
+
+### Encoding Issues aka "Mojibake"
+[Mojibake](https://en.wikipedia.org/wiki/Mojibake) is a phenomenon that occurs when text is decoded using an unintended character encoding. This usually presents itself in the form of strange, garbled characters in the text. Enabling "unsafe" fixes will attempt to correct these, for example:
+
+- CIAT PublicaÃ§ao → CIAT Publicaçao
+- CIAT PublicaciÃ³n → CIAT Publicación
+
+Pay special attention to the output of the script as well as the resulting file to make sure no new issues have been introduced. The ideal way to solve these issues is to avoid it in the first place. See [this guide about opening CSVs in UTF-8 format in Excel](https://www.itg.ias.edu/content/how-import-csv-file-uses-utf-8-character-encoding-0).
 
 ## AGROVOC Validation
 You can enable validation of metadata values in certain fields against the AGROVOC REST API with the `--agrovoc-fields` option. For example, in addition to agricultural subjects, many countries and regions are also present AGROVOC. Enable this validation by specifying a comma-separated list of fields:
