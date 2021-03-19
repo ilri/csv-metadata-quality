@@ -63,7 +63,7 @@ While it is *theoretically* possible for a single `|` character to be used legit
 This will also remove unnecessary trailing multi-value separators, for example `Kenya||Tanzania||`.
 
 ## Unsafe Fixes
-You can enable several "unsafe" fixes with the `--unsafe-fixes` option. Currently this will remove newlines and perform Unicode normalization.
+You can enable several "unsafe" fixes with the `--unsafe-fixes` option. Currently this will remove newlines, perform Unicode normalization, and attempt to fix "mojibake" characters.
 
 ### Newlines
 This is considered "unsafe" because some systems give special importance to vertical space and render it properly. DSpace does not support rendering newlines in its XMLUI and has, at times, suffered from parsing errors that cause the import process to fail if an input file had newlines. The `--unsafe-fixes` option strips Unix line feeds (U+000A).
