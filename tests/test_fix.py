@@ -108,3 +108,12 @@ def test_fix_decomposed_unicode():
     field_name = "dc.contributor.author"
 
     assert fix.normalize_unicode(value, field_name) == "Ouédraogo, Mathieu"
+
+
+def test_fix_mojibake():
+    """Test string with no mojibake."""
+
+    field = "CIAT PublicaÃ§ao"
+    field_name = "dcterms.isPartOf"
+
+    assert fix.mojibake(field, field_name) == "CIAT Publicaçao"

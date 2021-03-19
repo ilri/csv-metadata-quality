@@ -339,3 +339,29 @@ def test_check_duplicate_item(capsys):
         captured.out
         == f"{Fore.YELLOW}Possible duplicate (dc.title): {Fore.RESET}{item_title}\n"
     )
+
+
+def test_check_no_mojibake():
+    """Test string with no mojibake."""
+
+    field = "CIAT Publicaçao"
+    field_name = "dcterms.isPartOf"
+
+    result = check.mojibake(field, field_name)
+
+    assert result == None
+
+
+def test_check_mojibake(capsys):
+    """Test string with mojibake."""
+
+    field = "CIAT PublicaÃ§ao"
+    field_name = "dcterms.isPartOf"
+
+    result = check.mojibake(field, field_name)
+
+    captured = capsys.readouterr()
+    assert (
+        captured.out
+        == f"{Fore.YELLOW}Possible encoding issue ({field_name}): {Fore.RESET}{field}\n"
+    )
