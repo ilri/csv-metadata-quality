@@ -21,6 +21,7 @@ pycountry = "^19.8.18"
 langid = "^1.1.6"
 colorama = "^0.4.4"
 spdx-license-list = "^0.5.2"
+ftfy = "^5.9"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.1.1"

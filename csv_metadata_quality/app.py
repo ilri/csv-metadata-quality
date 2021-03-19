@@ -107,6 +107,13 @@ def run(argv):
         # Check: suspicious characters
         df[column].apply(check.suspicious_characters, field_name=column)
 
+        # Check: mojibake
+        df[column].apply(check.mojibake, field_name=column)
+
+        # Fix: mojibake
+        if args.unsafe_fixes:
+            df[column] = df[column].apply(fix.mojibake, field_name=column)
+
         # Fix: invalid and unnecessary multi-value separators
         df[column] = df[column].apply(fix.separators, field_name=column)
         # Run whitespace fix again after fixing invalid separators

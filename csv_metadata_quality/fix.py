@@ -3,8 +3,9 @@ from unicodedata import normalize
 
 import pandas as pd
 from colorama import Fore
+from ftfy import fix_text
 
-from csv_metadata_quality.util import is_nfc
+from csv_metadata_quality.util import is_mojibake, is_nfc
 
 
 def whitespace(field, field_name):
@@ -253,3 +254,22 @@ def normalize_unicode(field, field_name):
         field = normalize("NFC", field)
 
     return field
+
+
+def mojibake(field, field_name):
+    """Attempts to fix mojibake (text that was encoded in one encoding and deco-
+    ded in another, perhaps multiple times). See util.py.
+
+    Return fixed string.
+    """
+
+    # Skip fields with missing values
+    if pd.isna(field):
+        return field
+
+    if is_mojibake(field):
+        print(f"{Fore.GREEN}Fixing encoding issue ({field_name}): {Fore.RESET}{field}")
+
+        return fix_text(field)
+    else:
+        return field

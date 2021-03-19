@@ -11,6 +11,8 @@ from pycountry import languages
 from stdnum import isbn as stdnum_isbn
 from stdnum import issn as stdnum_issn
 
+from csv_metadata_quality.util import is_mojibake
+
 
 def issn(field):
     """Check if an ISSN is valid.
@@ -345,3 +347,22 @@ def duplicate_items(df):
                 )
             else:
                 items.append(item_title_type_date)
+
+
+def mojibake(field, field_name):
+    """Check for mojibake (text that was encoded in one encoding and decoded in
+    in another, perhaps multiple times). See util.py.
+
+    Prints the string if it contains suspected mojibake.
+    """
+
+    # Skip fields with missing values
+    if pd.isna(field):
+        return
+
+    if is_mojibake(field):
+        print(
+            f"{Fore.YELLOW}Possible encoding issue ({field_name}): {Fore.RESET}{field}"
+        )
+
+    return
