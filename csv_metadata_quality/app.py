@@ -164,13 +164,16 @@ def run(argv):
 
     # Check: duplicate items
     # We extract just the title, type, and date issued columns to analyze
-    duplicates_df = df.filter(
-        regex=r"dcterms\.title|dc\.title|dcterms\.type|dc\.type|dcterms\.issued|dc\.date\.issued"
-    )
-    check.duplicate_items(duplicates_df)
+    try:
+        duplicates_df = df.filter(
+            regex=r"dcterms\.title|dc\.title|dcterms\.type|dc\.type|dcterms\.issued|dc\.date\.issued"
+        )
+        check.duplicate_items(duplicates_df)
 
-    # Delete the temporary duplicates DataFrame
-    del duplicates_df
+        # Delete the temporary duplicates DataFrame
+        del duplicates_df
+    except IndexError:
+        pass
 
     ##
     # Perform some checks on rows so we can consider items as a whole rather
