@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Ability to check for, and fix, "mojibake" characters using [ftfy](https://github.com/LuminosoInsight/python-ftfy)
 
+### Updated
+- Python dependencies
+
 ## [0.4.7] - 2021-03-17
 ### Changed
 - Fixing invalid multi-value separators like `|` and `|||` is no longer class-
