@@ -178,13 +178,9 @@ def language(field):
         if len(value) == 2:
             if not languages.get(alpha_2=value):
                 print(f"{Fore.RED}Invalid ISO 639-1 language: {Fore.RESET}{value}")
-
-                pass
         elif len(value) == 3:
             if not languages.get(alpha_3=value):
                 print(f"{Fore.RED}Invalid ISO 639-3 language: {Fore.RESET}{value}")
-
-                pass
         else:
             print(f"{Fore.RED}Invalid language: {Fore.RESET}{value}")
 
@@ -304,8 +300,6 @@ def spdx_license_identifier(field):
     for value in field.split("||"):
         if value not in spdx_license_list.LICENSES:
             print(f"{Fore.YELLOW}Non-SPDX license identifier: {Fore.RESET}{value}")
-
-            pass
 
     return
 
