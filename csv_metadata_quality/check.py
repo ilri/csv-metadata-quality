@@ -216,7 +216,7 @@ def agrovoc(field, field_name):
     )
 
     # prune old cache entries
-    requests_cache.core.remove_expired_responses()
+    requests_cache.remove_expired_responses()
 
     # Try to split multi-value field on "||" separator
     for value in field.split("||"):
