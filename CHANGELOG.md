@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Updated
 - Python dependencies
+- Regular expression to match all citation fields (dc.identifier.citation as
+well as dcterms.bibliographicCitation)
 
 ## [0.4.7] - 2021-03-17
 ### Changed
