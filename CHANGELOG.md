@@ -13,9 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Regular expression to match all citation fields (dc.identifier.citation as
-well as dcterms.bibliographicCitation)
+well as dcterms.bibliographicCitation) in `experimental.correct_language()`
 - Regular expression to match dc.title and dcterms.title, but
-ignore dc.title.alternative 
+ignore dc.title.alternative `check.duplicate_items()`
 
 ## [0.4.7] - 2021-03-17
 ### Changed
