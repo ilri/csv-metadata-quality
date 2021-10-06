@@ -186,11 +186,16 @@ def run(argv):
     # column. For now it will have to do.
     ##
 
-    if args.experimental_checks:
-        # Transpose the DataFrame so we can consider each row as a column
-        df_transposed = df.T
+    # Transpose the DataFrame so we can consider each row as a column
+    df_transposed = df.T
 
-        for column in df_transposed.columns:
+    # Remember, here a "column" is an item (previously row). Perhaps I
+    # should rename column in this for loop...
+    for column in df_transposed.columns:
+        # Check: citation DOI
+        check.citation_doi(df_transposed[column])
+
+        if args.experimental_checks:
             experimental.correct_language(df_transposed[column])
 
     # Write

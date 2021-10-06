@@ -367,3 +367,44 @@ def test_check_mojibake(capsys):
         captured.out
         == f"{Fore.YELLOW}Possible encoding issue ({field_name}): {Fore.RESET}{field}\n"
     )
+
+
+def test_check_doi_field():
+    """Test an item with a DOI field."""
+
+    doi = "https://doi.org/10.1186/1743-422X-9-218"
+    citation = "Orth, A. 2021. Testing all the things. doi: 10.1186/1743-422X-9-218"
+
+    # Emulate a column in a transposed dataframe (which is just a series), with
+    # the citation and an empty DOI field.
+    d = {
+        "cg.identifier.doi": doi,
+        "dcterms.bibliographicCitation": citation
+    }
+    series = pd.Series(data=d)
+
+    result = check.citation_doi(series)
+
+    assert result == None
+
+
+def test_check_doi_only_in_citation(capsys):
+    """Test an item with a DOI in its citation, but no DOI field."""
+
+    citation = "Orth, A. 2021. Testing all the things. doi: 10.1186/1743-422X-9-218"
+
+    # Emulate a column in a transposed dataframe (which is just a series), with
+    # an empty DOI field and a citation containing a DOI.
+    d = {
+        "cg.identifier.doi": None,
+        "dcterms.bibliographicCitation": citation
+    }
+    series = pd.Series(data=d)
+
+    check.citation_doi(series)
+
+    captured = capsys.readouterr()
+    assert (
+        captured.out
+        == f"{Fore.YELLOW}DOI in citation, but missing a DOI field: {Fore.RESET}{citation}\n"
+    )

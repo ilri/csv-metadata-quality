@@ -368,3 +368,45 @@ def mojibake(field, field_name):
         )
 
     return
+
+
+def citation_doi(row):
+    """Check for the scenario where an item has a DOI listed in its citation,
+    but does not have a cg.identifier.doi field.
+
+    Function prints a warning if the DOI field is missing, but there is a DOI
+    in the citation.
+    """
+    # Initialize some variables at global scope so that we can set them in the
+    # loop scope below and still be able to access them afterwards.
+    citation = ""
+
+    # Iterate over the labels of the current row's values to check if a DOI
+    # exists. If not, then we extract the citation to see if there is a DOI
+    # listed there.
+    for label in row.axes[0]:
+        # Skip fields with missing values
+        if pd.isna(row[label]):
+            continue
+
+        # If a DOI field exists we don't need to check the citation
+        match = re.match(r"^.*?doi.*$", label)
+        if match is not None:
+            return
+
+        # Get the name of the citation field
+        match = re.match(r"^.*?[cC]itation.*$", label)
+        if match is not None:
+            citation = row[label]
+
+    if citation != "":
+        # Check the citation for "doi: 10.1186/1743-422X-9-218"
+        doi_match1 = re.match(r"^.*?doi:\s.*$", citation)
+        # Check the citation for a DOI URL (doi.org, dx.doi.org, etc)
+        doi_match2 = re.match(r"^.*?doi\.org.*$", citation)
+        if doi_match1 is not None or doi_match2 is not None:
+            print(
+                f"{Fore.YELLOW}DOI in citation, but missing a DOI field: {Fore.RESET}{citation}"
+            )
+
+    return
