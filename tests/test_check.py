@@ -377,10 +377,7 @@ def test_check_doi_field():
 
     # Emulate a column in a transposed dataframe (which is just a series), with
     # the citation and an empty DOI field.
-    d = {
-        "cg.identifier.doi": doi,
-        "dcterms.bibliographicCitation": citation
-    }
+    d = {"cg.identifier.doi": doi, "dcterms.bibliographicCitation": citation}
     series = pd.Series(data=d)
 
     result = check.citation_doi(series)
@@ -395,10 +392,7 @@ def test_check_doi_only_in_citation(capsys):
 
     # Emulate a column in a transposed dataframe (which is just a series), with
     # an empty DOI field and a citation containing a DOI.
-    d = {
-        "cg.identifier.doi": None,
-        "dcterms.bibliographicCitation": citation
-    }
+    d = {"cg.identifier.doi": None, "dcterms.bibliographicCitation": citation}
     series = pd.Series(data=d)
 
     check.citation_doi(series)
