@@ -321,10 +321,16 @@ def duplicate_items(df):
     #
     #   Index(['dcterms.title[en_US]'], dtype='object')
     #
-    title_column_name = df.filter(regex=r"dcterms\.title|dc\.title").columns[0]
-    type_column_name = df.filter(regex=r"dcterms\.title|dc\.title").columns[0]
+    # But, we need to consider that dc.title.alternative might come before the
+    # main title in the CSV, so use a negative lookahead to eliminate that.
+    #
+    # See: https://regex101.com/r/elyXkW/1
+    title_column_name = df.filter(
+        regex=r"^(dc|dcterms)\.title(?!\.alternative).*$"
+    ).columns[0]
+    type_column_name = df.filter(regex=r"^(dcterms\.type|dc\.type).*$").columns[0]
     date_column_name = df.filter(
-        regex=r"dcterms\.issued|dc\.date\.accessioned"
+        regex=r"^(dcterms\.issued|dc\.date\.accessioned).*$"
     ).columns[0]
 
     items_count_total = df[title_column_name].count()
