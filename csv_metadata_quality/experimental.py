@@ -52,7 +52,7 @@ def correct_language(row):
             sample_strings.append(row[label])
 
         # Extract citation if it is present
-        match = re.match(r"^.*?citation.*$", label)
+        match = re.match(r"^.*?[cC]itation.*$", label)
         if match is not None:
             sample_strings.append(row[label])
 
