@@ -76,8 +76,9 @@ def test_fix_newlines():
 
     value = """Ken
 ya"""
+    field_name = "dcterms.subject"
 
-    assert fix.newlines(value) == "Kenya"
+    assert fix.newlines(value, field_name) == "Kenya"
 
 
 def test_fix_comma_space():

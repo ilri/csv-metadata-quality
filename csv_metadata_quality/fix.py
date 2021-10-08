@@ -180,7 +180,7 @@ def duplicates(field, field_name):
     return new_field
 
 
-def newlines(field):
+def newlines(field, field_name):
     """Fix newlines.
 
     Single metadata values should not span multiple lines because this is not
@@ -205,7 +205,7 @@ def newlines(field):
     match = re.findall(r"\n", field)
 
     if match:
-        print(f"{Fore.GREEN}Removing newline: {Fore.RESET}{field}")
+        print(f"{Fore.GREEN}Removing newline ({field_name}): {Fore.RESET}{field}")
         field = field.replace("\n", "")
 
     return field

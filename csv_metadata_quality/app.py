@@ -89,7 +89,7 @@ def run(argv):
 
         # Fix: newlines
         if args.unsafe_fixes:
-            df[column] = df[column].apply(fix.newlines)
+            df[column] = df[column].apply(fix.newlines, field_name=column)
 
         # Fix: missing space after comma. Only run on author and citation
         # fields for now, as this problem is mostly an issue in names.
