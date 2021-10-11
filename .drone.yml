@@ -1,6 +1,23 @@
 ---
 kind: pipeline
 type: docker
+name: python310
+
+steps:
+- name: test
+  image: python:3.10-slim
+  commands:
+  - id
+  - python -V
+  - apt update && apt install -y gcc g++ libicu-dev pkg-config
+  - pip install -r requirements-dev.txt
+  - pytest
+  - python setup.py install
+  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -e -u --agrovoc-fields dcterms.subject,cg.coverage.country
+
+---
+kind: pipeline
+type: docker
 name: python39
 
 steps:
