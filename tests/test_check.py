@@ -402,3 +402,39 @@ def test_check_doi_only_in_citation(capsys):
         captured.out
         == f"{Fore.YELLOW}DOI in citation, but missing a DOI field: {Fore.RESET}{citation}\n"
     )
+
+
+def test_title_in_citation():
+    """Test an item with its title in the citation."""
+
+    title = "Testing all the things"
+    citation = "Orth, A. 2021. Testing all the things."
+
+    # Emulate a column in a transposed dataframe (which is just a series), with
+    # the title and citation.
+    d = {"dc.title": title, "dcterms.bibliographicCitation": citation}
+    series = pd.Series(data=d)
+
+    result = check.title_in_citation(series)
+
+    assert result == None
+
+
+def test_title_not_in_citation(capsys):
+    """Test an item with its title missing from the citation."""
+
+    title = "Testing all the things"
+    citation = "Orth, A. 2021. Testing all teh things."
+
+    # Emulate a column in a transposed dataframe (which is just a series), with
+    # the title and citation.
+    d = {"dc.title": title, "dcterms.bibliographicCitation": citation}
+    series = pd.Series(data=d)
+
+    check.title_in_citation(series)
+
+    captured = capsys.readouterr()
+    assert (
+        captured.out
+        == f"{Fore.YELLOW}Title is not present in citation: {Fore.RESET}{title}\n"
+    )
