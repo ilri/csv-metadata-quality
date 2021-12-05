@@ -410,3 +410,37 @@ def citation_doi(row):
             )
 
     return
+
+
+def title_in_citation(row):
+    """Check for the scenario where an item's title is missing from its cita-
+    tion. This could mean that it is missing entirely, or perhaps just exists
+    in a different format (whitespace, accents, etc).
+
+    Function prints a warning if the title does not appear in the citation.
+    """
+    # Iterate over the labels of the current row's values to get the names of
+    # the title and citation columns. Then we check if the title is present in
+    # the citation.
+    for label in row.axes[0]:
+        # Skip fields with missing values
+        if pd.isna(row[label]):
+            continue
+
+        # Find the name of the title column
+        match = re.match(r"^(dc|dcterms)\.title.*$", label)
+        if match is not None:
+            title_column_name = label
+
+        # Find the name of the citation column
+        match = re.match(r"^.*?[cC]itation.*$", label)
+        if match is not None:
+            citation_column_name = label
+
+    if row[citation_column_name] != "":
+        if row[title_column_name] not in row[citation_column_name]:
+            print(
+                f"{Fore.YELLOW}Title is not present in citation: {Fore.RESET}{row[title_column_name]}"
+            )
+
+    return

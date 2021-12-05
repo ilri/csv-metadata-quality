@@ -194,6 +194,9 @@ def run(argv):
         # Check: citation DOI
         check.citation_doi(df_transposed[column])
 
+        # Check: title in citation
+        check.title_in_citation(df_transposed[column])
+
         if args.experimental_checks:
             experimental.correct_language(df_transposed[column])
 
