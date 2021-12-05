@@ -376,7 +376,7 @@ def test_check_doi_field():
     citation = "Orth, A. 2021. Testing all the things. doi: 10.1186/1743-422X-9-218"
 
     # Emulate a column in a transposed dataframe (which is just a series), with
-    # the citation and an empty DOI field.
+    # the citation and a DOI field.
     d = {"cg.identifier.doi": doi, "dcterms.bibliographicCitation": citation}
     series = pd.Series(data=d)
 
