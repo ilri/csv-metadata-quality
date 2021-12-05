@@ -419,6 +419,11 @@ def title_in_citation(row):
 
     Function prints a warning if the title does not appear in the citation.
     """
+    # Initialize some variables at global scope so that we can set them in the
+    # loop scope below and still be able to access them afterwards.
+    title = ""
+    citation = ""
+
     # Iterate over the labels of the current row's values to get the names of
     # the title and citation columns. Then we check if the title is present in
     # the citation.
@@ -430,17 +435,15 @@ def title_in_citation(row):
         # Find the name of the title column
         match = re.match(r"^(dc|dcterms)\.title.*$", label)
         if match is not None:
-            title_column_name = label
+            title = row[label]
 
         # Find the name of the citation column
         match = re.match(r"^.*?[cC]itation.*$", label)
         if match is not None:
-            citation_column_name = label
+            citation = row[label]
 
-    if row[citation_column_name] != "":
-        if row[title_column_name] not in row[citation_column_name]:
-            print(
-                f"{Fore.YELLOW}Title is not present in citation: {Fore.RESET}{row[title_column_name]}"
-            )
+    if citation != "":
+        if title not in citation:
+            print(f"{Fore.YELLOW}Title is not present in citation: {Fore.RESET}{title}")
 
     return
