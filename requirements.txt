@@ -1,5 +1,5 @@
 certifi==2021.10.8; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.6.0" and python_version >= "3.6"
-charset-normalizer==2.0.8; python_full_version >= "3.6.0" and python_version >= "3.6"
+charset-normalizer==2.0.9; python_full_version >= "3.6.0" and python_version >= "3.6"
 colorama==0.4.4; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.5.0")
 ftfy==5.9; python_version >= "3.5"
 greenlet==1.1.2; python_version >= "3" and python_full_version < "3.0.0" or python_full_version >= "3.6.0" and python_version >= "3"
@@ -18,7 +18,7 @@ requests==2.26.0; (python_version >= "2.7" and python_full_version < "3.0.0") or
 six==1.16.0; python_full_version >= "3.7.1" and python_version >= "3.6"
 spdx-license-list==0.5.2
 sqlalchemy==1.4.22; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.6.0")
-typing-extensions==4.0.0; python_version >= "3.6" and python_full_version < "3.0.0" and python_version < "3.8" or python_full_version >= "3.6.0" and python_version < "3.8" and python_version >= "3.6"
+typing-extensions==4.0.1; python_version >= "3.6" and python_full_version < "3.0.0" and python_version < "3.8" or python_full_version >= "3.6.0" and python_version < "3.8" and python_version >= "3.6"
 url-normalize==1.4.3; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.6.0" and python_version >= "3.6"
 urllib3==1.26.7; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.6.0" and python_version < "4" and python_version >= "3.6"
 wcwidth==0.2.5; python_version >= "3.5"
