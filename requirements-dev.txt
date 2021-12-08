@@ -7,12 +7,13 @@ atomicwrites==1.4.0; python_version >= "3.6" and python_full_version < "3.0.0" a
 attrs==21.2.0; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.6"
 babel==2.9.1; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.4.0"
 backcall==0.2.0; python_version >= "3.7" and python_version < "4.0"
-black==21.11b1; python_full_version >= "3.6.2"
+black==21.12b0; python_full_version >= "3.6.2"
 certifi==2021.10.8; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.6.0" and python_version >= "3.6"
 charset-normalizer==2.0.9; python_full_version >= "3.6.0" and python_version >= "3.6"
 click==8.0.3; python_version >= "3.6" and python_full_version >= "3.6.2"
 colorama==0.4.4; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.5.0")
 commonmark==0.9.1; python_full_version >= "3.6.2" and python_full_version < "4.0.0" and (python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.4.0")
+country-converter==0.7.4
 csvkit==1.0.6
 dbfread==2.0.7
 decorator==5.1.0; python_version >= "3.7" and python_version < "4.0"
@@ -62,7 +63,6 @@ python-slugify==5.0.2; python_version >= "3.6"
 python-stdnum==1.17
 pytimeparse==1.1.8
 pytz==2021.3; python_full_version >= "3.7.1"
-regex==2021.11.10; python_full_version >= "3.6.2"
 requests-cache==0.6.4; python_version >= "3.6"
 requests==2.26.0; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.6.0")
 rich==10.15.2; python_full_version >= "3.6.2" and python_full_version < "4.0.0" and (python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.4.0")
