@@ -438,3 +438,43 @@ def test_title_not_in_citation(capsys):
         captured.out
         == f"{Fore.YELLOW}Title is not present in citation: {Fore.RESET}{title}\n"
     )
+
+
+def test_country_matches_region():
+    """Test an item with regions matching its country list."""
+
+    country = "Kenya"
+    region = "Eastern Africa"
+
+    # Emulate a column in a transposed dataframe (which is just a series)
+    d = {"cg.coverage.country": country, "cg.coverage.region": region}
+    series = pd.Series(data=d)
+
+    result = check.countries_match_regions(series)
+
+    assert result == None
+
+
+def test_country_not_matching_region(capsys):
+    """Test an item with regions not matching its country list."""
+
+    title = "Testing an item with no matching region."
+    country = "Kenya"
+    region = ""
+    missing_region = "Eastern Africa"
+
+    # Emulate a column in a transposed dataframe (which is just a series)
+    d = {
+        "dc.title": title,
+        "cg.coverage.country": country,
+        "cg.coverage.region": region,
+    }
+    series = pd.Series(data=d)
+
+    check.countries_match_regions(series)
+
+    captured = capsys.readouterr()
+    assert (
+        captured.out
+        == f"{Fore.YELLOW}Missing region ({missing_region}): {Fore.RESET}{title}\n"
+    )
