@@ -1,4 +1,11 @@
-# DSpace CSV Metadata Quality Checker ![GitHub Actions](https://github.com/ilri/csv-metadata-quality/workflows/Build%20and%20Test/badge.svg) [![Build Status](https://ci.mjanja.ch/api/badges/alanorth/csv-metadata-quality/status.svg)](https://ci.mjanja.ch/alanorth/csv-metadata-quality)
+<h1 align="center">DSpace CSV Metadata Quality Checker</h1>
+
+<p align="center">
+  <a href="https://ci.mjanja.ch/alanorth/csv-metadata-quality"><img alt="Build Status" src="https://ci.mjanja.ch/api/badges/alanorth/csv-metadata-quality/status.svg"></a>
+  <a href="https://github.com/ilri/csv-metadata-quality/actions"><img alt="Build and Test" src="https://github.com/ilri/csv-metadata-quality/workflows/Build%20and%20Test/badge.svg"></a>
+  <a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
+</p>
+
 A simple, but opinionated metadata quality checker and fixer designed to work with CSVs in the DSpace ecosystem (though it could theoretically work on any CSV that uses Dublin Core fields as columns). The implementation is essentially a pipeline of checks and fixes that begins with splitting multi-value fields on the standard DSpace "||" separator, trimming leading/trailing whitespace, and then proceeding to more specialized cases like ISSNs, ISBNs, languages, unnecessary Unicode, AGROVOC terms, etc.
 
 Requires Python 3.7.1 or greater (3.8+ recommended). CSV and Excel support comes from the [Pandas](https://pandas.pydata.org/) library, though your mileage may vary with Excel because this is much less tested.
