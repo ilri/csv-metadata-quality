@@ -4,6 +4,7 @@ import os
 import re
 from datetime import datetime, timedelta
 
+import country_converter as coco
 import pandas as pd
 import requests
 import requests_cache
@@ -445,5 +446,76 @@ def title_in_citation(row):
     if citation != "":
         if title not in citation:
             print(f"{Fore.YELLOW}Title is not present in citation: {Fore.RESET}{title}")
+
+    return
+
+
+def countries_match_regions(row):
+    """Check for the scenario where an item has country coverage metadata, but
+    does not have the corresponding region metadata. For example, an item that
+    has country coverage "Kenya" should also have region "Eastern Africa" acc-
+    ording to the UN M.49 classification scheme.
+
+    See: https://unstats.un.org/unsd/methodology/m49/
+
+    Function prints a warning if the appropriate region is not present.
+    """
+    # Initialize some variables at global scope so that we can set them in the
+    # loop scope below and still be able to access them afterwards.
+    country_column_name = ""
+    region_column_name = ""
+    title_column_name = ""
+
+    # Iterate over the labels of the current row's values to get the names of
+    # the title and citation columns. Then we check if the title is present in
+    # the citation.
+    for label in row.axes[0]:
+        # Find the name of the country column
+        match = re.match(r"^.*?country.*$", label)
+        if match is not None:
+            country_column_name = label
+
+        # Find the name of the region column
+        match = re.match(r"^.*?region.*$", label)
+        if match is not None:
+            region_column_name = label
+
+        # Find the name of the title column
+        match = re.match(r"^(dc|dcterms)\.title.*$", label)
+        if match is not None:
+            title_column_name = label
+
+    # Make sure we found the country and region columns
+    if country_column_name != "" and region_column_name != "":
+        # If we don't have any countries then we should return early before
+        # suggesting regions.
+        if row[country_column_name] is not None:
+            countries = row[country_column_name].split("||")
+        else:
+            return
+
+        if row[region_column_name] is not None:
+            regions = row[region_column_name].split("||")
+        else:
+            regions = list()
+
+        # An empty list for our regions so we can keep track for all countries
+        missing_regions = list()
+
+        for country in countries:
+            # Look up the UN M.49 regions for this country code. CoCo seems to
+            # only list the direct region, ie Western Africa, rather than all
+            # the parent regions ("Sub-Saharan Africa", "Africa", "World")
+            un_region = coco.convert(names=country, to="UNRegion")
+
+            if un_region not in regions:
+                if un_region not in missing_regions:
+                    missing_regions.append(un_region)
+
+        if len(missing_regions) > 0:
+            for missing_region in missing_regions:
+                print(
+                    f"{Fore.YELLOW}Missing region ({missing_region}): {Fore.RESET}{row[title_column_name]}"
+                )
 
     return

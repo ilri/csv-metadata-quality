@@ -197,6 +197,9 @@ def run(argv):
         # Check: title in citation
         check.title_in_citation(df_transposed[column])
 
+        # Check: countries match regions
+        check.countries_match_regions(df_transposed[column])
+
         if args.experimental_checks:
             experimental.correct_language(df_transposed[column])
 
