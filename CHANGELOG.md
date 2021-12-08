@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Ability to check for, and fix, "mojibake" characters using [ftfy](https://github.com/LuminosoInsight/python-ftfy)
 - Ability to check if the item's title exists in the citation
+- Ability to check if an item has countries, but no matching regions (only
+suggests missing regions if there is a region field in the CSV)
 
 ### Updated
 - Python dependencies
