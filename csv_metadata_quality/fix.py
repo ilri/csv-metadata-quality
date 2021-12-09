@@ -104,6 +104,7 @@ def unnecessary_unicode(field):
     Replaces unnecessary Unicode characters like:
         - Soft hyphen (U+00AD) → hyphen
         - No-break space (U+00A0) → space
+        - Thin space (U+2009) → space
 
     Return string with characters removed or replaced.
     """
@@ -147,6 +148,16 @@ def unnecessary_unicode(field):
             f"{Fore.GREEN}Replacing unnecessary Unicode (U+00AD): {Fore.RESET}{field}"
         )
         field = re.sub(pattern, "-", field)
+
+    # Check for thin spaces (U+2009)
+    pattern = re.compile(r"\u2009")
+    match = re.findall(pattern, field)
+
+    if match:
+        print(
+            f"{Fore.GREEN}Replacing unnecessary Unicode (U+2009): {Fore.RESET}{field}"
+        )
+        field = re.sub(pattern, " ", field)
 
     return field
 
