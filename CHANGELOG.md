@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Changed
 - Perform fix for "unnecessary" Unicode characters after we try to fix encoding
 issues with ftfy
+- ftfy heuristics to use `is_bad()` instead of `sequence_weirdness()`
+- ftfy `fix_text()` to *not* change “smart quotes” to "ASCII quotes"
+
+## Updated
+- Python dependencies
 
 ## [0.5.0] - 2021-12-08
 ### Added
