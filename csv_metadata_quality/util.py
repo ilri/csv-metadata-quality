@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-only
 
-from ftfy.badness import sequence_weirdness
+from ftfy.badness import is_bad
 
 
 def is_nfc(field):
@@ -38,7 +38,7 @@ def is_mojibake(field):
 
     Return boolean.
     """
-    if not sequence_weirdness(field):
+    if not is_bad(field):
         # Nothing weird, should be okay
         return False
     try:
