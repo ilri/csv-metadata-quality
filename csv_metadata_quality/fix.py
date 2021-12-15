@@ -5,7 +5,7 @@ from unicodedata import normalize
 
 import pandas as pd
 from colorama import Fore
-from ftfy import fix_text, TextFixerConfig
+from ftfy import TextFixerConfig, fix_text
 
 from csv_metadata_quality.util import is_mojibake, is_nfc
 
