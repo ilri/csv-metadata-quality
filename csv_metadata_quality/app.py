@@ -103,9 +103,6 @@ def run(argv):
         if args.unsafe_fixes:
             df[column] = df[column].apply(fix.normalize_unicode, field_name=column)
 
-        # Fix: unnecessary Unicode
-        df[column] = df[column].apply(fix.unnecessary_unicode)
-
         # Check: suspicious characters
         df[column].apply(check.suspicious_characters, field_name=column)
 
@@ -114,6 +111,9 @@ def run(argv):
             df[column] = df[column].apply(fix.mojibake, field_name=column)
         else:
             df[column].apply(check.mojibake, field_name=column)
+
+        # Fix: unnecessary Unicode
+        df[column] = df[column].apply(fix.unnecessary_unicode)
 
         # Fix: invalid and unnecessary multi-value separators
         df[column] = df[column].apply(fix.separators, field_name=column)
