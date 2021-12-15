@@ -5,7 +5,7 @@ from unicodedata import normalize
 
 import pandas as pd
 from colorama import Fore
-from ftfy import fix_text
+from ftfy import fix_text, TextFixerConfig
 
 from csv_metadata_quality.util import is_mojibake, is_nfc
 
@@ -280,9 +280,12 @@ def mojibake(field, field_name):
     if pd.isna(field):
         return field
 
+    # We don't want ftfy to change “smart quotes” to "ASCII quotes"
+    config = TextFixerConfig(uncurl_quotes=False)
+
     if is_mojibake(field):
         print(f"{Fore.GREEN}Fixing encoding issue ({field_name}): {Fore.RESET}{field}")
 
-        return fix_text(field)
+        return fix_text(field, config)
     else:
         return field
