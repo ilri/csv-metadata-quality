@@ -16,7 +16,7 @@ Suspicious character||foreˆt,2019-07-29,,,,,,,,,,,
 Invalid ISO 639-1 (alpha 2) language,2019-07-29,,,jp,,,,,,,,
 Invalid ISO 639-3 (alpha 3) language,2019-07-29,,,chi,,,,,,,,
 Invalid language,2019-07-29,,,Span,,,,,,,,
-Invalid AGROVOC subject,2019-07-29,,,,FOREST,,,,,,,
+Invalid AGROVOC subject,2019-07-29,,,,LIVESTOCK||FOREST,,,,,,,
 Newline (LF),2019-07-30,,,,"TANZA
 NIA",,,,,,,
 Missing date,,,,,,,,,,,,
