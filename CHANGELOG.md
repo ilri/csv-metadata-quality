@@ -5,14 +5,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## Unreleased
-## Changed
+### Changed
 - Perform fix for "unnecessary" Unicode characters after we try to fix encoding
 issues with ftfy
 - ftfy heuristics to use `is_bad()` instead of `sequence_weirdness()`
 - ftfy `fix_text()` to *not* change “smart quotes” to "ASCII quotes"
 
-## Updated
+### Updated
 - Python dependencies
+
+### Added
+- Ability to drop invalid AGROVOC values with `-d` when checking AGROVOC values
+with `-a <field.name>`
 
 ## [0.5.0] - 2021-12-08
 ### Added
