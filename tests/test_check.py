@@ -179,18 +179,41 @@ def test_check_invalid_language(capsys):
 
 
 def test_check_invalid_agrovoc(capsys):
-    """Test invalid AGROVOC subject."""
+    """Test invalid AGROVOC subject. Invalid values *will not* be dropped."""
 
-    value = "FOREST"
+    valid_agrovoc = "LIVESTOCK"
+    invalid_agrovoc = "FOREST"
+    value = f"{valid_agrovoc}||{invalid_agrovoc}"
     field_name = "dcterms.subject"
+    drop = False
 
-    check.agrovoc(value, field_name)
+    new_value = check.agrovoc(value, field_name, drop)
 
     captured = capsys.readouterr()
     assert (
         captured.out
-        == f"{Fore.RED}Invalid AGROVOC ({field_name}): {Fore.RESET}{value}\n"
+        == f"{Fore.RED}Invalid AGROVOC ({field_name}): {Fore.RESET}{invalid_agrovoc}\n"
     )
+    assert new_value == value
+
+
+def test_check_invalid_agrovoc_dropped(capsys):
+    """Test invalid AGROVOC subjects. Invalid values *will* be dropped."""
+
+    valid_agrovoc = "LIVESTOCK"
+    invalid_agrovoc = "FOREST"
+    value = f"{valid_agrovoc}||{invalid_agrovoc}"
+    field_name = "dcterms.subject"
+    drop = True
+
+    new_value = check.agrovoc(value, field_name, drop)
+
+    captured = capsys.readouterr()
+    assert (
+        captured.out
+        == f"{Fore.GREEN}Dropping invalid AGROVOC ({field_name}): {Fore.RESET}{invalid_agrovoc}\n"
+    )
+    assert new_value == valid_agrovoc
 
 
 def test_check_valid_agrovoc():
@@ -198,10 +221,11 @@ def test_check_valid_agrovoc():
 
     value = "FORESTS"
     field_name = "dcterms.subject"
+    drop = False
 
-    result = check.agrovoc(value, field_name)
+    result = check.agrovoc(value, field_name, drop)
 
-    assert result == None
+    assert result == "FORESTS"
 
 
 def test_check_uncommon_filename_extension(capsys):
