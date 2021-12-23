@@ -22,6 +22,12 @@ def parse_args(argv):
         help="Comma-separated list of fields to validate against AGROVOC, for example: dcterms.subject,cg.coverage.country",
     )
     parser.add_argument(
+        "--drop-invalid-agrovoc",
+        "-d",
+        help="After validating metadata values against AGROVOC, drop invalid values.",
+        action="store_true",
+    )
+    parser.add_argument(
         "--experimental-checks",
         "-e",
         help="Enable experimental checks like language detection",
@@ -123,12 +129,14 @@ def run(argv):
         # Fix: duplicate metadata values
         df[column] = df[column].apply(fix.duplicates, field_name=column)
 
-        # Check: invalid AGROVOC subject
+        # Check: invalid AGROVOC subject and optionally drop them
         if args.agrovoc_fields:
             # Identify fields the user wants to validate against AGROVOC
             for field in args.agrovoc_fields.split(","):
                 if column == field:
-                    df[column].apply(check.agrovoc, field_name=column)
+                    df[column] = df[column].apply(
+                        check.agrovoc, field_name=column, drop=args.drop_invalid_agrovoc
+                    )
 
         # Check: invalid language
         match = re.match(r"^.*?language.*$", column)

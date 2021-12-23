@@ -188,7 +188,7 @@ def language(field):
     return
 
 
-def agrovoc(field, field_name):
+def agrovoc(field, field_name, drop):
     """Check subject terms against AGROVOC REST API.
 
     Function constructor expects the field as well as the field name because
@@ -219,6 +219,9 @@ def agrovoc(field, field_name):
     # prune old cache entries
     requests_cache.remove_expired_responses()
 
+    # Initialize an empty list to hold the validated AGROVOC values
+    values = list()
+
     # Try to split multi-value field on "||" separator
     for value in field.split("||"):
         request_url = "http://agrovoc.uniroma2.it/agrovoc/rest/v1/agrovoc/search"
@@ -231,9 +234,25 @@ def agrovoc(field, field_name):
 
             # check if there are any results
             if len(data["results"]) == 0:
-                print(f"{Fore.RED}Invalid AGROVOC ({field_name}): {Fore.RESET}{value}")
+                if drop:
+                    print(
+                        f"{Fore.GREEN}Dropping invalid AGROVOC ({field_name}): {Fore.RESET}{value}"
+                    )
+                else:
+                    print(
+                        f"{Fore.RED}Invalid AGROVOC ({field_name}): {Fore.RESET}{value}"
+                    )
 
-    return
+                    # value is invalid AGROVOC, but we are not dropping
+                    values.append(value)
+            else:
+                # value is valid AGROVOC so save it
+                values.append(value)
+
+    # Create a new field consisting of all values joined with "||"
+    new_field = "||".join(values)
+
+    return new_field
 
 
 def filename_extension(field):
