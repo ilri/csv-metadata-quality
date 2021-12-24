@@ -13,7 +13,16 @@ steps:
   - pip install -r requirements-dev.txt
   - pytest
   - python setup.py install
-  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -e -u --agrovoc-fields dcterms.subject,cg.coverage.country
+  # Basic test
+  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv
+  # Test with unsafe fixes
+  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -u
+  # Test with experimental checks
+  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -e
+  # Test with AGROVOC validation
+  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv --agrovoc-fields dcterms.subject
+  # Test with AGROVOC validation (and dropping invalid)
+  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv --agrovoc-fields dcterms.subject -d
 
 ---
 kind: pipeline
@@ -30,7 +39,16 @@ steps:
   - pip install -r requirements-dev.txt
   - pytest
   - python setup.py install
-  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -e -u --agrovoc-fields dcterms.subject,cg.coverage.country
+  # Basic test
+  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv
+  # Test with unsafe fixes
+  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -u
+  # Test with experimental checks
+  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -e
+  # Test with AGROVOC validation
+  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv --agrovoc-fields dcterms.subject
+  # Test with AGROVOC validation (and dropping invalid)
+  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv --agrovoc-fields dcterms.subject -d
 
 ---
 kind: pipeline
@@ -47,7 +65,16 @@ steps:
   - pip install -r requirements-dev.txt
   - pytest
   - python setup.py install
-  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -e -u --agrovoc-fields dcterms.subject,cg.coverage.country
+  # Basic test
+  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv
+  # Test with unsafe fixes
+  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -u
+  # Test with experimental checks
+  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -e
+  # Test with AGROVOC validation
+  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv --agrovoc-fields dcterms.subject
+  # Test with AGROVOC validation (and dropping invalid)
+  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv --agrovoc-fields dcterms.subject -d
 
 ---
 kind: pipeline
@@ -64,6 +91,15 @@ steps:
   - pip install -r requirements-dev.txt
   - pytest
   - python setup.py install
-  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -e -u --agrovoc-fields dcterms.subject,cg.coverage.country
+  # Basic test
+  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv
+  # Test with unsafe fixes
+  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -u
+  # Test with experimental checks
+  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -e
+  # Test with AGROVOC validation
+  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv --agrovoc-fields dcterms.subject
+  # Test with AGROVOC validation (and dropping invalid)
+  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv --agrovoc-fields dcterms.subject -d
 
 # vim: ts=2 sw=2 et
