@@ -27,7 +27,7 @@ country-converter = "^0.7.4"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.1.1"
-ipython = { version = "^7.18.1", python = "^3.7" }
+ipython = { version = "^7.31.1", python = "^3.7" }
 flake8 = "^3.8.4"
 pytest-clarity = "^1.0.1"
 black = "^21.6b0"
