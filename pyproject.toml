@@ -27,7 +27,7 @@ country-converter = "^0.7.4"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.1.1"
-flake8 = "^3.8.4"
+flake8 = "^4.0.1"
 pytest-clarity = "^1.0.1"
 black = "^21.6b0"
 isort = "^5.5.4"
