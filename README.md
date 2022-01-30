@@ -133,6 +133,7 @@ This currently uses the [Python langid](https://github.com/saffsd/langid.py) lib
   - Warn if item is Open Access, but missing a license
   - Warn if item has an ISSN but no journal title
   - Update journal titles from ISSN
+- Migrate to https://github.com/spdx/license-list-data
 
 ## License
 This work is licensed under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html).
