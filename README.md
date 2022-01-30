@@ -8,7 +8,7 @@
 
 A simple, but opinionated metadata quality checker and fixer designed to work with CSVs in the DSpace ecosystem (though it could theoretically work on any CSV that uses Dublin Core fields as columns). The implementation is essentially a pipeline of checks and fixes that begins with splitting multi-value fields on the standard DSpace "||" separator, trimming leading/trailing whitespace, and then proceeding to more specialized cases like ISSNs, ISBNs, languages, unnecessary Unicode, AGROVOC terms, etc.
 
-Requires Python 3.7.1 or greater (3.8+ recommended). CSV and Excel support comes from the [Pandas](https://pandas.pydata.org/) library, though your mileage may vary with Excel because this is much less tested.
+Requires Python 3.8 or greater. CSV and Excel support comes from the [Pandas](https://pandas.pydata.org/) library, though your mileage may vary with Excel because this is much less tested.
 
 If you use the DSpace CSV metadata quality checker please cite:
 
