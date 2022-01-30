@@ -76,30 +76,4 @@ steps:
   # Test with AGROVOC validation (and dropping invalid)
   - csv-metadata-quality -i data/test.csv -o /tmp/test.csv --agrovoc-fields dcterms.subject -d
 
----
-kind: pipeline
-type: docker
-name: python37
-
-steps:
-- name: test
-  image: python:3.7-slim
-  commands:
-  - id
-  - python -V
-  - apt update && apt install -y gcc g++ libicu-dev pkg-config
-  - pip install -r requirements-dev.txt
-  - pytest
-  - python setup.py install
-  # Basic test
-  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv
-  # Test with unsafe fixes
-  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -u
-  # Test with experimental checks
-  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -e
-  # Test with AGROVOC validation
-  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv --agrovoc-fields dcterms.subject
-  # Test with AGROVOC validation (and dropping invalid)
-  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv --agrovoc-fields dcterms.subject -d
-
 # vim: ts=2 sw=2 et
