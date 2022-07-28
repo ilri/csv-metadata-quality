@@ -17,6 +17,8 @@ issues with ftfy
 ### Added
 - Ability to drop invalid AGROVOC values with `-d` when checking AGROVOC values
 with `-a <field.name>`
+- Ability to add missing UN M.49 regions when both country and region columns
+are present. Enable with `-u` (unsafe fixes) for now.
 
 ## [0.5.0] - 2021-12-08
 ### Added
