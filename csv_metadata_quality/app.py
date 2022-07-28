@@ -205,14 +205,23 @@ def run(argv):
         # Check: title in citation
         check.title_in_citation(df_transposed[column])
 
-        # Check: countries match regions
-        check.countries_match_regions(df_transposed[column])
+        if args.unsafe_fixes:
+            # Fix: countries match regions
+            df_transposed[column] = fix.countries_match_regions(df_transposed[column])
+        else:
+            # Check: countries match regions
+            check.countries_match_regions(df_transposed[column])
 
         if args.experimental_checks:
             experimental.correct_language(df_transposed[column])
 
+    # Transpose the DataFrame back before writing. This is probably wasteful to
+    # do every time since we technically only need to do it if we've done the
+    # countries/regions fix above, but I can't think of another way for now.
+    df_transposed_back = df_transposed.T
+
     # Write
-    df.to_csv(args.output_file, index=False)
+    df_transposed_back.to_csv(args.output_file, index=False)
 
     # Close the input and output files before exiting
     args.input_file.close()

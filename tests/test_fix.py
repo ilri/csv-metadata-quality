@@ -1,5 +1,7 @@
 # SPDX-License-Identifier: GPL-3.0-only
 
+import pandas as pd
+
 import csv_metadata_quality.fix as fix
 
 
@@ -120,3 +122,32 @@ def test_fix_mojibake():
     field_name = "dcterms.isPartOf"
 
     assert fix.mojibake(field, field_name) == "CIAT Publicaçao"
+
+
+def test_fix_country_not_matching_region():
+    """Test an item with regions not matching its country list."""
+
+    title = "Testing an item with no matching region."
+    country = "Kenya"
+    region = ""
+    missing_region = "Eastern Africa"
+
+    # Emulate a column in a transposed dataframe (which is just a series)
+    d = {
+        "dc.title": title,
+        "cg.coverage.country": country,
+        "cg.coverage.region": region,
+    }
+    series = pd.Series(data=d)
+
+    result = fix.countries_match_regions(series)
+
+    # Emulate the correct series we are expecting
+    d_correct = {
+        "dc.title": title,
+        "cg.coverage.country": country,
+        "cg.coverage.region": missing_region,
+    }
+    series_correct = pd.Series(data=d_correct)
+
+    pd.testing.assert_series_equal(result, series_correct)
