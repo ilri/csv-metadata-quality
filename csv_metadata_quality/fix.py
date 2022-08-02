@@ -334,7 +334,7 @@ def countries_match_regions(row):
         if row[country_column_name] is not None:
             countries = row[country_column_name].split("||")
         else:
-            return
+            return row
 
         if row[region_column_name] is not None:
             regions = row[region_column_name].split("||")
