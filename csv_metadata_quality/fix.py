@@ -363,7 +363,7 @@ def countries_match_regions(row):
         # Add the missing regions back to the row, paying attention to whether
         # or not the row's regions are blank or not.
         if row[region_column_name] is not None:
-            row[region_column_name] = row[region_column_name] + "||".join(
+            row[region_column_name] = row[region_column_name] + "||" + "||".join(
                 missing_regions
             )
         else:
