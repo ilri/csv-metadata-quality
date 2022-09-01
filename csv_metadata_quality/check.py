@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-only
 
+import logging
 import os
 import re
 from datetime import datetime, timedelta
@@ -217,7 +218,7 @@ def agrovoc(field, field_name, drop):
     )
 
     # prune old cache entries
-    requests_cache.remove_expired_responses()
+    # requests_cache.remove_expired_responses()
 
     # Initialize an empty list to hold the validated AGROVOC values
     values = list()
@@ -485,6 +486,15 @@ def countries_match_regions(row):
     region_column_name = ""
     title_column_name = ""
 
+    # Instantiate a CountryConverter() object here. According to the docs it is
+    # more performant to do that as opposed to calling coco.convert() directly
+    # because we don't need to re-load the country data with each iteration.
+    cc = coco.CountryConverter()
+
+    # Set logging to ERROR so country_converter's convert() doesn't print the
+    # "not found in regex" warning message to the screen.
+    logging.basicConfig(level=logging.ERROR)
+
     # Iterate over the labels of the current row's values to get the names of
     # the title and citation columns. Then we check if the title is present in
     # the citation.
@@ -518,23 +528,15 @@ def countries_match_regions(row):
         else:
             regions = list()
 
-        # An empty list for our regions so we can keep track for all countries
-        missing_regions = list()
-
         for country in countries:
             # Look up the UN M.49 regions for this country code. CoCo seems to
             # only list the direct region, ie Western Africa, rather than all
             # the parent regions ("Sub-Saharan Africa", "Africa", "World")
-            un_region = coco.convert(names=country, to="UNRegion")
+            un_region = cc.convert(names=country, to="UNRegion")
 
-            if un_region not in regions:
-                if un_region not in missing_regions:
-                    missing_regions.append(un_region)
-
-        if len(missing_regions) > 0:
-            for missing_region in missing_regions:
+            if un_region != "not found" and un_region not in regions:
                 print(
-                    f"{Fore.YELLOW}Missing region ({missing_region}): {Fore.RESET}{row[title_column_name]}"
+                    f"{Fore.YELLOW}Missing region ({un_region}): {Fore.RESET}{row[title_column_name]}"
                 )
 
     return
