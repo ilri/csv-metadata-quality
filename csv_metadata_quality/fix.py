@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-only
 
+import logging
 import re
 from unicodedata import normalize
 
@@ -312,6 +313,10 @@ def countries_match_regions(row):
     # more performant to do that as opposed to calling coco.convert() directly
     # because we don't need to re-load the country data with each iteration.
     cc = coco.CountryConverter()
+
+    # Set logging to ERROR so country_converter's convert() doesn't print the
+    # "not found in regex" warning message to the screen.
+    logging.basicConfig(level=logging.ERROR)
 
     # Iterate over the labels of the current row's values to get the names of
     # the title and citation columns. Then we check if the title is present in
