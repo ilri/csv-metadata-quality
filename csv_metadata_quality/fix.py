@@ -360,7 +360,9 @@ def countries_match_regions(row):
             # the parent regions ("Sub-Saharan Africa", "Africa", "World")
             un_region = cc.convert(names=country, to="UNRegion")
 
-            if un_region not in regions:
+            # Add the new un_region to regions if it is not "not found" and if
+            # it doesn't already exist in regions.
+            if un_region != "not found" and un_region not in regions:
                 if un_region not in missing_regions:
                     missing_regions.append(un_region)
 
