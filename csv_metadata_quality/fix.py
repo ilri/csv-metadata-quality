@@ -364,13 +364,10 @@ def countries_match_regions(row):
             # it doesn't already exist in regions.
             if un_region != "not found" and un_region not in regions:
                 if un_region not in missing_regions:
+                    print(
+                        f"{Fore.YELLOW}Adding missing region ({un_region}): {Fore.RESET}{row[title_column_name]}"
+                    )
                     missing_regions.append(un_region)
-
-        if len(missing_regions) > 0:
-            for missing_region in missing_regions:
-                print(
-                    f"{Fore.YELLOW}Adding missing region ({missing_region}): {Fore.RESET}{row[title_column_name]}"
-                )
 
         # Add the missing regions back to the row, paying attention to whether
         # or not the row's region column is None (aka null) or just an empty
