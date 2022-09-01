@@ -308,6 +308,11 @@ def countries_match_regions(row):
     region_column_name = ""
     title_column_name = ""
 
+    # Instantiate a CountryConverter() object here. According to the docs it is
+    # more performant to do that as opposed to calling coco.convert() directly
+    # because we don't need to re-load the country data with each iteration.
+    cc = coco.CountryConverter()
+
     # Iterate over the labels of the current row's values to get the names of
     # the title and citation columns. Then we check if the title is present in
     # the citation.
@@ -348,7 +353,7 @@ def countries_match_regions(row):
             # Look up the UN M.49 regions for this country code. CoCo seems to
             # only list the direct region, ie Western Africa, rather than all
             # the parent regions ("Sub-Saharan Africa", "Africa", "World")
-            un_region = coco.convert(names=country, to="UNRegion")
+            un_region = cc.convert(names=country, to="UNRegion")
 
             if un_region not in regions:
                 if un_region not in missing_regions:
