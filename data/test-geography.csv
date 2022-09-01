@@ -1,0 +1,13 @@
+dc.title,dcterms.issued,dcterms.type,dc.contributor.author,cg.coverage.country,cg.coverage.region
+No country,2022-09-01,Report,"Orth, Alan",,
+Matching country and region,2022-09-01,Report,"Orth, Alan",Kenya,Eastern Africa
+Missing region,2022-09-01,Report,"Orth, Alan",Kenya,
+Caribbean country with matching region,2022-09-01,Report,"Orth, Alan",Bahamas,Caribbean
+Caribbean country with no region,2022-09-01,Report,"Orth, Alan",Bahamas,
+Fake country with no region,2022-09-01,Report,"Orth, Alan",Yeah Baby,
+SE Asian country with matching region,2022-09-01,Report,"Orth, Alan",Cambodia,South-eastern Asia
+SE Asian country with no region,2022-09-01,Report,"Orth, Alan",Cambodia,
+Duplicate countries with matching region,2022-09-01,Report,"Orth, Alan",Kenya||Kenya,Eastern Africa
+Duplicate countries with missing regions,2022-09-01,Report,"Orth, Alan",Kenya||Kenya,
+Multiple countries with no regions,2022-09-01,Report,"Orth, Alan",Kenya||Bahamas,
+Multiple countries with mixed matching regions,2022-09-01,Report,"Orth, Alan",Kenya||Bahamas,Eastern Africa

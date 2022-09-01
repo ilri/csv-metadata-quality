@@ -15,8 +15,12 @@ steps:
   - python setup.py install
   # Basic test
   - csv-metadata-quality -i data/test.csv -o /tmp/test.csv
-  # Test with unsafe fixes
+  # Basic test with unsafe fixes
   - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -u
+  # Geography test
+  - csv-metadata-quality -i data/test-geography.csv -o /tmp/test.csv
+  # Geography test with unsafe fixes
+  - csv-metadata-quality -i data/test-geography.csv -o /tmp/test.csv -u
   # Test with experimental checks
   - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -e
   # Test with AGROVOC validation
@@ -41,8 +45,12 @@ steps:
   - python setup.py install
   # Basic test
   - csv-metadata-quality -i data/test.csv -o /tmp/test.csv
-  # Test with unsafe fixes
+  # Basic test with unsafe fixes
   - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -u
+  # Geography test
+  - csv-metadata-quality -i data/test-geography.csv -o /tmp/test.csv
+  # Geography test with unsafe fixes
+  - csv-metadata-quality -i data/test-geography.csv -o /tmp/test.csv -u
   # Test with experimental checks
   - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -e
   # Test with AGROVOC validation
@@ -67,8 +75,12 @@ steps:
   - python setup.py install
   # Basic test
   - csv-metadata-quality -i data/test.csv -o /tmp/test.csv
-  # Test with unsafe fixes
+  # Basic test with unsafe fixes
   - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -u
+  # Geography test
+  - csv-metadata-quality -i data/test-geography.csv -o /tmp/test.csv
+  # Geography test with unsafe fixes
+  - csv-metadata-quality -i data/test-geography.csv -o /tmp/test.csv -u
   # Test with experimental checks
   - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -e
   # Test with AGROVOC validation
