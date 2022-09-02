@@ -36,7 +36,7 @@ def parse_args(argv):
     parser.add_argument(
         "--input-file",
         "-i",
-        help="Path to input file. Can be UTF-8 CSV or Excel XLSX.",
+        help="Path to input file. Must be a UTF-8 CSV.",
         required=True,
         type=argparse.FileType("r", encoding="UTF-8"),
     )

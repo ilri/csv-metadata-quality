@@ -14,7 +14,6 @@ csv-metadata-quality = 'csv_metadata_quality.__main__:main'
 python = "^3.8"
 pandas = "^1.4.0"
 python-stdnum = "^1.13"
-xlrd = "^1.2.0"
 requests = "^2.27.1"
 requests-cache = "^0.9.1"
 pycountry = "^22.1.10"
