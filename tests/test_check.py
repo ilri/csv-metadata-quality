@@ -257,12 +257,13 @@ def test_check_incorrect_iso_639_1_language(capsys):
 
     title = "A randomised vaccine field trial in Kenya demonstrates protection against wildebeest-associated malignant catarrhal fever in cattle"
     language = "es"
+    exclude = list()
 
     # Create a dictionary to mimic Pandas series
     row = {"dc.title": title, "dc.language.iso": language}
     series = pd.Series(row)
 
-    experimental.correct_language(series)
+    experimental.correct_language(series, exclude)
 
     captured = capsys.readouterr()
     assert (
@@ -276,12 +277,13 @@ def test_check_incorrect_iso_639_3_language(capsys):
 
     title = "A randomised vaccine field trial in Kenya demonstrates protection against wildebeest-associated malignant catarrhal fever in cattle"
     language = "spa"
+    exclude = list()
 
     # Create a dictionary to mimic Pandas series
     row = {"dc.title": title, "dc.language.iso": language}
     series = pd.Series(row)
 
-    experimental.correct_language(series)
+    experimental.correct_language(series, exclude)
 
     captured = capsys.readouterr()
     assert (
@@ -295,12 +297,13 @@ def test_check_correct_iso_639_1_language():
 
     title = "A randomised vaccine field trial in Kenya demonstrates protection against wildebeest-associated malignant catarrhal fever in cattle"
     language = "en"
+    exclude = list()
 
     # Create a dictionary to mimic Pandas series
     row = {"dc.title": title, "dc.language.iso": language}
     series = pd.Series(row)
 
-    result = experimental.correct_language(series)
+    result = experimental.correct_language(series, exclude)
 
     assert result == None
 
@@ -310,12 +313,13 @@ def test_check_correct_iso_639_3_language():
 
     title = "A randomised vaccine field trial in Kenya demonstrates protection against wildebeest-associated malignant catarrhal fever in cattle"
     language = "eng"
+    exclude = list()
 
     # Create a dictionary to mimic Pandas series
     row = {"dc.title": title, "dc.language.iso": language}
     series = pd.Series(row)
 
-    result = experimental.correct_language(series)
+    result = experimental.correct_language(series, exclude)
 
     assert result == None
 
