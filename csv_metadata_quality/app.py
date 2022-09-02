@@ -200,20 +200,22 @@ def run(argv):
     # should rename column in this for loop...
     for column in df_transposed.columns:
         # Check: citation DOI
-        check.citation_doi(df_transposed[column])
+        check.citation_doi(df_transposed[column], exclude)
 
         # Check: title in citation
-        check.title_in_citation(df_transposed[column])
+        check.title_in_citation(df_transposed[column], exclude)
 
         if args.unsafe_fixes:
             # Fix: countries match regions
-            df_transposed[column] = fix.countries_match_regions(df_transposed[column])
+            df_transposed[column] = fix.countries_match_regions(
+                df_transposed[column], exclude
+            )
         else:
             # Check: countries match regions
-            check.countries_match_regions(df_transposed[column])
+            check.countries_match_regions(df_transposed[column], exclude)
 
         if args.experimental_checks:
-            experimental.correct_language(df_transposed[column])
+            experimental.correct_language(df_transposed[column], exclude)
 
     # Transpose the DataFrame back before writing. This is probably wasteful to
     # do every time since we technically only need to do it if we've done the

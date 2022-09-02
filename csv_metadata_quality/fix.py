@@ -293,7 +293,7 @@ def mojibake(field, field_name):
         return field
 
 
-def countries_match_regions(row):
+def countries_match_regions(row, exclude):
     """Check for the scenario where an item has country coverage metadata, but
     does not have the corresponding region metadata. For example, an item that
     has country coverage "Kenya" should also have region "Eastern Africa" acc-
@@ -336,6 +336,12 @@ def countries_match_regions(row):
         match = re.match(r"^(dc|dcterms)\.title.*$", label)
         if match is not None:
             title_column_name = label
+
+    # Make sure the user has not asked to exclude any metadata fields. If so, we
+    # should return immediately.
+    column_names = [country_column_name, region_column_name, title_column_name]
+    if any(field in column_names for field in exclude):
+        return row
 
     # Make sure we found the country and region columns
     if country_column_name != "" and region_column_name != "":

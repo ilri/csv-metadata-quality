@@ -131,6 +131,7 @@ def test_fix_country_not_matching_region():
     country = "Kenya"
     region = ""
     missing_region = "Eastern Africa"
+    exclude = list()
 
     # Emulate a column in a transposed dataframe (which is just a series)
     d = {
@@ -140,7 +141,7 @@ def test_fix_country_not_matching_region():
     }
     series = pd.Series(data=d)
 
-    result = fix.countries_match_regions(series)
+    result = fix.countries_match_regions(series, exclude)
 
     # Emulate the correct series we are expecting
     d_correct = {

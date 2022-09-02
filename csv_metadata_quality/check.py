@@ -391,13 +391,20 @@ def mojibake(field, field_name):
     return
 
 
-def citation_doi(row):
+def citation_doi(row, exclude):
     """Check for the scenario where an item has a DOI listed in its citation,
     but does not have a cg.identifier.doi field.
 
     Function prints a warning if the DOI field is missing, but there is a DOI
     in the citation.
     """
+    # Check if the user requested us to skip any DOI fields so we can
+    # just return before going any further.
+    for field in exclude:
+        match = re.match(r"^.*?doi.*$", field)
+        if match is not None:
+            return
+
     # Initialize some variables at global scope so that we can set them in the
     # loop scope below and still be able to access them afterwards.
     citation = ""
@@ -415,9 +422,10 @@ def citation_doi(row):
         if match is not None:
             return
 
-        # Get the name of the citation field
+        # Check if the current label is a citation field and make sure the user
+        # hasn't asked to skip it. If not, then set the citation.
         match = re.match(r"^.*?[cC]itation.*$", label)
-        if match is not None:
+        if match is not None and label not in exclude:
             citation = row[label]
 
     if citation != "":
@@ -433,7 +441,7 @@ def citation_doi(row):
     return
 
 
-def title_in_citation(row):
+def title_in_citation(row, exclude):
     """Check for the scenario where an item's title is missing from its cita-
     tion. This could mean that it is missing entirely, or perhaps just exists
     in a different format (whitespace, accents, etc).
@@ -455,12 +463,12 @@ def title_in_citation(row):
 
         # Find the name of the title column
         match = re.match(r"^(dc|dcterms)\.title.*$", label)
-        if match is not None:
+        if match is not None and label not in exclude:
             title = row[label]
 
         # Find the name of the citation column
         match = re.match(r"^.*?[cC]itation.*$", label)
-        if match is not None:
+        if match is not None and label not in exclude:
             citation = row[label]
 
     if citation != "":
@@ -470,7 +478,7 @@ def title_in_citation(row):
     return
 
 
-def countries_match_regions(row):
+def countries_match_regions(row, exclude):
     """Check for the scenario where an item has country coverage metadata, but
     does not have the corresponding region metadata. For example, an item that
     has country coverage "Kenya" should also have region "Eastern Africa" acc-
@@ -513,6 +521,12 @@ def countries_match_regions(row):
         match = re.match(r"^(dc|dcterms)\.title.*$", label)
         if match is not None:
             title_column_name = label
+
+    # Make sure the user has not asked to exclude any metadata fields. If so, we
+    # should return immediately.
+    column_names = [country_column_name, region_column_name, title_column_name]
+    if any(field in column_names for field in exclude):
+        return
 
     # Make sure we found the country and region columns
     if country_column_name != "" and region_column_name != "":

@@ -8,7 +8,7 @@ from colorama import Fore
 from pycountry import languages
 
 
-def correct_language(row):
+def correct_language(row, exclude):
     """Analyze the text used in the title, abstract, and citation fields to pre-
     dict the language being used and compare it with the item's dc.language.iso
     field.
@@ -39,7 +39,8 @@ def correct_language(row):
 
             language = row[label]
 
-        # Extract title if it is present
+        # Extract title if it is present (note that we don't allow excluding
+        # the title here because it complicates things).
         match = re.match(r"^.*?title.*$", label)
         if match is not None:
             title = row[label]
@@ -48,12 +49,12 @@ def correct_language(row):
 
         # Extract abstract if it is present
         match = re.match(r"^.*?abstract.*$", label)
-        if match is not None:
+        if match is not None and label not in exclude:
             sample_strings.append(row[label])
 
         # Extract citation if it is present
         match = re.match(r"^.*?[cC]itation.*$", label)
-        if match is not None:
+        if match is not None and label not in exclude:
             sample_strings.append(row[label])
 
     # Make sure language is not blank and is valid ISO 639-1/639-3 before proceeding with language prediction
