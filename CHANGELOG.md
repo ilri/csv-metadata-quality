@@ -13,6 +13,7 @@ issues with ftfy
 
 ### Updated
 - Python dependencies
+- Metadatata field exclude logic
 
 ### Added
 - Ability to drop invalid AGROVOC values with `-d` when checking AGROVOC values
