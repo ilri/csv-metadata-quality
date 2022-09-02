@@ -76,19 +76,19 @@ def run(argv):
     # Read all fields as strings so dates don't get converted from 1998 to 1998.0
     df = pd.read_csv(args.input_file, dtype=str)
 
-    for column in df.columns:
-        # Check if the user requested to skip any fields
-        if args.exclude_fields:
-            skip = False
-            # Split the list of excludes on ',' so we can test exact matches
-            # rather than fuzzy matches with regexes or "if word in string"
-            for exclude in args.exclude_fields.split(","):
-                if column == exclude and skip is False:
-                    skip = True
-            if skip:
-                print(f"{Fore.YELLOW}Skipping {Fore.RESET}{column}")
+    # Check if the user requested to skip any fields
+    if args.exclude_fields:
+        # Split the list of excluded fields on ',' into a list. Note that the
+        # user should be careful to no include spaces here.
+        exclude = args.exclude_fields.split(",")
+    else:
+        exclude = list()
 
-                continue
+    for column in df.columns:
+        if column in exclude:
+            print(f"{Fore.YELLOW}Skipping {Fore.RESET}{column}")
+
+            continue
 
         # Fix: whitespace
         df[column] = df[column].apply(fix.whitespace, field_name=column)
