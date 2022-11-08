@@ -189,9 +189,16 @@ description = "The country converter (coco) - a Python package for converting co
 category = "main"
 optional = false
 python-versions = "*"
+develop = false
 
 [package.dependencies]
 pandas = ">=1.0"
+
+[package.source]
+type = "git"
+url = "https://github.com/alanorth/country_converter.git"
+reference = "fixes-for-upstream"
+resolved_reference = "93992c4c8d8b12967b5767be6ef0584a8300db52"
 
 [[package]]
 name = "csvkit"
@@ -800,7 +807,7 @@ test = ["pytest", "pytest-cov"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "9a76e08695dcda96179da1f85c3f82479dad3c2b2e95693f38b8a5d5a2f4a4b6"
+content-hash = "3c6e058e18cfcb12080afe08ef00fba2e1f7a1e961a6a3397a13f8bdbfd3b78b"
 
 [metadata.files]
 agate = [
@@ -878,9 +885,7 @@ commonmark = [
     {file = "commonmark-0.9.1-py2.py3-none-any.whl", hash = "sha256:da2f38c92590f83de410ba1a3cbceafbc74fee9def35f9251ba9a971d6d66fd9"},
     {file = "commonmark-0.9.1.tar.gz", hash = "sha256:452f9dc859be7f06631ddcb328b6919c67984aca654e5fefb3914d54691aed60"},
 ]
-country-converter = [
-    {file = "country_converter-0.7.7.tar.gz", hash = "sha256:f980bdc53db2f174b07450c9e3eb0f475c705579cf4175b37f368d83bc688f63"},
-]
+country-converter = []
 csvkit = [
     {file = "csvkit-1.0.7-py2.py3-none-any.whl", hash = "sha256:a731ed825297737b00499d0e36c4c6435af89e9018ec5ca2f2dad2ebf90cc55a"},
     {file = "csvkit-1.0.7.tar.gz", hash = "sha256:0019e29ccadfe3d5cb0d159a443cba3ce8dfc37c967317db983ce3f19f0ca050"},

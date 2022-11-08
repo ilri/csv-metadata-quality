@@ -21,7 +21,7 @@ langid = "^1.1.6"
 colorama = "^0.4.5"
 spdx-license-list = "^0.5.2"
 ftfy = "^6.1.1"
-country-converter = "^0.7.7"
+country-converter = {git = "https://github.com/alanorth/country_converter.git", rev = "fixes-for-upstream"}
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.2.0"
