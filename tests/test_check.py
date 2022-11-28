@@ -510,5 +510,5 @@ def test_country_not_matching_region(capsys):
     captured = capsys.readouterr()
     assert (
         captured.out
-        == f"{Fore.YELLOW}Missing region ({missing_region}): {Fore.RESET}{title}\n"
+        == f"{Fore.YELLOW}Missing region ({country} → {missing_region}): {Fore.RESET}{title}\n"
     )
