@@ -9,7 +9,7 @@ steps:
   commands:
   - id
   - python -V
-  - apt update && apt install -y gcc g++ libicu-dev pkg-config
+  - apt update && apt install -y gcc g++ libicu-dev pkg-config git
   - pip install -r requirements-dev.txt
   - pytest
   - python setup.py install
@@ -39,7 +39,7 @@ steps:
   commands:
   - id
   - python -V
-  - apt update && apt install -y gcc g++ libicu-dev pkg-config
+  - apt update && apt install -y gcc g++ libicu-dev pkg-config git
   - pip install -r requirements-dev.txt
   - pytest
   - python setup.py install
@@ -69,7 +69,7 @@ steps:
   commands:
   - id
   - python -V
-  - apt update && apt install -y gcc g++ libicu-dev pkg-config
+  - apt update && apt install -y gcc g++ libicu-dev pkg-config git
   - pip install -r requirements-dev.txt
   - pytest
   - python setup.py install
