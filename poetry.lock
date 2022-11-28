@@ -214,14 +214,21 @@ test = ["flake8 (==3.7.8)", "hypothesis (==3.55.3)"]
 
 [[package]]
 name = "country-converter"
-version = "0.8.0"
+version = "0.8.1.dev0"
 description = "The country converter (coco) - a Python package for converting country names between different classifications schemes."
 category = "main"
 optional = false
 python-versions = "*"
+develop = false
 
 [package.dependencies]
 pandas = ">=1.0"
+
+[package.source]
+type = "git"
+url = "https://github.com/alanorth/country_converter.git"
+reference = "myanmar-region"
+resolved_reference = "ec553386f3d81097b492ad9f8aff5286cf58d66b"
 
 [[package]]
 name = "csvkit"
@@ -992,7 +999,7 @@ test = ["pytest", "pytest-cov"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "9c2b896bc7824d73eb04f1dc65b427b4f52a4a35c4e06231934933a80ddfe2d5"
+content-hash = "c943eeb64f736991b6e4769c0aa5a3ca33510048d96baeeed3b91ec7535e47f8"
 
 [metadata.files]
 agate = [
@@ -1082,9 +1089,7 @@ commonmark = [
     {file = "commonmark-0.9.1-py2.py3-none-any.whl", hash = "sha256:da2f38c92590f83de410ba1a3cbceafbc74fee9def35f9251ba9a971d6d66fd9"},
     {file = "commonmark-0.9.1.tar.gz", hash = "sha256:452f9dc859be7f06631ddcb328b6919c67984aca654e5fefb3914d54691aed60"},
 ]
-country-converter = [
-    {file = "country_converter-0.8.0.tar.gz", hash = "sha256:cbb405395ae14dd5505bde0b6cbd8c7fca31e1812ea4352214a90841208026e4"},
-]
+country-converter = []
 csvkit = [
     {file = "csvkit-1.0.7-py2.py3-none-any.whl", hash = "sha256:a731ed825297737b00499d0e36c4c6435af89e9018ec5ca2f2dad2ebf90cc55a"},
     {file = "csvkit-1.0.7.tar.gz", hash = "sha256:0019e29ccadfe3d5cb0d159a443cba3ce8dfc37c967317db983ce3f19f0ca050"},
