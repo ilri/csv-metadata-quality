@@ -20,7 +20,7 @@ langid = "^1.1.6"
 colorama = "^0.4.5"
 spdx-license-list = "^0.5.2"
 ftfy = "^6.1.1"
-country-converter = {git = "https://github.com/alanorth/country_converter.git", rev = "fixes-for-upstream"}
+country-converter = "^0.8.0"
 pycountry = {git = "https://github.com/alanorth/pycountry", rev = "iso-codes-4.12.0"}
 
 [tool.poetry.dev-dependencies]
