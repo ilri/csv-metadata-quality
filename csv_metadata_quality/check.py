@@ -550,7 +550,7 @@ def countries_match_regions(row, exclude):
 
             if un_region != "not found" and un_region not in regions:
                 print(
-                    f"{Fore.YELLOW}Missing region ({un_region}): {Fore.RESET}{row[title_column_name]}"
+                    f"{Fore.YELLOW}Missing region ({country} → {un_region}): {Fore.RESET}{row[title_column_name]}"
                 )
 
     return
