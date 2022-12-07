@@ -512,9 +512,9 @@ def countries_match_regions(row, exclude):
         if match is not None:
             country_column_name = label
 
-        # Find the name of the region column
+        # Find the name of the region column, but make sure it's not subregion!
         match = re.match(r"^.*?region.*$", label)
-        if match is not None:
+        if match is not None and "sub" not in label:
             region_column_name = label
 
         # Find the name of the title column
