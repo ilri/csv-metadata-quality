@@ -1,5 +1,9 @@
 # SPDX-License-Identifier: GPL-3.0-only
 
+
+import json
+from importlib.resources import files
+
 from ftfy.badness import is_bad
 
 
@@ -49,3 +53,13 @@ def is_mojibake(field):
     else:
         # Encodable as CP-1252, Mojibake alert level high
         return True
+
+
+def load_spdx_licenses():
+    """Returns a Python list of SPDX short license identifiers."""
+
+    with open(files("csv_metadata_quality").joinpath("data/licenses.json")) as f:
+        licenses = json.load(f)
+
+    # List comprehension to extract the license ID for each license
+    return [license["licenseId"] for license in licenses["licenses"]]

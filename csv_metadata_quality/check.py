@@ -9,13 +9,12 @@ import country_converter as coco
 import pandas as pd
 import requests
 import requests_cache
-import spdx_license_list
 from colorama import Fore
 from pycountry import languages
 from stdnum import isbn as stdnum_isbn
 from stdnum import issn as stdnum_issn
 
-from csv_metadata_quality.util import is_mojibake
+from csv_metadata_quality.util import is_mojibake, load_spdx_licenses
 
 
 def issn(field):
@@ -317,9 +316,11 @@ def spdx_license_identifier(field):
     if pd.isna(field):
         return
 
+    spdx_licenses = load_spdx_licenses()
+
     # Try to split multi-value field on "||" separator
     for value in field.split("||"):
-        if value not in spdx_license_list.LICENSES:
+        if value not in spdx_licenses:
             print(f"{Fore.YELLOW}Non-SPDX license identifier: {Fore.RESET}{value}")
 
     return
