@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Missing region check should ignore subregion field, if it exists
 
+### Changed
+- Use SPDX license data from SPDX themselves instead of spdx-license-list
+because it is deprecated and outdated
+- Require Python 3.9+
+
 ## [0.6.0] - 2022-09-02
 ### Changed
 - Perform fix for "unnecessary" Unicode characters after we try to fix encoding
