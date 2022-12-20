@@ -25,7 +25,7 @@ def test_check_valid_issn():
 
     result = check.issn(value)
 
-    assert result == None
+    assert result is None
 
 
 def test_check_invalid_isbn(capsys):
@@ -46,7 +46,7 @@ def test_check_valid_isbn():
 
     result = check.isbn(value)
 
-    assert result == None
+    assert result is None
 
 
 def test_check_missing_date(capsys):
@@ -102,7 +102,7 @@ def test_check_valid_date():
 
     result = check.date(value, field_name)
 
-    assert result == None
+    assert result is None
 
 
 def test_check_suspicious_characters(capsys):
@@ -128,7 +128,7 @@ def test_check_valid_iso639_1_language():
 
     result = check.language(value)
 
-    assert result == None
+    assert result is None
 
 
 def test_check_valid_iso639_3_language():
@@ -138,7 +138,7 @@ def test_check_valid_iso639_3_language():
 
     result = check.language(value)
 
-    assert result == None
+    assert result is None
 
 
 def test_check_invalid_iso639_1_language(capsys):
@@ -249,7 +249,7 @@ def test_check_common_filename_extension():
 
     result = check.filename_extension(value)
 
-    assert result == None
+    assert result is None
 
 
 def test_check_incorrect_iso_639_1_language(capsys):
@@ -305,7 +305,7 @@ def test_check_correct_iso_639_1_language():
 
     result = experimental.correct_language(series, exclude)
 
-    assert result == None
+    assert result is None
 
 
 def test_check_correct_iso_639_3_language():
@@ -321,7 +321,7 @@ def test_check_correct_iso_639_3_language():
 
     result = experimental.correct_language(series, exclude)
 
-    assert result == None
+    assert result is None
 
 
 def test_check_valid_spdx_license_identifier():
@@ -331,7 +331,7 @@ def test_check_valid_spdx_license_identifier():
 
     result = check.spdx_license_identifier(license)
 
-    assert result == None
+    assert result is None
 
 
 def test_check_invalid_spdx_license_identifier(capsys):
@@ -379,7 +379,7 @@ def test_check_no_mojibake():
 
     result = check.mojibake(field, field_name)
 
-    assert result == None
+    assert result is None
 
 
 def test_check_mojibake(capsys):
@@ -411,7 +411,7 @@ def test_check_doi_field():
 
     result = check.citation_doi(series, exclude)
 
-    assert result == None
+    assert result is None
 
 
 def test_check_doi_only_in_citation(capsys):
@@ -448,7 +448,7 @@ def test_title_in_citation():
 
     result = check.title_in_citation(series, exclude)
 
-    assert result == None
+    assert result is None
 
 
 def test_title_not_in_citation(capsys):
@@ -485,7 +485,7 @@ def test_country_matches_region():
 
     result = check.countries_match_regions(series, exclude)
 
-    assert result == None
+    assert result is None
 
 
 def test_country_not_matching_region(capsys):
