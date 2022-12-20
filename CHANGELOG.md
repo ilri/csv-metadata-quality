@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 because it is deprecated and outdated
 - Require Python 3.9+
 
+### Updated
+- Python dependencies
+
 ## [0.6.0] - 2022-09-02
 ### Changed
 - Perform fix for "unnecessary" Unicode characters after we try to fix encoding
