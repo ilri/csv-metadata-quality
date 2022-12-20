@@ -339,7 +339,7 @@ def test_check_invalid_spdx_license_identifier(capsys):
 
     license = "CC-BY-SA"
 
-    result = check.spdx_license_identifier(license)
+    check.spdx_license_identifier(license)
 
     captured = capsys.readouterr()
     assert (
@@ -362,7 +362,7 @@ def test_check_duplicate_item(capsys):
     }
     df = pd.DataFrame(data=d)
 
-    result = check.duplicate_items(df)
+    check.duplicate_items(df)
 
     captured = capsys.readouterr()
     assert (
@@ -388,7 +388,7 @@ def test_check_mojibake(capsys):
     field = "CIAT PublicaÃ§ao"
     field_name = "dcterms.isPartOf"
 
-    result = check.mojibake(field, field_name)
+    check.mojibake(field, field_name)
 
     captured = capsys.readouterr()
     assert (
