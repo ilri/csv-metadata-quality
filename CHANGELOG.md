@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Use SPDX license data from SPDX themselves instead of spdx-license-list
 because it is deprecated and outdated
 - Require Python 3.9+
+- Don't run `fix.separators()` on title fields
 
 ### Updated
 - Python dependencies
