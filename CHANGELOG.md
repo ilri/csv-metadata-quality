@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 because it is deprecated and outdated
 - Require Python 3.9+
 - Don't run `fix.separators()` on title fields
+- Don't run whitespace or newline fixes on abstract fields
 
 ### Updated
 - Python dependencies
