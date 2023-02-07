@@ -90,12 +90,14 @@ def run(argv):
 
             continue
 
-        # Fix: whitespace
-        df[column] = df[column].apply(fix.whitespace, field_name=column)
-
-        # Fix: newlines
         if args.unsafe_fixes:
-            df[column] = df[column].apply(fix.newlines, field_name=column)
+            match = re.match(r"^.*?abstract.*$", column)
+            if match is None:
+                # Fix: whitespace
+                df[column] = df[column].apply(fix.whitespace, field_name=column)
+
+                # Fix: newlines
+                df[column] = df[column].apply(fix.newlines, field_name=column)
 
         # Fix: missing space after comma. Only run on author and citation
         # fields for now, as this problem is mostly an issue in names.
