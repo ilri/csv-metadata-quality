@@ -1,0 +1,17 @@
+id,dc.title,dcterms.abstract
+1,Normal item,This is an abstract
+2,Leading whitespace, This is an abstract
+3,Trailing whitespace,This is an abstract 
+4,Consecutive whitespace,This is  an abstract
+5,Newline,"This
+is an abstract"
+6,Newline with leading whitespace," This
+ is an abstract"
+7,Newline with trailing whitespace,"This 
+is an abstract "
+8,Newline with consecutive whitespace,"This
+is an  abstract"
+9,Multiple newlines,"This
+is
+an
+abstract"
