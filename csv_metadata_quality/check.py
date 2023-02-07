@@ -312,8 +312,19 @@ def spdx_license_identifier(field):
     Prints the value if it is invalid.
     """
 
+    # List of common non-SPDX licenses to ignore
+    # See: https://ilri.github.io/cgspace-submission-guidelines/dcterms-license/dcterms-license.txt
+    ignore_licenses = {
+        "All rights reserved; no re-use allowed",
+        "All rights reserved; self-archive copy only",
+        "Copyrighted; Non-commercial educational use only",
+        "Copyrighted; Non-commercial use only",
+        "Copyrighted; all rights reserved",
+        "Other",
+    }
+
     # Skip fields with missing values
-    if pd.isna(field):
+    if pd.isna(field) or field in ignore_licenses:
         return
 
     spdx_licenses = load_spdx_licenses()

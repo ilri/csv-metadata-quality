@@ -14,6 +14,7 @@ because it is deprecated and outdated
 - Require Python 3.9+
 - Don't run `fix.separators()` on title fields
 - Don't run whitespace or newline fixes on abstract fields
+- Ignore some common non-SPDX licenses
 
 ### Updated
 - Python dependencies
