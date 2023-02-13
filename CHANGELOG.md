@@ -15,6 +15,8 @@ because it is deprecated and outdated
 - Don't run `fix.separators()` on title or abstract fields
 - Don't run whitespace or newline fixes on abstract fields
 - Ignore some common non-SPDX licenses
+- Ignore `__description` suffix in filenames meant for SAFBuilder when checking
+for uncommon file extensions
 
 ### Updated
 - Python dependencies

@@ -286,6 +286,11 @@ def filename_extension(field):
 
     # Iterate over all values
     for value in values:
+        # Strip filename descriptions that are meant for SAF Bundler, for
+        # example: Annual_Report_2020.pdf__description:Report
+        if "__description" in value:
+            value = value.split("__")[0]
+
         # Assume filename extension does not match
         filename_extension_match = False
 
