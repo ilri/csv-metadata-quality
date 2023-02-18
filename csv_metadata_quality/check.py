@@ -33,7 +33,6 @@ def issn(field):
 
     # Try to split multi-value field on "||" separator
     for value in field.split("||"):
-
         if not stdnum_issn.is_valid(value):
             print(f"{Fore.RED}Invalid ISSN: {Fore.RESET}{value}")
 
@@ -56,7 +55,6 @@ def isbn(field):
 
     # Try to split multi-value field on "||" separator
     for value in field.split("||"):
-
         if not stdnum_isbn.is_valid(value):
             print(f"{Fore.RED}Invalid ISBN: {Fore.RESET}{value}")
 
@@ -173,7 +171,6 @@ def language(field):
 
     # Try to split multi-value field on "||" separator
     for value in field.split("||"):
-
         # After splitting, check if language value is 2 or 3 characters so we
         # can check it against ISO 639-1 or ISO 639-3 accordingly.
         if len(value) == 2:
