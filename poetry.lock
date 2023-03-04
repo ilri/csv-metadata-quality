@@ -1109,8 +1109,8 @@ develop = false
 [package.source]
 type = "git"
 url = "https://github.com/alanorth/pycountry"
-reference = "iso-codes-4.12.0"
-resolved_reference = "7abda245295da5280de172ceb9bbf2f6f1336e57"
+reference = "iso-codes-4.13.0"
+resolved_reference = "c6d147b1fc82b0cb158cab38152315e8d240b584"
 
 [[package]]
 name = "pyflakes"
@@ -1548,4 +1548,4 @@ test = ["pytest", "pytest-cov"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "735afec81fd17dcfe2fb4ca47c044ad5385a4e706bdd8b87e56afcd8db848304"
+content-hash = "34efc5f1a670c8a3c56f5ee03e100cec22b8722c3ce69d3ae1c136a3b28a0242"
