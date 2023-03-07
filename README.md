@@ -127,7 +127,6 @@ This currently uses the [Python langid](https://github.com/saffsd/langid.py) lib
 - Warn if an author is shorter than 3 characters?
 - Validate DOIs? Normalize to https://doi.org format? Or use just the DOI part: 10.1016/j.worlddev.2010.06.006
 - Warn if two items use the same file in `filename` column
-- Add an option to drop invalid AGROVOC subjects?
 - Add tests for application invocation, ie `tests/test_app.py`?
 - Validate ISSNs or journal titles against CrossRef API?
 - Add configurable field validation, like specify a field name and a validation file?
@@ -137,7 +136,7 @@ This currently uses the [Python langid](https://github.com/saffsd/langid.py) lib
   - Warn if item is Open Access, but missing a license
   - Warn if item has an ISSN but no journal title
   - Update journal titles from ISSN
-- Migrate to https://github.com/spdx/license-list-data
+- Migrate from Pandas to Polars
 
 ## License
 This work is licensed under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html).
