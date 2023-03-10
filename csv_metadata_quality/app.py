@@ -102,7 +102,7 @@ def run(argv):
         # Fix: missing space after comma. Only run on author and citation
         # fields for now, as this problem is mostly an issue in names.
         if args.unsafe_fixes:
-            match = re.match(r"^.*?(author|citation).*$", column)
+            match = re.match(r"^.*?(author|[Cc]itation).*$", column)
             if match is not None:
                 df[column] = df[column].apply(fix.comma_space, field_name=column)
 
