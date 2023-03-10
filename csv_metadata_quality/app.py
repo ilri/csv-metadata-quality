@@ -126,7 +126,7 @@ def run(argv):
         # Fix: invalid and unnecessary multi-value separators. Skip the title
         # and abstract fields because "|" is used to indicate something like
         # a subtitle.
-        match = re.match(r"^.*?(abstract|title).*$", column)
+        match = re.match(r"^.*?(abstract|[Cc]itation|title).*$", column)
         if match is None:
             df[column] = df[column].apply(fix.separators, field_name=column)
             # Run whitespace fix again after fixing invalid separators
