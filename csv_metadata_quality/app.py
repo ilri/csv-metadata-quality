@@ -73,8 +73,7 @@ def run(argv):
     # set the signal handler for SIGINT (^C)
     signal.signal(signal.SIGINT, signal_handler)
 
-    # Read all fields as strings so dates don't get converted from 1998 to 1998.0
-    df = pd.read_csv(args.input_file, dtype=str)
+    df = pd.read_csv(args.input_file, dtype_backend="pyarrow")
 
     # Check if the user requested to skip any fields
     if args.exclude_fields:
