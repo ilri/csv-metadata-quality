@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed regex so we run the comma space fix on `dcterms.bibliographicCitation`
 fields
 
+### Updated
+- Python dependencies, including Pandas 2.0.0 and [Arrow-backed dtypes](https://datapythonista.me/blog/pandas-20-and-the-arrow-revolution-part-i)
+
 ## [0.6.1] - 2023-02-23
 ### Fixed
 - Missing region check should ignore subregion field, if it exists
