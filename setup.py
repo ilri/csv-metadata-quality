@@ -32,5 +32,6 @@ setuptools.setup(
     entry_points={
         "console_scripts": ["csv-metadata-quality = csv_metadata_quality.__main__:main"]
     },
+    include_package_data=True,
     install_requires=install_requires,
 )

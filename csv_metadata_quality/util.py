@@ -2,7 +2,7 @@
 
 
 import json
-from importlib.resources import files
+import os
 
 from ftfy.badness import is_bad
 
@@ -58,7 +58,7 @@ def is_mojibake(field):
 def load_spdx_licenses():
     """Returns a Python list of SPDX short license identifiers."""
 
-    with open(files("csv_metadata_quality").joinpath("data/licenses.json")) as f:
+    with open(os.path.join(os.path.dirname(__file__), "data/licenses.json")) as f:
         licenses = json.load(f)
 
     # List comprehension to extract the license ID for each license
