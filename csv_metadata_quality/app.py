@@ -90,7 +90,9 @@ def run(argv):
             continue
 
         if args.unsafe_fixes:
-            match = re.match(r"^.*?abstract.*$", column)
+            # Skip whitespace and newline fixes on abstracts and descriptions
+            # because there are too many with legitimate multi-line metadata.
+            match = re.match(r"^.*?(abstract|description).*$", column)
             if match is None:
                 # Fix: whitespace
                 df[column] = df[column].apply(fix.whitespace, field_name=column)
