@@ -3,7 +3,7 @@
   "extends": [
     "config:base"
   ],
-  "pip_requirements" {
+  "pip_requirements": {
       "enabled": false
   }
 }
