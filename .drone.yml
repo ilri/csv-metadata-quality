@@ -10,23 +10,23 @@ steps:
   - id
   - python -V
   - apt update && apt install -y gcc g++ libicu-dev pkg-config git
-  - pip install -r requirements-dev.txt
-  - pytest
-  - python setup.py install
+  - python -m pip install poetry
+  - poetry install
+  - poetry run pytest
   # Basic test
-  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv
+  - poetry run csv-metadata-quality -i data/test.csv -o /tmp/test.csv
   # Basic test with unsafe fixes
-  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -u
+  - poetry run csv-metadata-quality -i data/test.csv -o /tmp/test.csv -u
   # Geography test
-  - csv-metadata-quality -i data/test-geography.csv -o /tmp/test.csv
+  - poetry run csv-metadata-quality -i data/test-geography.csv -o /tmp/test.csv
   # Geography test with unsafe fixes
-  - csv-metadata-quality -i data/test-geography.csv -o /tmp/test.csv -u
+  - poetry run csv-metadata-quality -i data/test-geography.csv -o /tmp/test.csv -u
   # Test with experimental checks
-  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -e
+  - poetry run csv-metadata-quality -i data/test.csv -o /tmp/test.csv -e
   # Test with AGROVOC validation
-  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv --agrovoc-fields dcterms.subject
+  - poetry run csv-metadata-quality -i data/test.csv -o /tmp/test.csv --agrovoc-fields dcterms.subject
   # Test with AGROVOC validation (and dropping invalid)
-  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv --agrovoc-fields dcterms.subject -d
+  - poetry run csv-metadata-quality -i data/test.csv -o /tmp/test.csv --agrovoc-fields dcterms.subject -d
 
 ---
 kind: pipeline
@@ -40,23 +40,23 @@ steps:
   - id
   - python -V
   - apt update && apt install -y gcc g++ libicu-dev pkg-config git
-  - pip install -r requirements-dev.txt
-  - pytest
-  - python setup.py install
+  - python -m pip install poetry
+  - poetry install
+  - poetry run pytest
   # Basic test
-  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv
+  - poetry run csv-metadata-quality -i data/test.csv -o /tmp/test.csv
   # Basic test with unsafe fixes
-  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -u
+  - poetry run csv-metadata-quality -i data/test.csv -o /tmp/test.csv -u
   # Geography test
-  - csv-metadata-quality -i data/test-geography.csv -o /tmp/test.csv
+  - poetry run csv-metadata-quality -i data/test-geography.csv -o /tmp/test.csv
   # Geography test with unsafe fixes
-  - csv-metadata-quality -i data/test-geography.csv -o /tmp/test.csv -u
+  - poetry run csv-metadata-quality -i data/test-geography.csv -o /tmp/test.csv -u
   # Test with experimental checks
-  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -e
+  - poetry run csv-metadata-quality -i data/test.csv -o /tmp/test.csv -e
   # Test with AGROVOC validation
-  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv --agrovoc-fields dcterms.subject
+  - poetry run csv-metadata-quality -i data/test.csv -o /tmp/test.csv --agrovoc-fields dcterms.subject
   # Test with AGROVOC validation (and dropping invalid)
-  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv --agrovoc-fields dcterms.subject -d
+  - poetry run csv-metadata-quality -i data/test.csv -o /tmp/test.csv --agrovoc-fields dcterms.subject -d
 
 ---
 kind: pipeline
@@ -70,22 +70,22 @@ steps:
   - id
   - python -V
   - apt update && apt install -y gcc g++ libicu-dev pkg-config git
-  - pip install -r requirements-dev.txt
-  - pytest
-  - python setup.py install
+  - python -m pip install poetry
+  - poetry install
+  - poetry run pytest
   # Basic test
-  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv
+  - poetry run csv-metadata-quality -i data/test.csv -o /tmp/test.csv
   # Basic test with unsafe fixes
-  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -u
+  - poetry run csv-metadata-quality -i data/test.csv -o /tmp/test.csv -u
   # Geography test
-  - csv-metadata-quality -i data/test-geography.csv -o /tmp/test.csv
+  - poetry run csv-metadata-quality -i data/test-geography.csv -o /tmp/test.csv
   # Geography test with unsafe fixes
-  - csv-metadata-quality -i data/test-geography.csv -o /tmp/test.csv -u
+  - poetry run csv-metadata-quality -i data/test-geography.csv -o /tmp/test.csv -u
   # Test with experimental checks
-  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv -e
+  - poetry run csv-metadata-quality -i data/test.csv -o /tmp/test.csv -e
   # Test with AGROVOC validation
-  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv --agrovoc-fields dcterms.subject
+  - poetry run csv-metadata-quality -i data/test.csv -o /tmp/test.csv --agrovoc-fields dcterms.subject
   # Test with AGROVOC validation (and dropping invalid)
-  - csv-metadata-quality -i data/test.csv -o /tmp/test.csv --agrovoc-fields dcterms.subject -d
+  - poetry run csv-metadata-quality -i data/test.csv -o /tmp/test.csv --agrovoc-fields dcterms.subject -d
 
 # vim: ts=2 sw=2 et
