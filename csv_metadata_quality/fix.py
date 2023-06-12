@@ -370,9 +370,17 @@ def countries_match_regions(row, exclude):
             # it doesn't already exist in regions.
             if un_region != "not found" and un_region not in regions:
                 if un_region not in missing_regions:
-                    print(
-                        f"{Fore.YELLOW}Adding missing region ({un_region}): {Fore.RESET}{row[title_column_name]}"
-                    )
+                    try:
+                        print(
+                            f"{Fore.YELLOW}Adding missing region ({un_region}): {Fore.RESET}{row[title_column_name]}"
+                        )
+                    except KeyError:
+                        # If there is no title column in the CSV we will print
+                        # the fix without the title instead of crashing.
+                        print(
+                            f"{Fore.YELLOW}Adding missing region ({un_region}): {Fore.RESET}<title field not present>"
+                        )
+
                     missing_regions.append(un_region)
 
         if len(missing_regions) > 0:

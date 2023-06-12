@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 `dcterms.bibliographicCitation` fields
 - Fixed regex so we run the comma space fix on `dcterms.bibliographicCitation`
 fields
+- Don't crash the country/region checker/fixer when a title field is missing
 
 ### Changed
 - Don't run newline fix on description fields

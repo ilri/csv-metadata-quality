@@ -563,8 +563,13 @@ def countries_match_regions(row, exclude):
             un_region = cc.convert(names=country, to="UNRegion")
 
             if un_region != "not found" and un_region not in regions:
-                print(
-                    f"{Fore.YELLOW}Missing region ({country} → {un_region}): {Fore.RESET}{row[title_column_name]}"
-                )
+                try:
+                    print(
+                        f"{Fore.YELLOW}Missing region ({country} → {un_region}): {Fore.RESET}{row[title_column_name]}"
+                    )
+                except KeyError:
+                    print(
+                        f"{Fore.YELLOW}Missing region ({country} → {un_region}): {Fore.RESET}<title field not present>"
+                    )
 
     return
