@@ -1364,13 +1364,13 @@ unidecode = ["Unidecode (>=1.1.1)"]
 
 [[package]]
 name = "python-stdnum"
-version = "1.18"
+version = "1.19"
 description = "Python module to handle standardized numbers and codes"
 optional = false
 python-versions = "*"
 files = [
-    {file = "python-stdnum-1.18.tar.gz", hash = "sha256:bcc763d9c49ae23da5d2b7a686d5fd1deec9d9051341160a10d1ac723a26bec0"},
-    {file = "python_stdnum-1.18-py2.py3-none-any.whl", hash = "sha256:d7f2a3c7ef4635c957b9cbdd9b1993d1f6ee3a2959f03e172c45440d99f296eb"},
+    {file = "python-stdnum-1.19.tar.gz", hash = "sha256:133ec82f56390ea74c190569e98f2fb14b869808b1d54785708f22d0fead8b3f"},
+    {file = "python_stdnum-1.19-py2.py3-none-any.whl", hash = "sha256:1b5b401ad3f45b798b0317313b781a433f5d7a5ff2c9feb8054664f76f78644e"},
 ]
 
 [package.extras]
