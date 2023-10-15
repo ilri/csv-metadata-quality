@@ -221,7 +221,7 @@ def agrovoc(field, field_name, drop):
 
     # Try to split multi-value field on "||" separator
     for value in field.split("||"):
-        request_url = "http://agrovoc.uniroma2.it/agrovoc/rest/v1/agrovoc/search"
+        request_url = "https://agrovoc.uniroma2.it/agrovoc/rest/v1/agrovoc/search"
         request_params = {"query": value}
 
         request = requests.get(request_url, params=request_params)
