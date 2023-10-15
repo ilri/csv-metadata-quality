@@ -214,7 +214,7 @@ def agrovoc(field, field_name, drop):
     )
 
     # prune old cache entries
-    # requests_cache.remove_expired_responses()
+    requests_cache.delete()
 
     # Initialize an empty list to hold the validated AGROVOC values
     values = list()
