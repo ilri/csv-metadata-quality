@@ -1,11 +1,14 @@
 # SPDX-License-Identifier: GPL-3.0-only
 
 import argparse
+import os
 import re
 import signal
 import sys
+from datetime import timedelta
 
 import pandas as pd
+import requests_cache
 from colorama import Fore
 
 import csv_metadata_quality.check as check
@@ -83,6 +86,19 @@ def run(argv):
         exclude = args.exclude_fields.split(",")
     else:
         exclude = list()
+
+    # enable transparent request cache with thirty days expiry
+    expire_after = timedelta(days=30)
+    # Allow overriding the location of the requests cache, just in case we are
+    # running in an environment where we can't write to the current working di-
+    # rectory (for example from csv-metadata-quality-web).
+    REQUESTS_CACHE_DIR = os.environ.get("REQUESTS_CACHE_DIR", ".")
+    requests_cache.install_cache(
+        f"{REQUESTS_CACHE_DIR}/agrovoc-response-cache", expire_after=expire_after
+    )
+
+    # prune old cache entries
+    requests_cache.delete()
 
     for column in df.columns:
         if column in exclude:

@@ -14,6 +14,7 @@ fields
 
 ### Changed
 - Don't run newline fix on description fields
+- Install requests-cache in main run() function instead of check.agrovoc() function so we only incur the overhead once
 
 ### Updated
 - Python dependencies, including Pandas 2.0.0 and [Arrow-backed dtypes](https://datapythonista.me/blog/pandas-20-and-the-arrow-revolution-part-i)
