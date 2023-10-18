@@ -435,13 +435,13 @@ test = ["coveralls", "pytest (>=5.4.0)", "pytest-black", "pytest-cov (>=2.7.0)",
 
 [[package]]
 name = "csvkit"
-version = "1.2.0"
+version = "1.3.0"
 description = "A suite of command-line tools for working with CSV, the king of tabular file formats."
 optional = false
 python-versions = "*"
 files = [
-    {file = "csvkit-1.2.0-py2.py3-none-any.whl", hash = "sha256:8e84199284fc66bc81bec7e7c690eeb801755e4a13b84c470a06cbd94f27c618"},
-    {file = "csvkit-1.2.0.tar.gz", hash = "sha256:f927373b97b74d0e17957857a5d51d442127475e42a51e621572b1ba31a018d9"},
+    {file = "csvkit-1.3.0-py2.py3-none-any.whl", hash = "sha256:4eb8b773734b3eb12da772d9dccd08e4b31274d153d469835a10fe5d1de56818"},
+    {file = "csvkit-1.3.0.tar.gz", hash = "sha256:b82e6ae2d2bb416517100ecbae8d5d856a0dffae42b712088814a2b7201e1af8"},
 ]
 
 [package.dependencies]
@@ -1305,20 +1305,6 @@ files = [
 tests = ["pytest"]
 
 [[package]]
-name = "py3langid"
-version = "0.2.2"
-description = "Fork of the language identification tool langid.py, featuring a modernized codebase and faster execution times."
-optional = false
-python-versions = ">=3.6"
-files = [
-    {file = "py3langid-0.2.2-py3-none-any.whl", hash = "sha256:a5460ccc565c7b6a7a0e72f42236900b810e73c065a1b769a69fa9d9cff13f00"},
-    {file = "py3langid-0.2.2.tar.gz", hash = "sha256:b4de01dad7e701f29d216a0935e85e096cc8675903d23ea8445b2bb5f090b96f"},
-]
-
-[package.dependencies]
-numpy = "*"
-
-[[package]]
 name = "pyarrow"
 version = "13.0.0"
 description = "Python library for Apache Arrow"
@@ -1836,4 +1822,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "9132dcf9d6c0519ed4fbf924832a695000484b16a8ed997ca77b5873c37638f1"
+content-hash = "cec4aaf7a81539cd44fd7621d4057f1744901b2b3bd15c8dc03b3cce7f0c22f7"
