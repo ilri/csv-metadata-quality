@@ -19,7 +19,7 @@ requests-cache = "^1.0.0"
 langid = "^1.1.6"
 colorama = "^0.4.6"
 ftfy = "^6.1.1"
-country-converter = "~1.0.0"
+country-converter = "~1.1.0"
 pycountry = {git = "https://github.com/alanorth/pycountry", rev = "iso-codes-4.15.0"}
 
 [tool.poetry.group.dev.dependencies]
