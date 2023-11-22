@@ -23,7 +23,7 @@ def whitespace(field, field_name):
         return
 
     # Initialize an empty list to hold the cleaned values
-    values = list()
+    values = []
 
     # Try to split multi-value field on "||" separator
     for value in field.split("||"):
@@ -64,7 +64,7 @@ def separators(field, field_name):
         return
 
     # Initialize an empty list to hold the cleaned values
-    values = list()
+    values = []
 
     # Try to split multi-value field on "||" separator
     for value in field.split("||"):
@@ -175,7 +175,7 @@ def duplicates(field, field_name):
     values = field.split("||")
 
     # Initialize an empty list to hold the de-duplicated values
-    new_values = list()
+    new_values = []
 
     # Iterate over all values
     for value in values:
@@ -355,10 +355,10 @@ def countries_match_regions(row, exclude):
         if row[region_column_name] is not None:
             regions = row[region_column_name].split("||")
         else:
-            regions = list()
+            regions = []
 
         # An empty list for our regions so we can keep track for all countries
-        missing_regions = list()
+        missing_regions = []
 
         for country in countries:
             # Look up the UN M.49 regions for this country code. CoCo seems to

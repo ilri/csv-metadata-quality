@@ -202,7 +202,7 @@ def agrovoc(field, field_name, drop):
         return
 
     # Initialize an empty list to hold the validated AGROVOC values
-    values = list()
+    values = []
 
     # Try to split multi-value field on "||" separator
     for value in field.split("||"):
@@ -358,7 +358,7 @@ def duplicate_items(df):
 
     if items_count_unique < items_count_total:
         # Create a list to hold our items while we check for duplicates
-        items = list()
+        items = []
 
         for index, row in df.iterrows():
             item_title_type_date = f"{row[title_column_name]}{row[type_column_name]}{row[date_column_name]}"
@@ -539,7 +539,7 @@ def countries_match_regions(row, exclude):
         if row[region_column_name] is not None:
             regions = row[region_column_name].split("||")
         else:
-            regions = list()
+            regions = []
 
         for country in countries:
             # Look up the UN M.49 regions for this country code. CoCo seems to

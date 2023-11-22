@@ -85,7 +85,7 @@ def run(argv):
         # user should be careful to no include spaces here.
         exclude = args.exclude_fields.split(",")
     else:
-        exclude = list()
+        exclude = []
 
     # enable transparent request cache with thirty days expiry
     expire_after = timedelta(days=30)

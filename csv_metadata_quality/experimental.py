@@ -20,7 +20,7 @@ def correct_language(row, exclude):
     # Initialize some variables at global scope so that we can set them in the
     # loop scope below and still be able to access them afterwards.
     language = ""
-    sample_strings = list()
+    sample_strings = []
     title = None
 
     # Iterate over the labels of the current row's values. Before we transposed
