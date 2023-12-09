@@ -5,7 +5,7 @@ name: python311
 
 steps:
 - name: test
-  image: python:3.11-slim
+  image: python:3.12-slim
   commands:
   - id
   - python -V
@@ -35,7 +35,7 @@ name: python310
 
 steps:
 - name: test
-  image: python:3.10-slim
+  image: python:3.12-slim
   commands:
   - id
   - python -V
@@ -65,7 +65,7 @@ name: python39
 
 steps:
 - name: test
-  image: python:3.9-slim
+  image: python:3.12-slim
   commands:
   - id
   - python -V
