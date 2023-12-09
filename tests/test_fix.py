@@ -131,7 +131,7 @@ def test_fix_country_not_matching_region():
     country = "Kenya"
     region = ""
     missing_region = "Eastern Africa"
-    exclude = list()
+    exclude = []
 
     # Emulate a column in a transposed dataframe (which is just a series)
     d = {

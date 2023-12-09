@@ -257,7 +257,7 @@ def test_check_incorrect_iso_639_1_language(capsys):
 
     title = "A randomised vaccine field trial in Kenya demonstrates protection against wildebeest-associated malignant catarrhal fever in cattle"
     language = "es"
-    exclude = list()
+    exclude = []
 
     # Create a dictionary to mimic Pandas series
     row = {"dc.title": title, "dc.language.iso": language}
@@ -277,7 +277,7 @@ def test_check_incorrect_iso_639_3_language(capsys):
 
     title = "A randomised vaccine field trial in Kenya demonstrates protection against wildebeest-associated malignant catarrhal fever in cattle"
     language = "spa"
-    exclude = list()
+    exclude = []
 
     # Create a dictionary to mimic Pandas series
     row = {"dc.title": title, "dc.language.iso": language}
@@ -297,7 +297,7 @@ def test_check_correct_iso_639_1_language():
 
     title = "A randomised vaccine field trial in Kenya demonstrates protection against wildebeest-associated malignant catarrhal fever in cattle"
     language = "en"
-    exclude = list()
+    exclude = []
 
     # Create a dictionary to mimic Pandas series
     row = {"dc.title": title, "dc.language.iso": language}
@@ -313,7 +313,7 @@ def test_check_correct_iso_639_3_language():
 
     title = "A randomised vaccine field trial in Kenya demonstrates protection against wildebeest-associated malignant catarrhal fever in cattle"
     language = "eng"
-    exclude = list()
+    exclude = []
 
     # Create a dictionary to mimic Pandas series
     row = {"dc.title": title, "dc.language.iso": language}
@@ -407,7 +407,7 @@ def test_check_doi_field():
     # the citation and a DOI field.
     d = {"cg.identifier.doi": doi, "dcterms.bibliographicCitation": citation}
     series = pd.Series(data=d)
-    exclude = list()
+    exclude = []
 
     result = check.citation_doi(series, exclude)
 
@@ -418,7 +418,7 @@ def test_check_doi_only_in_citation(capsys):
     """Test an item with a DOI in its citation, but no DOI field."""
 
     citation = "Orth, A. 2021. Testing all the things. doi: 10.1186/1743-422X-9-218"
-    exclude = list()
+    exclude = []
 
     # Emulate a column in a transposed dataframe (which is just a series), with
     # an empty DOI field and a citation containing a DOI.
@@ -439,7 +439,7 @@ def test_title_in_citation():
 
     title = "Testing all the things"
     citation = "Orth, A. 2021. Testing all the things."
-    exclude = list()
+    exclude = []
 
     # Emulate a column in a transposed dataframe (which is just a series), with
     # the title and citation.
@@ -456,7 +456,7 @@ def test_title_not_in_citation(capsys):
 
     title = "Testing all the things"
     citation = "Orth, A. 2021. Testing all teh things."
-    exclude = list()
+    exclude = []
 
     # Emulate a column in a transposed dataframe (which is just a series), with
     # the title and citation.
@@ -477,7 +477,7 @@ def test_country_matches_region():
 
     country = "Kenya"
     region = "Eastern Africa"
-    exclude = list()
+    exclude = []
 
     # Emulate a column in a transposed dataframe (which is just a series)
     d = {"cg.coverage.country": country, "cg.coverage.region": region}
@@ -495,7 +495,7 @@ def test_country_not_matching_region(capsys):
     country = "Kenya"
     region = ""
     missing_region = "Eastern Africa"
-    exclude = list()
+    exclude = []
 
     # Emulate a column in a transposed dataframe (which is just a series)
     d = {
