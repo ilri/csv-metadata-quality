@@ -2,8 +2,8 @@
 
 import re
 
-import langid
 import pandas as pd
+import py3langid as langid
 from colorama import Fore
 from pycountry import languages
 
