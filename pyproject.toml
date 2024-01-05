@@ -24,7 +24,7 @@ py3langid = "^0.2.2"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.2.1"
-flake8 = "^6.0.0"
+flake8 = "^7.0.0"
 pytest-clarity = "^1.0.1"
 black = "^23.1.0"
 isort = "^5.12.0"
