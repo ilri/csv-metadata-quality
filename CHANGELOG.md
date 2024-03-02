@@ -19,6 +19,7 @@ fields
 
 ### Updated
 - Python dependencies, including Pandas 2.0.0 and [Arrow-backed dtypes](https://datapythonista.me/blog/pandas-20-and-the-arrow-revolution-part-i)
+- SPDX license list
 
 ## [0.6.1] - 2023-02-23
 ### Fixed
