@@ -133,7 +133,7 @@ def suspicious_characters(field, field_name):
         return
 
     # List of suspicious characters, for example:  ́ˆ~`
-    suspicious_characters = ["\u00B4", "\u02C6", "\u007E", "\u0060"]
+    suspicious_characters = ["\u00b4", "\u02c6", "\u007e", "\u0060"]
 
     for character in suspicious_characters:
         # Find the position of the suspicious character in the string
