@@ -34,7 +34,6 @@ managed = true
 dev-dependencies = [
     "pytest>=8.0.2",
     "pytest-clarity>=1.0.1",
-    "black>=24.2.0",
     "isort>=5.13.2",
     "csvkit>=1.4.0",
     "ipython>=8.22.1",
