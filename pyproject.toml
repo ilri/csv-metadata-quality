@@ -1,40 +1,52 @@
-[tool.poetry]
+[project]
 name = "csv-metadata-quality"
 version = "0.6.1"
 description="A simple, but opinionated CSV quality checking and fixing pipeline for CSVs in the DSpace ecosystem."
-authors = ["Alan Orth <alan.orth@gmail.com>"]
+authors = [
+    { name = "Alan Orth", email = "alan.orth@gmail.com" }
+]
 license="GPL-3.0-only"
 repository = "https://github.com/ilri/csv-metadata-quality"
 homepage = "https://github.com/ilri/csv-metadata-quality"
+dependencies = [
+    "pandas[feather,performance]>=2.2.1",
+    "python-stdnum>=1.19",
+    "requests>=2.31.0",
+    "requests-cache>=1.2.0",
+    "colorama>=0.4.6",
+    "ftfy>=6.1.3",
+    "country-converter>=1.2",
+    "pycountry>=23.12.11",
+    "py3langid>=0.2.2",
+]
+readme = "README.md"
+requires-python = ">= 3.9"
 
-[tool.poetry.scripts]
+[project.scripts]
 csv-metadata-quality = 'csv_metadata_quality.__main__:main'
 
-[tool.poetry.dependencies]
-python = "^3.9"
-pandas = {version = "^2.0.2", extras = ["feather", "performance"]}
-python-stdnum = "^1.18"
-requests = "^2.28.2"
-requests-cache = "^1.0.0"
-colorama = "^0.4.6"
-ftfy = "^6.1.1"
-country-converter = "~1.1.0"
-pycountry = "^23.12.7"
-py3langid = "^0.2.2"
-
-[tool.poetry.group.dev.dependencies]
-pytest = "^7.2.1"
-flake8 = "^7.0.0"
-pytest-clarity = "^1.0.1"
-black = "^23.1.0"
-isort = "^5.12.0"
-csvkit = "^1.1.0"
-ipython = "^8.10.0"
-fixit = "^2.1.0"
-
 [build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "pytest>=8.0.2",
+    "pytest-clarity>=1.0.1",
+    "black>=24.2.0",
+    "isort>=5.13.2",
+    "csvkit>=1.4.0",
+    "ipython>=8.22.1",
+    "fixit>=2.1.0",
+    "scalene>=1.5.35",
+]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["csv_metadata_quality"]
 
 [tool.isort]
 profile = "black"
