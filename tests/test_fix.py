@@ -152,3 +152,11 @@ def test_fix_country_not_matching_region():
     series_correct = pd.Series(data=d_correct)
 
     pd.testing.assert_series_equal(result, series_correct)
+
+
+def test_fix_normalize_dois():
+    """Test normalizing a DOI."""
+
+    value = "doi: 10.11648/j.jps.20140201.14"
+
+    assert fix.normalize_dois(value) == "https://doi.org/10.11648/j.jps.20140201.14"

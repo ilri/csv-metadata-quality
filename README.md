@@ -31,6 +31,7 @@ If you use the DSpace CSV metadata quality checker please cite:
 - Check for countries with missing regions (and attempt to fix with `--unsafe-fixes`)
 - Remove duplicate metadata values
 - Check for duplicate items, using the title, type, and date issued as an indicator
+- [Normalize DOIs](https://www.crossref.org/documentation/member-setup/constructing-your-dois/) to https://doi.org URI format
 
 ## Installation
 The easiest way to install CSV Metadata Quality is with [poetry](https://python-poetry.org):
@@ -125,7 +126,6 @@ This currently uses the [Python langid](https://github.com/saffsd/langid.py) lib
 - Better logging, for example with INFO, WARN, and ERR levels
 - Verbose, debug, or quiet options
 - Warn if an author is shorter than 3 characters?
-- Validate DOIs? Normalize to https://doi.org format? Or use just the DOI part: 10.1016/j.worlddev.2010.06.006
 - Warn if two items use the same file in `filename` column
 - Add tests for application invocation, ie `tests/test_app.py`?
 - Validate ISSNs or journal titles against CrossRef API?

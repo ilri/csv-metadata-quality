@@ -37,3 +37,6 @@ Mojibake,2021-03-18,,,,PublicaÃ§ao CIAT,,,,Report,,,,
 Title missing from citation,2021-12-05,,,,,,,,,"Orth, A. 2021. Title missing f rom citation.",,,
 Country missing region,2021-12-08,,,,,Kenya,,,,,,,
 Subregion field shouldn’t trigger region checks,2022-12-07,,,,,Kenya,,,,,,Eastern Africa,Baringo
+DOI with HTTP and dx.doi.org,2024-04-23,,,,,,,,,,http://dx.doi.org/10.1016/j.envc.2023.100794,,
+DOI with colon,2024-04-23,,,,,,,,,,doi: 10.11648/j.jps.20140201.14,,
+Upper case bare DOI,2024-04-23,,,,,,,,,,10.19103/AS.2018.0043.16,,

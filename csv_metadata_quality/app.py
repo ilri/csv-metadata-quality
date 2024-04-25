@@ -141,6 +141,11 @@ def run(argv):
         # Fix: unnecessary Unicode
         df[column] = df[column].apply(fix.unnecessary_unicode)
 
+        # Fix: normalize DOIs
+        match = re.match(r"^.*?identifier\.doi.*$", column)
+        if match is not None:
+            df[column] = df[column].apply(fix.normalize_dois)
+
         # Fix: invalid and unnecessary multi-value separators. Skip the title
         # and abstract fields because "|" is used to indicate something like
         # a subtitle.

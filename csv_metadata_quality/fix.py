@@ -395,3 +395,74 @@ def countries_match_regions(row, exclude):
                 row[region_column_name] = "||".join(missing_regions)
 
     return row
+
+
+def normalize_dois(field):
+    """Normalize DOIs.
+
+    DOIs are meant to be globally unique identifiers. They are case insensitive,
+    but in order to compare them robustly they should be normalized to a common
+    format:
+
+        - strip leading and trailing whitespace
+        - lowercase all ASCII characters
+        - convert all variations to https://doi.org/10.xxxx/xxxx URI format
+
+    Return string with normalized DOI.
+
+    See: https://www.crossref.org/documentation/member-setup/constructing-your-dois/
+    """
+
+    # Skip fields with missing values
+    if pd.isna(field):
+        return
+
+    # Try to split multi-value field on "||" separator
+    values = field.split("||")
+
+    # Initialize an empty list to hold the de-duplicated values
+    new_values = []
+
+    # Iterate over all values (most items will only have one DOI)
+    for value in values:
+        # Strip leading and trailing whitespace
+        new_value = value.strip()
+
+        new_value = new_value.lower()
+
+        # Convert to HTTPS
+        pattern = re.compile(r"^http://")
+        match = re.findall(pattern, new_value)
+
+        if match:
+            new_value = re.sub(pattern, "https://", new_value)
+
+        # Convert dx.doi.org to doi.org
+        pattern = re.compile(r"dx\.doi\.org")
+        match = re.findall(pattern, new_value)
+
+        if match:
+            new_value = re.sub(pattern, "doi.org", new_value)
+
+        # Replace values like doi: 10.11648/j.jps.20140201.14
+        pattern = re.compile(r"^doi: 10\.")
+        match = re.findall(pattern, new_value)
+
+        if match:
+            new_value = re.sub(pattern, "https://doi.org/10.", new_value)
+
+        # Replace values like 10.3390/foods12010115
+        pattern = re.compile(r"^10\.")
+        match = re.findall(pattern, new_value)
+
+        if match:
+            new_value = re.sub(pattern, "https://doi.org/10.", new_value)
+
+        if new_value != value:
+            print(f"{Fore.GREEN}Normalized DOI: {Fore.RESET}{value}")
+
+        new_values.append(new_value)
+
+    new_field = "||".join(new_values)
+
+    return new_field
