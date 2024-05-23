@@ -46,6 +46,7 @@ dev-dependencies = [
 [tool.hatch.metadata]
 allow-direct-references = true
 
+# So hatch doesn't try to build other top-level directories like "data"
 [tool.hatch.build.targets.wheel]
 packages = ["csv_metadata_quality"]
 
