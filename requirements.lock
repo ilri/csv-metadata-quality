@@ -6,6 +6,7 @@
 #   features: []
 #   all-features: false
 #   with-sources: false
+#   generate-hashes: false
 
 -e file:.
 attrs==23.2.0
@@ -43,11 +44,11 @@ numpy==1.26.4
 pandas==2.2.2
     # via country-converter
     # via csv-metadata-quality
-platformdirs==4.2.0
+platformdirs==4.2.2
     # via requests-cache
 py3langid==0.2.2
     # via csv-metadata-quality
-pyarrow==15.0.2
+pyarrow==16.1.0
     # via pandas
 pycountry==23.12.11
     # via csv-metadata-quality
@@ -57,7 +58,7 @@ python-stdnum==1.20
     # via csv-metadata-quality
 pytz==2024.1
     # via pandas
-requests==2.31.0
+requests==2.32.2
     # via csv-metadata-quality
     # via requests-cache
 requests-cache==1.2.0
