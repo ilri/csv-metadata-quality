@@ -25,6 +25,8 @@ requires-python = ">= 3.9"
 [project.scripts]
 csv-metadata-quality = 'csv_metadata_quality.__main__:main'
 
+# So rye doesn't fall back to setuptools
+# See: https://packaging.python.org/en/latest/tutorials/packaging-projects/#choosing-build-backend
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
