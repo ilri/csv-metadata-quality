@@ -53,7 +53,6 @@ dev-dependencies = [
     "csvkit>=1.4.0",
     "ipython>=8.22.1",
     "fixit>=2.1.0",
-    "scalene>=1.5.35",
 ]
 
 # So hatch doesn't try to build other top-level directories like "data"
