@@ -19,7 +19,7 @@ requests-cache = "^1.0.0"
 colorama = "^0.4.6"
 ftfy = "^6.1.1"
 country-converter = "~1.1.0"
-pycountry = "^23.12.7"
+pycountry = "^24.0.0"
 py3langid = "^0.2.2"
 
 [tool.poetry.group.dev.dependencies]
