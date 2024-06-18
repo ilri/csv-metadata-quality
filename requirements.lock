@@ -50,7 +50,7 @@ py3langid==0.3.0
     # via csv-metadata-quality
 pyarrow==16.1.0
     # via pandas
-pycountry==23.12.11
+pycountry==24.6.1
     # via csv-metadata-quality
 python-dateutil==2.9.0.post0
     # via pandas
@@ -61,7 +61,7 @@ pytz==2024.1
 requests==2.32.2
     # via csv-metadata-quality
     # via requests-cache
-requests-cache==1.2.0
+requests-cache==1.2.1
     # via csv-metadata-quality
 six==1.16.0
     # via python-dateutil

@@ -8,13 +8,13 @@ authors = [
 license= { file = "LICENSE.txt" }
 dependencies = [
     "pandas[feather,performance]~=2.2",
-    "python-stdnum~=1.19",
-    "requests~=2.31",
-    "requests-cache~=1.2",
+    "python-stdnum~=1.20",
+    "requests~=2.32",
+    "requests-cache~=1.2.1",
     "colorama~=0.4",
-    "ftfy~=6.1",
+    "ftfy~=6.2.0",
     "country-converter~=1.2",
-    "pycountry~=23.12",
+    "pycountry~=24.6.1",
     "py3langid~=0.3",
 ]
 readme = "README.md"

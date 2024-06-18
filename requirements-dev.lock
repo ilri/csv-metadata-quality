@@ -126,7 +126,7 @@ py3langid==0.3.0
     # via csv-metadata-quality
 pyarrow==16.1.0
     # via pandas
-pycountry==23.12.11
+pycountry==24.6.1
     # via csv-metadata-quality
 pygments==2.18.0
     # via ipython
@@ -149,7 +149,7 @@ pyyaml==6.0.1
 requests==2.32.2
     # via csv-metadata-quality
     # via requests-cache
-requests-cache==1.2.0
+requests-cache==1.2.1
     # via csv-metadata-quality
 rich==13.7.1
     # via pytest-clarity
