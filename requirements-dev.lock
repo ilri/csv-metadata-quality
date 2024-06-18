@@ -70,7 +70,7 @@ leather==0.4.0
     # via agate
 libcst==1.4.0
     # via fixit
-llvmlite==0.42.0
+llvmlite==0.43.0
     # via numba
 markdown-it-py==3.0.0
     # via rich
@@ -80,11 +80,11 @@ mdurl==0.1.2
     # via markdown-it-py
 moreorless==0.4.0
     # via fixit
-numba==0.59.1
+numba==0.60.0
     # via pandas
 numexpr==2.10.0
     # via pandas
-numpy==1.26.4
+numpy==2.0.0
     # via bottleneck
     # via numba
     # via numexpr
@@ -122,7 +122,7 @@ ptyprocess==0.7.0
     # via pexpect
 pure-eval==0.2.2
     # via stack-data
-py3langid==0.2.2
+py3langid==0.3.0
     # via csv-metadata-quality
 pyarrow==16.1.0
     # via pandas

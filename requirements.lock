@@ -28,13 +28,13 @@ ftfy==6.2.0
     # via csv-metadata-quality
 idna==3.7
     # via requests
-llvmlite==0.42.0
+llvmlite==0.43.0
     # via numba
-numba==0.59.1
+numba==0.60.0
     # via pandas
 numexpr==2.10.0
     # via pandas
-numpy==1.26.4
+numpy==2.0.0
     # via bottleneck
     # via numba
     # via numexpr
@@ -46,7 +46,7 @@ pandas==2.2.2
     # via csv-metadata-quality
 platformdirs==4.2.2
     # via requests-cache
-py3langid==0.2.2
+py3langid==0.3.0
     # via csv-metadata-quality
 pyarrow==16.1.0
     # via pandas

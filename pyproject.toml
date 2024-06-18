@@ -15,7 +15,7 @@ dependencies = [
     "ftfy~=6.1",
     "country-converter~=1.2",
     "pycountry~=23.12",
-    "py3langid~=0.2",
+    "py3langid~=0.3",
 ]
 readme = "README.md"
 requires-python = ">= 3.9"
