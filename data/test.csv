@@ -40,3 +40,4 @@ Subregion field shouldn’t trigger region checks,2022-12-07,,,,,Kenya,,,,,,East
 DOI with HTTP and dx.doi.org,2024-04-23,,,,,,,,,,http://dx.doi.org/10.1016/j.envc.2023.100794,,
 DOI with colon,2024-04-23,,,,,,,,,,doi: 10.11648/j.jps.20140201.14,,
 Upper case bare DOI,2024-04-23,,,,,,,,,,10.19103/AS.2018.0043.16,,
+DOI with %2f,2024-06-25,,,,,,,,,,https://doi.org/10.1016%2fj.envc.2023.100794,,
