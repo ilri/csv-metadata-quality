@@ -444,6 +444,13 @@ def normalize_dois(field):
         if match:
             new_value = re.sub(pattern, "doi.org", new_value)
 
+        # Convert www.doi.org to doi.org
+        pattern = re.compile(r"www\.doi\.org")
+        match = re.findall(pattern, new_value)
+
+        if match:
+            new_value = re.sub(pattern, "doi.org", new_value)
+
         # Replace values like doi: 10.11648/j.jps.20140201.14
         pattern = re.compile(r"^doi: 10\.")
         match = re.findall(pattern, new_value)
