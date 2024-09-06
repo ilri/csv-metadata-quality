@@ -1,7 +1,6 @@
 <h1 align="center">DSpace CSV Metadata Quality Checker</h1>
 
 <p align="center">
-  <a href="https://ci.mjanja.ch/alanorth/csv-metadata-quality"><img alt="Build Status" src="https://ci.mjanja.ch/api/badges/alanorth/csv-metadata-quality/status.svg"></a>
   <a href="https://github.com/ilri/csv-metadata-quality/actions"><img alt="Build and Test" src="https://github.com/ilri/csv-metadata-quality/workflows/Build%20and%20Test/badge.svg"></a>
   <a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 </p>
