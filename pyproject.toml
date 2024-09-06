@@ -52,7 +52,6 @@ dev-dependencies = [
     "isort~=5.13",
     "csvkit~=2.0",
     "ipython~=8.26",
-    "fixit~=2.1",
 ]
 
 # So hatch doesn't try to build other top-level directories like "data"
