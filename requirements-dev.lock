@@ -10,7 +10,7 @@
 #   universal: false
 
 -e file:.
-agate==1.10.2
+agate==1.12.0
     # via agate-dbf
     # via agate-excel
     # via agate-sql
@@ -23,16 +23,16 @@ agate-sql==0.7.2
     # via csvkit
 asttokens==2.4.1
     # via stack-data
-attrs==23.2.0
+attrs==24.2.0
     # via cattrs
     # via requests-cache
-babel==2.15.0
+babel==2.16.0
     # via agate
-bottleneck==1.3.8
+bottleneck==1.4.0
     # via pandas
-cattrs==23.2.3
+cattrs==24.1.2
     # via requests-cache
-certifi==2024.2.2
+certifi==2024.8.30
     # via requests
 charset-normalizer==3.3.2
     # via requests
@@ -47,17 +47,17 @@ decorator==5.1.1
     # via ipython
 et-xmlfile==1.1.0
     # via openpyxl
-executing==2.0.1
+executing==2.1.0
     # via stack-data
-ftfy==6.2.0
+ftfy==6.2.3
     # via csv-metadata-quality
-greenlet==3.0.3
+greenlet==3.1.1
     # via sqlalchemy
-idna==3.7
+idna==3.10
     # via requests
 iniconfig==2.0.0
     # via pytest
-ipython==8.26.0
+ipython==8.27.0
 isodate==0.6.1
     # via agate
 isort==5.13.2
@@ -75,9 +75,9 @@ mdurl==0.1.2
     # via markdown-it-py
 numba==0.60.0
     # via pandas
-numexpr==2.10.0
+numexpr==2.10.1
     # via pandas
-numpy==2.0.0
+numpy==2.0.2
     # via bottleneck
     # via numba
     # via numexpr
@@ -86,12 +86,12 @@ numpy==2.0.0
     # via pyarrow
 olefile==0.47
     # via agate-excel
-openpyxl==3.1.2
+openpyxl==3.1.5
     # via agate-excel
     # via csvkit
-packaging==24.0
+packaging==24.1
     # via pytest
-pandas==2.2.2
+pandas==2.2.3
     # via country-converter
     # via csv-metadata-quality
 parsedatetime==2.6
@@ -100,28 +100,28 @@ parso==0.8.4
     # via jedi
 pexpect==4.9.0
     # via ipython
-platformdirs==4.2.2
+platformdirs==4.3.6
     # via requests-cache
 pluggy==1.5.0
     # via pytest
 pprintpp==0.4.0
     # via pytest-clarity
-prompt-toolkit==3.0.43
+prompt-toolkit==3.0.48
     # via ipython
 ptyprocess==0.7.0
     # via pexpect
-pure-eval==0.2.2
+pure-eval==0.2.3
     # via stack-data
 py3langid==0.3.0
     # via csv-metadata-quality
-pyarrow==16.1.0
+pyarrow==17.0.0
     # via pandas
 pycountry==24.6.1
     # via csv-metadata-quality
 pygments==2.18.0
     # via ipython
     # via rich
-pytest==8.3.2
+pytest==8.3.3
     # via pytest-clarity
 pytest-clarity==1.0.1
 python-dateutil==2.9.0.post0
@@ -132,21 +132,21 @@ python-stdnum==1.20
     # via csv-metadata-quality
 pytimeparse==1.1.8
     # via agate
-pytz==2024.1
+pytz==2024.2
     # via pandas
-requests==2.32.2
+requests==2.32.3
     # via csv-metadata-quality
     # via requests-cache
 requests-cache==1.2.1
     # via csv-metadata-quality
-rich==13.7.1
+rich==13.8.1
     # via pytest-clarity
 six==1.16.0
     # via asttokens
     # via isodate
     # via python-dateutil
     # via url-normalize
-sqlalchemy==2.0.30
+sqlalchemy==2.0.35
     # via agate-sql
     # via csvkit
 stack-data==0.6.3
@@ -156,13 +156,13 @@ text-unidecode==1.3
 traitlets==5.14.3
     # via ipython
     # via matplotlib-inline
-typing-extensions==4.11.0
+typing-extensions==4.12.2
     # via sqlalchemy
-tzdata==2024.1
+tzdata==2024.2
     # via pandas
 url-normalize==1.4.3
     # via requests-cache
-urllib3==2.2.1
+urllib3==2.2.3
     # via requests
     # via requests-cache
 wcwidth==0.2.13
