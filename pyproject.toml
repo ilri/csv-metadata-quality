@@ -39,15 +39,14 @@ homepage = "https://github.com/ilri/csv-metadata-quality"
 [project.scripts]
 csv-metadata-quality = 'csv_metadata_quality.__main__:main'
 
-# So rye doesn't fall back to setuptools
+# So uv doesn't fall back to setuptools
 # See: https://packaging.python.org/en/latest/tutorials/packaging-projects/#choosing-build-backend
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
-[tool.rye]
-managed = true
-dev-dependencies = [
+[dependency-groups]
+dev = [
     "pytest~=8.3",
     "pytest-clarity~=1.0",
     "isort~=6.0",

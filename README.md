@@ -33,22 +33,22 @@ If you use the DSpace CSV metadata quality checker please cite:
 - [Normalize DOIs](https://www.crossref.org/documentation/member-setup/constructing-your-dois/) to https://doi.org URI format
 
 ## Installation
-The easiest way to install CSV Metadata Quality is with [poetry](https://python-poetry.org):
+The easiest way to install CSV Metadata Quality is with [uv](https://docs.astral.sh/uv/):
 
 ```
 $ git clone https://github.com/ilri/csv-metadata-quality.git
 $ cd csv-metadata-quality
-$ poetry install
-$ poetry shell
+$ uv sync
+$ source .venv/bin/activate
 ```
 
-Otherwise, if you don't have poetry, you can use a vanilla Python virtual environment:
+Otherwise, if you don't have uv, you can use a vanilla Python virtual environment:
 
 ```
 $ git clone https://github.com/ilri/csv-metadata-quality.git
 $ cd csv-metadata-quality
-$ python3 -m venv venv
-$ source venv/bin/activate
+$ python3 -m venv .venv
+$ source .venv/bin/activate
 $ pip install -r requirements.txt
 ```
 
