@@ -3,7 +3,7 @@
   "extends": [
     "config:recommended"
   ],
-  "pip_requirements": {
+  "pep621": {
     "enabled": false
   }
 }
