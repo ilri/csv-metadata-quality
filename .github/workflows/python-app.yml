@@ -22,7 +22,7 @@ jobs:
         version: 'latest'
     - run: uv sync
     - name: Test with pytest
-      run: uv run test
+      run: uv run pytest
     - name: Test CLI
       run: |
         # Basic test
