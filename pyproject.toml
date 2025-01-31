@@ -47,7 +47,6 @@ build-backend = "hatchling.build"
 [dependency-groups]
 dev = [
     "pytest~=8.3",
-    "pytest-clarity~=1.0",
     "isort~=6.0",
     "csvkit~=2.0",
     "ipython~=8.26",
