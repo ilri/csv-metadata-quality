@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 ### Changed
 - New AGROVOC REST API URL
+- Use urllib from Python stdlib instead of manual replacement for unquoting URLs
 
 ## [0.7.0] - 2025-01-31
 ### Added
