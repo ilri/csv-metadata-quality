@@ -49,6 +49,7 @@ dev = [
     "isort~=6.0",
     "csvkit~=2.0",
     "ipython~=8.31",
+    "black~=25.9",
 ]
 
 [tool.isort]
