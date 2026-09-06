@@ -45,7 +45,7 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
-    "pytest~=8.3",
+    "pytest~=9.1",
     "isort~=6.0",
     "csvkit~=2.0",
     "ipython~=8.31",
